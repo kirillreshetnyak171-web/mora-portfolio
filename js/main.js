@@ -77,7 +77,8 @@
       'form.message': 'Message',
       'form.submit': 'Send request',
       'form.sending': 'Sending…',
-      'form.notice': 'Your data is only used to reply to your request (GDPR).',
+      'form.notice': 'Form temporarily off — message us on Telegram or WhatsApp.',
+      'form.disabled': 'Form is temporarily disabled.',
       'form.error': 'Could not send. Message us on Telegram or WhatsApp.',
       'form.notConfigured': 'Form is not connected yet — use Telegram or WhatsApp.',
       'toast.success': "Thank you! I'll get back to you soon.",
@@ -148,7 +149,8 @@
       'form.message': 'Сообщение',
       'form.submit': 'Отправить заявку',
       'form.sending': 'Отправка…',
-      'form.notice': 'Данные используются только для ответа на заявку (DSGVO).',
+      'form.notice': 'Форма временно отключена — напишите в Telegram или WhatsApp.',
+      'form.disabled': 'Форма временно отключена.',
       'form.error': 'Не удалось отправить. Напишите в Telegram или WhatsApp.',
       'form.notConfigured': 'Форма ещё не подключена — напишите в Telegram или WhatsApp.',
       'toast.success': 'Спасибо! Свяжусь с вами в ближайшее время.',
@@ -219,7 +221,8 @@
       'form.message': 'Nachricht',
       'form.submit': 'Anfrage senden',
       'form.sending': 'Wird gesendet…',
-      'form.notice': 'Ihre Daten werden nur zur Beantwortung genutzt (DSGVO).',
+      'form.notice': 'Formular vorübergehend aus — bitte Telegram oder WhatsApp.',
+      'form.disabled': 'Formular vorübergehend deaktiviert.',
       'form.error': 'Senden fehlgeschlagen. Schreiben Sie auf Telegram oder WhatsApp.',
       'form.notConfigured': 'Formular noch nicht verbunden — bitte Telegram oder WhatsApp.',
       'toast.success': 'Danke! Ich melde mich in Kürze.',
@@ -473,6 +476,13 @@
   /* ------------------------------------------------------------------
      Contact form → Telegram (via LEAD_CONFIG.webhookUrl)
      ------------------------------------------------------------------ */
+  function isLeadFormEnabled() {
+    if (window.LEAD_CONFIG && window.LEAD_CONFIG.enabled === false) {
+      return false;
+    }
+    return Boolean(getLeadWebhookUrl());
+  }
+
   function getLeadWebhookUrl() {
     if (window.LEAD_CONFIG && window.LEAD_CONFIG.webhookUrl) {
       return String(window.LEAD_CONFIG.webhookUrl).trim();
@@ -559,9 +569,22 @@
 
   if (contactForm) {
     var submitBtn = contactForm.querySelector('button[type="submit"]');
+    var leadFormEnabled = isLeadFormEnabled();
+
+    if (!leadFormEnabled) {
+      contactForm.classList.add('contact__form--disabled');
+      contactForm.querySelectorAll('input, textarea').forEach(function (el) {
+        el.disabled = true;
+      });
+      if (submitBtn) submitBtn.disabled = true;
+    }
 
     contactForm.addEventListener('submit', function (e) {
       e.preventDefault();
+      if (!isLeadFormEnabled()) {
+        showToast('form.disabled', true);
+        return;
+      }
       clearFieldErrors(contactForm);
 
       var valid = contactForm.checkValidity();

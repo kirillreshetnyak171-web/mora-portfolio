@@ -7,5 +7,6 @@
  * 4) Вставь URL сюда:
  */
 window.LEAD_CONFIG = {
-  webhookUrl: ''
+  webhookUrl: '',
+  enabled: false
 };

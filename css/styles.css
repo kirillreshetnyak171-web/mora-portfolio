@@ -1165,6 +1165,11 @@ textarea {
   cursor: wait;
 }
 
+.contact__form--disabled .form-field__input {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
 .contact__form {
   display: flex;
   flex-direction: column;
