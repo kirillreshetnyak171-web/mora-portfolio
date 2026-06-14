@@ -71,12 +71,15 @@
       'contact.title': 'Get in touch',
       'contact.subtitle': "Describe your task — we'll reply on Telegram or WhatsApp",
       'contact.heading': 'Do you have a task?',
-      'contact.lead': 'Write on Telegram or WhatsApp. The form below is coming soon.',
+      'contact.lead': 'Fill out the form — the request goes straight to Telegram.',
       'form.name': 'Name',
       'form.contact': 'Email / Telegram',
       'form.message': 'Message',
       'form.submit': 'Send request',
-      'form.notice': 'Online form coming soon — for now, message us on Telegram or WhatsApp.',
+      'form.sending': 'Sending…',
+      'form.notice': 'Your data is only used to reply to your request (GDPR).',
+      'form.error': 'Could not send. Message us on Telegram or WhatsApp.',
+      'form.notConfigured': 'Form is not connected yet — use Telegram or WhatsApp.',
       'toast.success': "Thank you! I'll get back to you soon.",
       'footer.copy': '© 2026 Mora'
     },
@@ -139,12 +142,15 @@
       'contact.title': 'Связаться',
       'contact.subtitle': 'Опишите задачу — ответим в Telegram или WhatsApp',
       'contact.heading': 'Есть задача?',
-      'contact.lead': 'Напишите в Telegram или WhatsApp. Форма ниже скоро заработает.',
+      'contact.lead': 'Заполните форму — заявка сразу придёт в Telegram.',
       'form.name': 'Имя',
       'form.contact': 'Email / Telegram',
       'form.message': 'Сообщение',
       'form.submit': 'Отправить заявку',
-      'form.notice': 'Онлайн-форма скоро заработает — пока напишите в Telegram или WhatsApp.',
+      'form.sending': 'Отправка…',
+      'form.notice': 'Данные используются только для ответа на заявку (DSGVO).',
+      'form.error': 'Не удалось отправить. Напишите в Telegram или WhatsApp.',
+      'form.notConfigured': 'Форма ещё не подключена — напишите в Telegram или WhatsApp.',
       'toast.success': 'Спасибо! Свяжусь с вами в ближайшее время.',
       'footer.copy': '© 2026 Mora'
     },
@@ -207,12 +213,15 @@
       'contact.title': 'Kontakt',
       'contact.subtitle': 'Beschreiben Sie Ihre Aufgabe — wir antworten auf Telegram oder WhatsApp',
       'contact.heading': 'Haben Sie eine Aufgabe?',
-      'contact.lead': 'Schreiben Sie auf Telegram oder WhatsApp. Das Formular kommt bald.',
+      'contact.lead': 'Formular ausfüllen — die Anfrage geht direkt an Telegram.',
       'form.name': 'Name',
       'form.contact': 'E-Mail / Telegram',
       'form.message': 'Nachricht',
       'form.submit': 'Anfrage senden',
-      'form.notice': 'Online-Formular kommt bald — schreiben Sie uns vorerst auf Telegram oder WhatsApp.',
+      'form.sending': 'Wird gesendet…',
+      'form.notice': 'Ihre Daten werden nur zur Beantwortung genutzt (DSGVO).',
+      'form.error': 'Senden fehlgeschlagen. Schreiben Sie auf Telegram oder WhatsApp.',
+      'form.notConfigured': 'Formular noch nicht verbunden — bitte Telegram oder WhatsApp.',
       'toast.success': 'Danke! Ich melde mich in Kürze.',
       'footer.copy': '© 2026 Mora'
     }
@@ -462,11 +471,25 @@
   updateActiveNav();
 
   /* ------------------------------------------------------------------
-     Contact form — demo toast
+     Contact form → Telegram (via LEAD_CONFIG.webhookUrl)
      ------------------------------------------------------------------ */
-  function showToast() {
+  function getLeadWebhookUrl() {
+    if (window.LEAD_CONFIG && window.LEAD_CONFIG.webhookUrl) {
+      return String(window.LEAD_CONFIG.webhookUrl).trim();
+    }
+    return '';
+  }
+
+  function showToast(messageKey, isError) {
     if (!toast) return;
 
+    var messageEl = toast.querySelector('.toast__message');
+    if (messageEl && messageKey) {
+      messageEl.setAttribute('data-i18n', messageKey);
+      messageEl.textContent = t(currentLang, messageKey);
+    }
+
+    toast.classList.toggle('toast--error', Boolean(isError));
     toast.classList.add('toast--visible');
 
     if (toastTimer) {
@@ -475,7 +498,57 @@
 
     toastTimer = setTimeout(function () {
       toast.classList.remove('toast--visible');
-    }, 4000);
+      toast.classList.remove('toast--error');
+      if (messageEl) {
+        messageEl.setAttribute('data-i18n', 'toast.success');
+        messageEl.textContent = t(currentLang, 'toast.success');
+      }
+    }, 5000);
+  }
+
+  function submitLead(form) {
+    var webhookUrl = getLeadWebhookUrl();
+    var payload = {
+      name: form.name.value.trim(),
+      contact: form.contact.value.trim(),
+      message: form.message.value.trim(),
+      source: 'morastudio.de',
+      lang: localStorage.getItem(STORAGE_KEY) || DEFAULT_LANG,
+      website: form.website ? form.website.value : ''
+    };
+
+    if (payload.website) {
+      return Promise.resolve({ ok: true });
+    }
+
+    if (!webhookUrl) {
+      return Promise.resolve({ ok: false, error: 'not_configured' });
+    }
+
+    if (webhookUrl.indexOf('http://127.0.0.1') === 0 || webhookUrl.indexOf('http://localhost') === 0) {
+      return fetch(webhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      }).then(function (res) {
+        return res.json().then(function (data) {
+          return data && data.ok ? { ok: true } : { ok: false, error: 'server' };
+        });
+      }).catch(function () {
+        return { ok: false, error: 'network' };
+      });
+    }
+
+    return fetch(webhookUrl, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function () {
+      return { ok: true };
+    }).catch(function () {
+      return { ok: false, error: 'network' };
+    });
   }
 
   function clearFieldErrors(form) {
@@ -485,6 +558,8 @@
   }
 
   if (contactForm) {
+    var submitBtn = contactForm.querySelector('button[type="submit"]');
+
     contactForm.addEventListener('submit', function (e) {
       e.preventDefault();
       clearFieldErrors(contactForm);
@@ -499,8 +574,26 @@
         return;
       }
 
-      contactForm.reset();
-      showToast();
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = t(currentLang, 'form.sending');
+      }
+
+      submitLead(contactForm).then(function (result) {
+        if (result.ok) {
+          contactForm.reset();
+          showToast('toast.success', false);
+        } else if (result.error === 'not_configured') {
+          showToast('form.notConfigured', true);
+        } else {
+          showToast('form.error', true);
+        }
+      }).finally(function () {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = t(currentLang, 'form.submit');
+        }
+      });
     });
   }
 
