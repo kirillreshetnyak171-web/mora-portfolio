@@ -366,6 +366,22 @@ textarea {
   .sidebar__link:hover {
     color: var(--color-accent);
   }
+
+  .sidebar__link[data-contact-link="telegram"] {
+    color: #26a5e4;
+  }
+
+  .sidebar__link[data-contact-link="telegram"]:hover {
+    color: #1d96d8;
+  }
+
+  .sidebar__link[data-contact-link="whatsapp"] {
+    color: #25d366;
+  }
+
+  .sidebar__link[data-contact-link="whatsapp"]:hover {
+    color: #20bd5a;
+  }
 }
 
 /* ==========================================================================
@@ -635,6 +651,33 @@ textarea {
 
 .btn--primary:active {
   background-color: var(--color-accent-active);
+}
+
+.btn--telegram {
+  background-color: #26a5e4;
+  color: #fff;
+}
+
+.btn--telegram:hover {
+  background-color: #1d96d8;
+}
+
+.btn--telegram:active {
+  background-color: #1788c7;
+}
+
+.btn--whatsapp {
+  background-color: #25d366;
+  color: #fff;
+  border: none;
+}
+
+.btn--whatsapp:hover {
+  background-color: #20bd5a;
+}
+
+.btn--whatsapp:active {
+  background-color: #1da851;
 }
 
 .btn--ghost {
