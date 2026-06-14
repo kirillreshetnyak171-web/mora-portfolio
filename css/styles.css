@@ -971,6 +971,11 @@ textarea {
   gap: 0;
   background: var(--mockup-screenshot-bg);
   overflow: hidden;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  border-bottom-left-radius: calc(var(--radius-xl) - 1px);
+  border-bottom-right-radius: calc(var(--radius-xl) - 1px);
 }
 
 .mockup-window__screenshot {
@@ -979,8 +984,9 @@ textarea {
   height: 100%;
   max-width: 100%;
   max-height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: top center;
+  vertical-align: top;
 }
 
 .mockup-row {
