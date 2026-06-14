@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mora — automation and websites for small business">
+  <title>Mora — Automation &amp; websites</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23000'/%3E%3Ctext x='16' y='22' text-anchor='middle' fill='%23A855F7' font-family='system-ui,sans-serif' font-size='16' font-weight='700'%3EM%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="skipLink">Skip to content</a>
+
+  <aside class="sidebar" aria-label="Contact shortcuts">
+    <span class="sidebar__label" data-i18n="sidebar.messageMe">message me</span>
+    <div class="sidebar__links">
+      <a class="sidebar__link" data-contact-link="telegram" href="https://t.me/qwe171qw" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+        <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+        </svg>
+      </a>
+      <a class="sidebar__link" data-contact-link="whatsapp" href="#" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" hidden>
+        <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+      </a>
+    </div>
+  </aside>
+
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <div class="lang-switcher" role="group" data-i18n="langSwitcher.label" data-i18n-attr="aria-label">
+        <button class="lang-switcher__btn lang-switcher__btn--active" type="button" data-lang="en" aria-pressed="true">EN</button>
+        <span class="lang-switcher__sep" aria-hidden="true">·</span>
+        <button class="lang-switcher__btn" type="button" data-lang="ru" aria-pressed="false">RU</button>
+        <span class="lang-switcher__sep" aria-hidden="true">·</span>
+        <button class="lang-switcher__btn" type="button" data-lang="de" aria-pressed="false">DE</button>
+      </div>
+
+      <a class="header__logo" href="#hero" data-i18n="brand.name">Mora</a>
+
+      <button class="header__burger" type="button" data-i18n="drawer.openMenu" data-i18n-attr="aria-label" aria-expanded="false" aria-controls="mobile-drawer">
+        <svg class="header__burger-icon header__burger-icon--open" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+        <svg class="header__burger-icon header__burger-icon--close" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+
+    <nav class="header__nav--vertical" data-i18n="nav.label" data-i18n-attr="aria-label">
+      <ul class="header__nav-list">
+        <li><a class="header__nav-link" href="#services" data-i18n="nav.services">Services</a></li>
+        <li><a class="header__nav-link" href="#cases" data-i18n="nav.cases">Cases</a></li>
+        <li><a class="header__nav-link" href="#process" data-i18n="nav.process">Process</a></li>
+        <li><a class="header__nav-link" href="#contact" data-i18n="nav.contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="header__drawer" id="mobile-drawer" aria-hidden="true">
+      <div class="header__drawer-backdrop" data-drawer-close></div>
+      <div class="header__drawer-panel">
+        <div class="lang-switcher lang-switcher--drawer" role="group" data-i18n="langSwitcher.label" data-i18n-attr="aria-label">
+          <button class="lang-switcher__btn lang-switcher__btn--active" type="button" data-lang="en" aria-pressed="true">EN</button>
+          <span class="lang-switcher__sep" aria-hidden="true">·</span>
+          <button class="lang-switcher__btn" type="button" data-lang="ru" aria-pressed="false">RU</button>
+          <span class="lang-switcher__sep" aria-hidden="true">·</span>
+          <button class="lang-switcher__btn" type="button" data-lang="de" aria-pressed="false">DE</button>
+        </div>
+        <nav data-i18n="nav.mobileLabel" data-i18n-attr="aria-label">
+          <ul class="header__drawer-list">
+            <li><a class="header__drawer-link" href="#services" data-i18n="nav.services">Services</a></li>
+            <li><a class="header__drawer-link" href="#cases" data-i18n="nav.cases">Cases</a></li>
+            <li><a class="header__drawer-link" href="#process" data-i18n="nav.process">Process</a></li>
+            <li><a class="header__drawer-link" href="#contact" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="header__drawer-contact">
+          <a class="btn btn--primary btn--block" data-contact-link="telegram" href="https://t.me/qwe171qw" target="_blank" rel="noopener noreferrer">
+            <svg class="btn__icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+            </svg>
+            <span data-i18n="cta.telegram">Message on Telegram</span>
+          </a>
+          <a class="btn btn--ghost btn--block" data-contact-link="whatsapp" href="#" target="_blank" rel="noopener noreferrer" hidden>
+            <svg class="btn__icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            <span data-i18n="cta.whatsapp">Message on WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section section--hero" id="hero" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="hero__grid">
+          <div class="hero__content">
+            <h1 class="hero__title" id="hero-title" data-i18n="brand.name">Mora</h1>
+            <p class="hero__subtitle" data-i18n="hero.subtitle">Automation and websites for small business — spreadsheets, desktop tools, landing pages</p>
+            <div class="hero__actions">
+              <a class="btn btn--primary" data-contact-link="telegram" href="https://t.me/qwe171qw" target="_blank" rel="noopener noreferrer">
+                <svg class="btn__icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+                </svg>
+                <span data-i18n="cta.telegram">Message on Telegram</span>
+              </a>
+              <a class="btn btn--ghost" data-contact-link="whatsapp" href="#" target="_blank" rel="noopener noreferrer" hidden>
+                <svg class="btn__icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+                <span data-i18n="cta.whatsapp">Message on WhatsApp</span>
+              </a>
+              <a class="btn btn--ghost" href="#cases">
+                <span data-i18n="hero.ctaSecondary">View cases</span>
+                <svg class="btn__arrow" aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14M13 6l6 6-6 6"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="hero__visual">
+            <svg class="hero__wireframe" aria-hidden="true" focusable="false" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="wireGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="rgba(255,255,255,0.35)"/>
+                  <stop offset="50%" stop-color="rgba(168,85,247,0.5)"/>
+                  <stop offset="100%" stop-color="rgba(255,255,255,0.2)"/>
+                </linearGradient>
+              </defs>
+              <g fill="none" stroke="url(#wireGrad)" stroke-width="1">
+                <ellipse cx="200" cy="200" rx="160" ry="60" transform="rotate(0 200 200)"/>
+                <ellipse cx="200" cy="200" rx="160" ry="60" transform="rotate(30 200 200)"/>
+                <ellipse cx="200" cy="200" rx="160" ry="60" transform="rotate(60 200 200)"/>
+                <ellipse cx="200" cy="200" rx="160" ry="60" transform="rotate(90 200 200)"/>
+                <ellipse cx="200" cy="200" rx="160" ry="60" transform="rotate(120 200 200)"/>
+                <ellipse cx="200" cy="200" rx="160" ry="60" transform="rotate(150 200 200)"/>
+                <ellipse cx="200" cy="200" rx="120" ry="45" transform="rotate(15 200 200)"/>
+                <ellipse cx="200" cy="200" rx="120" ry="45" transform="rotate(45 200 200)"/>
+                <ellipse cx="200" cy="200" rx="120" ry="45" transform="rotate(75 200 200)"/>
+                <ellipse cx="200" cy="200" rx="120" ry="45" transform="rotate(105 200 200)"/>
+                <ellipse cx="200" cy="200" rx="120" ry="45" transform="rotate(135 200 200)"/>
+                <ellipse cx="200" cy="200" rx="80" ry="30" transform="rotate(0 200 200)"/>
+                <ellipse cx="200" cy="200" rx="80" ry="30" transform="rotate(60 200 200)"/>
+                <ellipse cx="200" cy="200" rx="80" ry="30" transform="rotate(120 200 200)"/>
+                <line x1="40" y1="200" x2="360" y2="200"/>
+                <line x1="200" y1="40" x2="200" y2="360"/>
+                <line x1="80" y1="80" x2="320" y2="320"/>
+                <line x1="320" y1="80" x2="80" y2="320"/>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services" aria-labelledby="services-title">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-header__title" id="services-title" data-i18n="services.title">Services</h2>
+          <p class="section-header__subtitle" data-i18n="services.subtitle">How I can help your business</p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-card__icon">
+              <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                <line x1="3" y1="9" x2="21" y2="9"/>
+                <line x1="3" y1="15" x2="21" y2="15"/>
+                <line x1="9" y1="3" x2="9" y2="21"/>
+              </svg>
+            </div>
+            <h3 class="service-card__title" data-i18n="services.1.title">Excel &amp; CSV processing</h3>
+            <p class="service-card__text" data-i18n="services.1.text">Import, clean, merge spreadsheets. Reports without manual hassle.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-card__icon">
+              <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/>
+                <path d="M5.45 5.11L2 12v6a2 2 0 002 2h16a2 2 0 002-2v-6l-3.45-6.89A2 2 0 0016.76 4H7.24a2 2 0 00-1.79 1.11z"/>
+              </svg>
+            </div>
+            <h3 class="service-card__title" data-i18n="services.2.title">Request &amp; complaint routing</h3>
+            <p class="service-card__text" data-i18n="services.2.text">AI suggests a draft, you review — requests go to the right department.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-card__icon">
+              <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="2" y1="12" x2="22" y2="12"/>
+                <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+              </svg>
+            </div>
+            <h3 class="service-card__title" data-i18n="services.3.title">Website development</h3>
+            <p class="service-card__text" data-i18n="services.3.text">Landing pages and business sites — fast, responsive, ready to host on GitHub Pages or your domain.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-card__icon">
+              <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2"/>
+                <line x1="8" y1="21" x2="16" y2="21"/>
+                <line x1="12" y1="17" x2="12" y2="21"/>
+              </svg>
+            </div>
+            <h3 class="service-card__title" data-i18n="services.4.title">Custom desktop apps</h3>
+            <p class="service-card__text" data-i18n="services.4.text">Windows/macOS tools tailored to your workflow, nothing extra.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-card__icon">
+              <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/>
+                <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/>
+              </svg>
+            </div>
+            <h3 class="service-card__title" data-i18n="services.5.title">Integrations &amp; bots</h3>
+            <p class="service-card__text" data-i18n="services.5.text">Telegram bots, webhooks, connections between your services.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="cases" aria-labelledby="cases-title">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-header__title" id="cases-title" data-i18n="cases.title">Cases</h2>
+          <p class="section-header__subtitle" data-i18n="cases.subtitle">Examples of what I've built</p>
+        </div>
+
+        <div class="cases-list">
+          <article class="case case--featured">
+            <div class="case__grid">
+              <div class="case__content">
+                <span class="case__badge" data-i18n="cases.1.badge">Pet project / Demo</span>
+                <h3 class="case__title" data-i18n="cases.1.title">SmartSorter</h3>
+                <div class="case__blocks">
+                  <div class="case__block">
+                    <span class="case__label" data-i18n="cases.label.task">Task</span>
+                    <p class="case__text" data-i18n="cases.1.task">Lots of customer complaints and requests. Someone reads each one and decides which department should handle it — hours of routine work.</p>
+                  </div>
+                  <div class="case__block">
+                    <span class="case__label" data-i18n="cases.label.solution">Solution</span>
+                    <p class="case__text" data-i18n="cases.1.solution">A desktop app: upload a spreadsheet, AI suggests how to split items by department, you check and confirm.</p>
+                  </div>
+                  <div class="case__block">
+                    <span class="case__label" data-i18n="cases.label.result">Result</span>
+                    <p class="case__text" data-i18n="cases.1.result">A ready draft in minutes instead of hours of manual sorting — the final decision stays with a person.</p>
+                  </div>
+                </div>
+                <div class="case__stack">
+                  <span class="case__tag">Python</span>
+                  <span class="case__tag">PyQt6</span>
+                  <span class="case__tag">Pandas</span>
+                  <span class="case__tag">Claude API</span>
+                </div>
+              </div>
+              <div class="case__mockup">
+                <div class="mockup-window">
+                  <div class="mockup-window__titlebar">
+                    <span class="mockup-window__dot"></span>
+                    <span class="mockup-window__dot"></span>
+                    <span class="mockup-window__dot"></span>
+                    <span class="mockup-window__title">SmartSorter</span>
+                  </div>
+                  <div class="mockup-window__body">
+                    <div class="mockup-row mockup-row--wide"></div>
+                    <div class="mockup-row"></div>
+                    <div class="mockup-row mockup-row--accent"></div>
+                    <div class="mockup-row"></div>
+                    <div class="mockup-row mockup-row--short"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="case case--reverse">
+            <div class="case__grid">
+              <div class="case__mockup">
+                <div class="mockup-window">
+                  <div class="mockup-window__titlebar">
+                    <span class="mockup-window__dot"></span>
+                    <span class="mockup-window__dot"></span>
+                    <span class="mockup-window__dot"></span>
+                    <span class="mockup-window__title">SokraLog</span>
+                  </div>
+                  <div class="mockup-window__body">
+                    <div class="mockup-row mockup-row--accent"></div>
+                    <div class="mockup-row"></div>
+                    <div class="mockup-row"></div>
+                    <div class="mockup-row mockup-row--wide"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="case__content">
+                <span class="case__badge" data-i18n="cases.2.badge">Pet project v1.0</span>
+                <h3 class="case__title" data-i18n="cases.2.title">SokraLog</h3>
+                <div class="case__blocks">
+                  <div class="case__block">
+                    <span class="case__label" data-i18n="cases.label.task">Task</span>
+                    <p class="case__text" data-i18n="cases.2.task">Studying warehouse logistics formulas (IHK)</p>
+                  </div>
+                  <div class="case__block">
+                    <span class="case__label" data-i18n="cases.label.solution">Solution</span>
+                    <p class="case__text" data-i18n="cases.2.solution">Desktop app Python + Flet — formula reference, exam, Socratic method, RU/DE/EN</p>
+                  </div>
+                </div>
+                <div class="case__stack">
+                  <span class="case__tag">Python</span>
+                  <span class="case__tag">Flet</span>
+                  <span class="case__tag">Claude API</span>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="process" aria-labelledby="process-title">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-header__title" id="process-title" data-i18n="process.title">How I work</h2>
+          <p class="section-header__subtitle" data-i18n="process.subtitle">From idea to working tool — fast and transparent</p>
+        </div>
+
+        <div class="process">
+          <ol class="process__list">
+            <li class="process__step">
+              <span class="process__number">1</span>
+              <h3 class="process__title" data-i18n="process.1.title">Call</h3>
+              <p class="process__text" data-i18n="process.1.text">We discuss the task and context</p>
+            </li>
+            <li class="process__step">
+              <span class="process__number">2</span>
+              <h3 class="process__title" data-i18n="process.2.title">Scope</h3>
+              <p class="process__text" data-i18n="process.2.text">We write down what the outcome should be</p>
+            </li>
+            <li class="process__step">
+              <span class="process__number">3</span>
+              <h3 class="process__title" data-i18n="process.3.title">MVP in days</h3>
+              <p class="process__text" data-i18n="process.3.text">A working prototype you can try</p>
+            </li>
+            <li class="process__step">
+              <span class="process__number">4</span>
+              <h3 class="process__title" data-i18n="process.4.title">Iterations</h3>
+              <p class="process__text" data-i18n="process.4.text">Improvements based on your feedback</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-header__title" id="contact-title" data-i18n="contact.title">Get in touch</h2>
+          <p class="section-header__subtitle" data-i18n="contact.subtitle">Describe your task — I'll reply on Telegram</p>
+        </div>
+
+        <div class="contact__grid">
+          <div class="contact__copy">
+            <h3 class="contact__heading" data-i18n="contact.heading">Do you have a task?</h3>
+            <p class="contact__lead" data-i18n="contact.lead">Write on Telegram or WhatsApp, or leave a message below.</p>
+            <div class="contact__actions">
+              <a class="btn btn--primary" data-contact-link="telegram" href="https://t.me/qwe171qw" target="_blank" rel="noopener noreferrer">
+                <svg class="btn__icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+                </svg>
+                <span data-i18n="cta.telegram">Message on Telegram</span>
+              </a>
+              <a class="btn btn--ghost" data-contact-link="whatsapp" href="#" target="_blank" rel="noopener noreferrer" hidden>
+                <svg class="btn__icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+                <span data-i18n="cta.whatsapp">Message on WhatsApp</span>
+              </a>
+            </div>
+          </div>
+
+          <form class="contact__form" id="contact-form" novalidate>
+            <div class="form-field">
+              <label class="form-field__label" for="contact-name" data-i18n="form.name">Name</label>
+              <input class="form-field__input" type="text" id="contact-name" name="name" autocomplete="name" required>
+            </div>
+            <div class="form-field">
+              <label class="form-field__label" for="contact-contact" data-i18n="form.contact">Email / Telegram</label>
+              <input class="form-field__input" type="text" id="contact-contact" name="contact" autocomplete="email" required>
+            </div>
+            <div class="form-field">
+              <label class="form-field__label" for="contact-message" data-i18n="form.message">Message</label>
+              <textarea class="form-field__input" id="contact-message" name="message" rows="4" required></textarea>
+            </div>
+            <button class="btn btn--primary btn--block" type="submit" data-i18n="form.submit">Send request</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="footer__copy" data-i18n="footer.copy">© 2026 Mora</p>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" type="button" data-i18n="backToTop" data-i18n-attr="aria-label" aria-label="Back to top">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </button>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true">
+    <svg class="toast__icon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="20 6 9 17 4 12"/>
+    </svg>
+    <p class="toast__message" data-i18n="toast.success">Thank you! I'll get back to you soon.</p>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
