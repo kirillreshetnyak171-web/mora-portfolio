@@ -16,7 +16,7 @@
       'meta.title': 'Mora — Automation & websites',
       'meta.description': 'Mora — automation and websites for small business',
       'nav.services': 'Services',
-      'nav.cases': 'Cases',
+      'nav.projects': 'Projects',
       'nav.process': 'Process',
       'nav.contact': 'Contact',
       'cta.telegram': 'Message on Telegram',
@@ -31,7 +31,7 @@
       'nav.mobileLabel': 'Mobile navigation',
       'brand.name': 'Mora',
       'hero.subtitle': 'Automation and websites for small business — spreadsheets, desktop tools, landing pages',
-      'hero.ctaSecondary': 'View cases',
+      'hero.ctaSecondary': 'View projects',
       'services.title': 'Services',
       'services.subtitle': 'What we build for your business',
       'services.1.title': 'Excel & CSV processing',
@@ -44,20 +44,20 @@
       'services.4.text': 'Windows/macOS tools tailored to your workflow, nothing extra.',
       'services.5.title': 'Integrations & bots',
       'services.5.text': 'Telegram bots, webhooks, connections between your services.',
-      'cases.title': 'Cases',
-      'cases.subtitle': "Examples of what I've built",
-      'cases.label.task': 'Task',
-      'cases.label.solution': 'Solution',
-      'cases.label.result': 'Result',
-      'cases.1.badge': 'Pet project / Demo',
-      'cases.1.title': 'SmartSorter',
-      'cases.1.task': 'Lots of customer complaints and requests. Someone reads each one and decides which department should handle it — hours of routine work.',
-      'cases.1.solution': 'A desktop app: upload a spreadsheet, AI suggests how to split items by department, you check and confirm.',
-      'cases.1.result': 'A ready draft in minutes instead of hours of manual sorting — the final decision stays with a person.',
-      'cases.2.badge': 'Pet project v1.0',
-      'cases.2.title': 'SokraLog',
-      'cases.2.task': 'Studying warehouse logistics formulas (IHK)',
-      'cases.2.solution': 'Desktop app Python + Flet — formula reference, exam, Socratic method, RU/DE/EN',
+      'projects.title': 'Projects',
+      'projects.subtitle': "Examples of what I've built",
+      'projects.label.task': 'Task',
+      'projects.label.solution': 'Solution',
+      'projects.label.result': 'Result',
+      'projects.1.badge': 'Pet project / Demo',
+      'projects.1.title': 'SmartSorter',
+      'projects.1.task': 'Lots of customer complaints and requests. Someone reads each one and decides which department should handle it — hours of routine work.',
+      'projects.1.solution': 'A desktop app: upload a spreadsheet, AI suggests how to split items by department, you check and confirm.',
+      'projects.1.result': 'A ready draft in minutes instead of hours of manual sorting — the final decision stays with a person.',
+      'projects.2.badge': 'Pet project v1.0',
+      'projects.2.title': 'SokraLog',
+      'projects.2.task': 'Studying warehouse logistics formulas (IHK)',
+      'projects.2.solution': 'Desktop app Python + Flet — formula reference, exam, Socratic method, RU/DE/EN',
       'process.title': 'How I work',
       'process.subtitle': 'From idea to working tool — fast and transparent',
       'process.1.title': 'Call',
@@ -84,7 +84,7 @@
       'meta.title': 'Mora — Автоматизация и сайты',
       'meta.description': 'Mora — автоматизация и сайты для малого бизнеса',
       'nav.services': 'Услуги',
-      'nav.cases': 'Кейсы',
+      'nav.projects': 'Проекты',
       'nav.process': 'Как работаю',
       'nav.contact': 'Контакты',
       'cta.telegram': 'Написать в Telegram',
@@ -99,7 +99,7 @@
       'nav.mobileLabel': 'Мобильная навигация',
       'brand.name': 'Mora',
       'hero.subtitle': 'Автоматизация и сайты для малого бизнеса — таблицы, десктоп-инструменты, лендинги',
-      'hero.ctaSecondary': 'Смотреть кейсы',
+      'hero.ctaSecondary': 'Смотреть проекты',
       'services.title': 'Услуги',
       'services.subtitle': 'Что делаем для вашего бизнеса',
       'services.1.title': 'Обработка Excel и CSV',
@@ -112,20 +112,20 @@
       'services.4.text': 'Программы под Windows/macOS для вашего процесса, без лишнего.',
       'services.5.title': 'Связка сервисов и ботов',
       'services.5.text': "Telegram-боты, webhook'и, интеграции между сервисами.",
-      'cases.title': 'Кейсы',
-      'cases.subtitle': 'Примеры того, что уже делал',
-      'cases.label.task': 'Задача',
-      'cases.label.solution': 'Решение',
-      'cases.label.result': 'Результат',
-      'cases.1.badge': 'Pet project / Demo',
-      'cases.1.title': 'SmartSorter',
-      'cases.1.task': 'Много жалоб и обращений от клиентов. Сотрудник по одному читает каждое и решает, в какой отдел передать — уходит много времени.',
-      'cases.1.solution': 'Программа на компьютер: загружаете таблицу с обращениями, ИИ предлагает разбор по отделам, вы проверяете и подтверждаете.',
-      'cases.1.result': 'Вместо часов ручной работы — черновик за несколько минут. Финальное решение остаётся за человеком.',
-      'cases.2.badge': 'Pet project v1.0',
-      'cases.2.title': 'SokraLog',
-      'cases.2.task': 'Учёба по формулам складской логистики IHK',
-      'cases.2.solution': 'Десктоп-приложение Python + Flet — справочник формул, экзамен, метод Сократа, RU/DE/EN',
+      'projects.title': 'Проекты',
+      'projects.subtitle': 'Примеры того, что уже делал',
+      'projects.label.task': 'Задача',
+      'projects.label.solution': 'Решение',
+      'projects.label.result': 'Результат',
+      'projects.1.badge': 'Pet project / Demo',
+      'projects.1.title': 'SmartSorter',
+      'projects.1.task': 'Много жалоб и обращений от клиентов. Сотрудник по одному читает каждое и решает, в какой отдел передать — уходит много времени.',
+      'projects.1.solution': 'Программа на компьютер: загружаете таблицу с обращениями, ИИ предлагает разбор по отделам, вы проверяете и подтверждаете.',
+      'projects.1.result': 'Вместо часов ручной работы — черновик за несколько минут. Финальное решение остаётся за человеком.',
+      'projects.2.badge': 'Pet project v1.0',
+      'projects.2.title': 'SokraLog',
+      'projects.2.task': 'Учёба по формулам складской логистики IHK',
+      'projects.2.solution': 'Десктоп-приложение Python + Flet — справочник формул, экзамен, метод Сократа, RU/DE/EN',
       'process.title': 'Как работаю',
       'process.subtitle': 'От идеи до рабочего инструмента — быстро и прозрачно',
       'process.1.title': 'Созвон',
@@ -152,7 +152,7 @@
       'meta.title': 'Mora — Automatisierung & Websites',
       'meta.description': 'Mora — Automatisierung und Websites für kleine Unternehmen',
       'nav.services': 'Leistungen',
-      'nav.cases': 'Projekte',
+      'nav.projects': 'Projekte',
       'nav.process': 'Ablauf',
       'nav.contact': 'Kontakt',
       'cta.telegram': 'Nachricht auf Telegram',
@@ -180,20 +180,20 @@
       'services.4.text': 'Windows/macOS-Tools für Ihren Prozess, ohne Schnickschnack.',
       'services.5.title': 'Integrationen & Bots',
       'services.5.text': 'Telegram-Bots, Webhooks, Verbindungen zwischen Ihren Diensten.',
-      'cases.title': 'Projekte',
-      'cases.subtitle': 'Beispiele meiner Arbeit',
-      'cases.label.task': 'Aufgabe',
-      'cases.label.solution': 'Lösung',
-      'cases.label.result': 'Ergebnis',
-      'cases.1.badge': 'Pet project / Demo',
-      'cases.1.title': 'SmartSorter',
-      'cases.1.task': 'Viele Beschwerden und Anfragen von Kunden. Ein Mitarbeiter liest jede einzeln und entscheidet, welche Abteilung zuständig ist — viel Routinearbeit.',
-      'cases.1.solution': 'Desktop-Programm: Tabelle hochladen, KI schlägt Aufteilung nach Abteilungen vor, Sie prüfen und bestätigen.',
-      'cases.1.result': 'Statt stundenlanger Arbeit ein Entwurf in Minuten — die finale Entscheidung trifft ein Mensch.',
-      'cases.2.badge': 'Pet project v1.0',
-      'cases.2.title': 'SokraLog',
-      'cases.2.task': 'Lernen von Lagerlogistik-Formeln (IHK)',
-      'cases.2.solution': 'Desktop-App Python + Flet — Formelsammlung, Prüfung, Sokrates-Methode, RU/DE/EN',
+      'projects.title': 'Projekte',
+      'projects.subtitle': 'Beispiele meiner Arbeit',
+      'projects.label.task': 'Aufgabe',
+      'projects.label.solution': 'Lösung',
+      'projects.label.result': 'Ergebnis',
+      'projects.1.badge': 'Pet project / Demo',
+      'projects.1.title': 'SmartSorter',
+      'projects.1.task': 'Viele Beschwerden und Anfragen von Kunden. Ein Mitarbeiter liest jede einzeln und entscheidet, welche Abteilung zuständig ist — viel Routinearbeit.',
+      'projects.1.solution': 'Desktop-Programm: Tabelle hochladen, KI schlägt Aufteilung nach Abteilungen vor, Sie prüfen und bestätigen.',
+      'projects.1.result': 'Statt stundenlanger Arbeit ein Entwurf in Minuten — die finale Entscheidung trifft ein Mensch.',
+      'projects.2.badge': 'Pet project v1.0',
+      'projects.2.title': 'SokraLog',
+      'projects.2.task': 'Lernen von Lagerlogistik-Formeln (IHK)',
+      'projects.2.solution': 'Desktop-App Python + Flet — Formelsammlung, Prüfung, Sokrates-Methode, RU/DE/EN',
       'process.title': 'So arbeite ich',
       'process.subtitle': 'Von der Idee zum Tool — schnell und transparent',
       'process.1.title': 'Gespräch',
@@ -397,7 +397,7 @@
   });
 
   /* ------------------------------------------------------------------
-     Smooth scroll fallback for anchor links
+     In-page scroll without hash in URL
      ------------------------------------------------------------------ */
   function smoothScrollTo(target) {
     var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -409,22 +409,35 @@
     });
   }
 
-  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
-    anchor.addEventListener('click', function (e) {
-      var id = anchor.getAttribute('href');
-      if (id === '#') return;
+  function scrollToSectionId(id) {
+    var target = document.getElementById(id);
+    if (!target) return;
+    smoothScrollTo(target);
+  }
 
-      var target = document.querySelector(id);
-      if (!target) return;
+  document.querySelectorAll('[data-scroll-to]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = link.getAttribute('data-scroll-to');
+      if (!id) return;
 
       e.preventDefault();
-      smoothScrollTo(target);
+      scrollToSectionId(id);
 
-      if (history.pushState) {
-        history.pushState(null, '', id);
+      if (drawer && drawer.classList.contains('is-open')) {
+        closeDrawer();
       }
     });
   });
+
+  if (window.location.hash) {
+    var legacyId = window.location.hash.slice(1);
+    if (legacyId) {
+      scrollToSectionId(legacyId);
+    }
+    if (history.replaceState) {
+      history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
+  }
 
   /* ------------------------------------------------------------------
      Active nav link highlighting
@@ -440,8 +453,8 @@
     });
 
     navLinks.forEach(function (link) {
-      var href = link.getAttribute('href');
-      link.classList.toggle('is-active', href === '#' + current);
+      var targetId = link.getAttribute('data-scroll-to');
+      link.classList.toggle('is-active', targetId === current);
     });
   }
 

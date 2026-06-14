@@ -9,10 +9,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=3">
+  <link rel="stylesheet" href="css/styles.css?v=5">
 </head>
 <body>
-  <a class="skip-link" href="#main" data-i18n="skipLink">Skip to content</a>
+  <a class="skip-link" href="/" data-scroll-to="main" data-i18n="skipLink">Skip to content</a>
 
   <aside class="sidebar" aria-label="Contact shortcuts">
     <span class="sidebar__label" data-i18n="sidebar.messageMe">message me</span>
@@ -40,7 +40,7 @@
         <button class="lang-switcher__btn" type="button" data-lang="de" aria-pressed="false">DE</button>
       </div>
 
-      <a class="header__logo" href="#hero" data-i18n="brand.name">Mora</a>
+      <a class="header__logo" href="/" data-scroll-to="hero" data-i18n="brand.name">Mora</a>
 
       <button class="header__burger" type="button" data-i18n="drawer.openMenu" data-i18n-attr="aria-label" aria-expanded="false" aria-controls="mobile-drawer">
         <svg class="header__burger-icon header__burger-icon--open" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
@@ -57,10 +57,10 @@
 
     <nav class="header__nav--vertical" data-i18n="nav.label" data-i18n-attr="aria-label">
       <ul class="header__nav-list">
-        <li><a class="header__nav-link" href="#services" data-i18n="nav.services">Services</a></li>
-        <li><a class="header__nav-link" href="#cases" data-i18n="nav.cases">Cases</a></li>
-        <li><a class="header__nav-link" href="#process" data-i18n="nav.process">Process</a></li>
-        <li><a class="header__nav-link" href="#contact" data-i18n="nav.contact">Contact</a></li>
+        <li><a class="header__nav-link" href="/" data-scroll-to="services" data-i18n="nav.services">Services</a></li>
+        <li><a class="header__nav-link" href="/" data-scroll-to="projects" data-i18n="nav.projects">Projects</a></li>
+        <li><a class="header__nav-link" href="/" data-scroll-to="process" data-i18n="nav.process">Process</a></li>
+        <li><a class="header__nav-link" href="/" data-scroll-to="contact" data-i18n="nav.contact">Contact</a></li>
       </ul>
     </nav>
 
@@ -76,10 +76,10 @@
         </div>
         <nav data-i18n="nav.mobileLabel" data-i18n-attr="aria-label">
           <ul class="header__drawer-list">
-            <li><a class="header__drawer-link" href="#services" data-i18n="nav.services">Services</a></li>
-            <li><a class="header__drawer-link" href="#cases" data-i18n="nav.cases">Cases</a></li>
-            <li><a class="header__drawer-link" href="#process" data-i18n="nav.process">Process</a></li>
-            <li><a class="header__drawer-link" href="#contact" data-i18n="nav.contact">Contact</a></li>
+            <li><a class="header__drawer-link" href="/" data-scroll-to="services" data-i18n="nav.services">Services</a></li>
+            <li><a class="header__drawer-link" href="/" data-scroll-to="projects" data-i18n="nav.projects">Projects</a></li>
+            <li><a class="header__drawer-link" href="/" data-scroll-to="process" data-i18n="nav.process">Process</a></li>
+            <li><a class="header__drawer-link" href="/" data-scroll-to="contact" data-i18n="nav.contact">Contact</a></li>
           </ul>
         </nav>
         <div class="header__drawer-contact">
@@ -120,8 +120,8 @@
                 </svg>
                 <span data-i18n="cta.whatsapp">Message on WhatsApp</span>
               </a>
-              <a class="btn btn--ghost" href="#cases">
-                <span data-i18n="hero.ctaSecondary">View cases</span>
+              <a class="btn btn--ghost" href="/" data-scroll-to="projects">
+                <span data-i18n="hero.ctaSecondary">View projects</span>
                 <svg class="btn__arrow" aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M5 12h14M13 6l6 6-6 6"/>
                 </svg>
@@ -234,31 +234,31 @@
       </div>
     </section>
 
-    <section class="section section--alt" id="cases" aria-labelledby="cases-title">
+    <section class="section section--alt" id="projects" aria-labelledby="projects-title">
       <div class="container">
         <div class="section-header">
-          <h2 class="section-header__title" id="cases-title" data-i18n="cases.title">Cases</h2>
-          <p class="section-header__subtitle" data-i18n="cases.subtitle">Examples of what I've built</p>
+          <h2 class="section-header__title" id="projects-title" data-i18n="projects.title">Projects</h2>
+          <p class="section-header__subtitle" data-i18n="projects.subtitle">Examples of what I've built</p>
         </div>
 
         <div class="cases-list">
           <article class="case case--featured">
             <div class="case__grid">
               <div class="case__content">
-                <span class="case__badge" data-i18n="cases.1.badge">Pet project / Demo</span>
-                <h3 class="case__title" data-i18n="cases.1.title">SmartSorter</h3>
+                <span class="case__badge" data-i18n="projects.1.badge">Pet project / Demo</span>
+                <h3 class="case__title" data-i18n="projects.1.title">SmartSorter</h3>
                 <div class="case__blocks">
                   <div class="case__block">
-                    <span class="case__label" data-i18n="cases.label.task">Task</span>
-                    <p class="case__text" data-i18n="cases.1.task">Lots of customer complaints and requests. Someone reads each one and decides which department should handle it — hours of routine work.</p>
+                    <span class="case__label" data-i18n="projects.label.task">Task</span>
+                    <p class="case__text" data-i18n="projects.1.task">Lots of customer complaints and requests. Someone reads each one and decides which department should handle it — hours of routine work.</p>
                   </div>
                   <div class="case__block">
-                    <span class="case__label" data-i18n="cases.label.solution">Solution</span>
-                    <p class="case__text" data-i18n="cases.1.solution">A desktop app: upload a spreadsheet, AI suggests how to split items by department, you check and confirm.</p>
+                    <span class="case__label" data-i18n="projects.label.solution">Solution</span>
+                    <p class="case__text" data-i18n="projects.1.solution">A desktop app: upload a spreadsheet, AI suggests how to split items by department, you check and confirm.</p>
                   </div>
                   <div class="case__block">
-                    <span class="case__label" data-i18n="cases.label.result">Result</span>
-                    <p class="case__text" data-i18n="cases.1.result">A ready draft in minutes instead of hours of manual sorting — the final decision stays with a person.</p>
+                    <span class="case__label" data-i18n="projects.label.result">Result</span>
+                    <p class="case__text" data-i18n="projects.1.result">A ready draft in minutes instead of hours of manual sorting — the final decision stays with a person.</p>
                   </div>
                 </div>
                 <div class="case__stack">
@@ -307,16 +307,16 @@
                 </div>
               </div>
               <div class="case__content">
-                <span class="case__badge" data-i18n="cases.2.badge">Pet project v1.0</span>
-                <h3 class="case__title" data-i18n="cases.2.title">SokraLog</h3>
+                <span class="case__badge" data-i18n="projects.2.badge">Pet project v1.0</span>
+                <h3 class="case__title" data-i18n="projects.2.title">SokraLog</h3>
                 <div class="case__blocks">
                   <div class="case__block">
-                    <span class="case__label" data-i18n="cases.label.task">Task</span>
-                    <p class="case__text" data-i18n="cases.2.task">Studying warehouse logistics formulas (IHK)</p>
+                    <span class="case__label" data-i18n="projects.label.task">Task</span>
+                    <p class="case__text" data-i18n="projects.2.task">Studying warehouse logistics formulas (IHK)</p>
                   </div>
                   <div class="case__block">
-                    <span class="case__label" data-i18n="cases.label.solution">Solution</span>
-                    <p class="case__text" data-i18n="cases.2.solution">Desktop app Python + Flet — formula reference, exam, Socratic method, RU/DE/EN</p>
+                    <span class="case__label" data-i18n="projects.label.solution">Solution</span>
+                    <p class="case__text" data-i18n="projects.2.solution">Desktop app Python + Flet — formula reference, exam, Socratic method, RU/DE/EN</p>
                   </div>
                 </div>
                 <div class="case__stack">
@@ -432,6 +432,6 @@
     <p class="toast__message" data-i18n="toast.success">Thank you! I'll get back to you soon.</p>
   </div>
 
-  <script src="js/main.js?v=3"></script>
+  <script src="js/main.js?v=5"></script>
 </body>
 </html>
