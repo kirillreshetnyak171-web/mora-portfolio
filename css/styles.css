@@ -849,13 +849,21 @@ textarea {
   background: var(--bg-accent-subtle);
   border-left: var(--border-width-thick) solid var(--color-accent);
   padding: var(--space-8);
+  padding-bottom: var(--space-10);
   border-radius: var(--radius-lg);
+  overflow: hidden;
 }
 
 .case__grid {
   display: grid;
   gap: var(--space-8);
-  align-items: start;
+  align-items: stretch;
+}
+
+.case__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .case__badge {
