@@ -653,6 +653,23 @@ textarea {
   background-color: var(--color-accent-active);
 }
 
+.btn--primary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn--primary:disabled:hover {
+  background-color: var(--color-accent);
+}
+
+.form-note {
+  margin-top: var(--space-4);
+  font-size: var(--text-body-sm);
+  color: var(--text-muted);
+  line-height: 1.55;
+  text-align: center;
+}
+
 .btn--telegram {
   background-color: #26a5e4;
   color: #fff;
