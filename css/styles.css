@@ -957,6 +957,20 @@ textarea {
   gap: var(--space-3);
 }
 
+.mockup-window__body--screenshot {
+  padding: 0;
+  background: #0b0f14;
+  overflow: hidden;
+}
+
+.mockup-window__screenshot {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
 .mockup-row {
   height: 10px;
   background: var(--bg-surface);
