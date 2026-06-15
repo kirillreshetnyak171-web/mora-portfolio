@@ -1244,6 +1244,115 @@ textarea.form-field__input {
   color: var(--text-muted);
 }
 
+.footer__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4) var(--space-6);
+}
+
+.footer__link {
+  font-size: var(--text-body-sm);
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.footer__link:hover,
+.footer__link:focus-visible {
+  color: var(--color-accent);
+}
+
+.footer__link--active {
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Legal pages (Impressum)
+   ========================================================================== */
+
+.header--legal .header__inner {
+  justify-content: space-between;
+}
+
+.legal-back {
+  font-size: var(--text-body-sm);
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.legal-back:hover,
+.legal-back:focus-visible {
+  color: var(--color-accent);
+}
+
+.legal-page {
+  padding-block: var(--space-16) var(--space-20);
+}
+
+.legal-page__inner {
+  max-width: 42rem;
+}
+
+.legal-page__title {
+  font-size: var(--text-h1);
+  font-weight: 700;
+  letter-spacing: var(--tracking-tight);
+  margin-bottom: var(--space-3);
+}
+
+.legal-page__lead {
+  font-size: var(--text-body);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-12);
+}
+
+.legal-block + .legal-block {
+  margin-top: var(--space-10);
+  padding-top: var(--space-10);
+  border-top: var(--border-width) solid var(--border-subtle);
+}
+
+.legal-block__title {
+  font-size: var(--text-h3);
+  font-weight: 600;
+  margin-bottom: var(--space-4);
+}
+
+.legal-block__text,
+.legal-list {
+  font-size: var(--text-body);
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+.legal-block__note {
+  margin-top: var(--space-4);
+  font-size: var(--text-body-sm);
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.legal-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: var(--space-2);
+}
+
+.legal-list a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.legal-list a:hover,
+.legal-list a:focus-visible {
+  color: var(--color-accent-hover);
+  text-decoration: underline;
+}
+
 /* ==========================================================================
    Back to Top
    ========================================================================== */

@@ -82,7 +82,8 @@
       'form.error': 'Could not send. Message us on Telegram or WhatsApp.',
       'form.notConfigured': 'Form is not connected yet — use Telegram or WhatsApp.',
       'toast.success': "Thank you! I'll get back to you soon.",
-      'footer.copy': '© 2026 Mora'
+      'footer.copy': '© 2026 Mora',
+      'footer.impressum': 'Impressum'
     },
     ru: {
       'meta.title': 'Mora — Автоматизация и сайты',
@@ -154,7 +155,8 @@
       'form.error': 'Не удалось отправить. Напишите в Telegram или WhatsApp.',
       'form.notConfigured': 'Форма ещё не подключена — напишите в Telegram или WhatsApp.',
       'toast.success': 'Спасибо! Свяжусь с вами в ближайшее время.',
-      'footer.copy': '© 2026 Mora'
+      'footer.copy': '© 2026 Mora',
+      'footer.impressum': 'Impressum'
     },
     de: {
       'meta.title': 'Mora — Automatisierung & Websites',
@@ -226,7 +228,8 @@
       'form.error': 'Senden fehlgeschlagen. Schreiben Sie auf Telegram oder WhatsApp.',
       'form.notConfigured': 'Formular noch nicht verbunden — bitte Telegram oder WhatsApp.',
       'toast.success': 'Danke! Ich melde mich in Kürze.',
-      'footer.copy': '© 2026 Mora'
+      'footer.copy': '© 2026 Mora',
+      'footer.impressum': 'Impressum'
     }
   };
 
