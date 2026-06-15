@@ -16,6 +16,7 @@
       'meta.title': 'Mora — Automation & websites',
       'meta.description': 'Mora — automation and websites for small business',
       'nav.services': 'Services',
+      'nav.about': 'About',
       'nav.projects': 'Projects',
       'nav.process': 'Process',
       'nav.contact': 'Contact',
@@ -32,6 +33,11 @@
       'brand.name': 'Mora',
       'hero.subtitle': 'Automation and websites for small business — spreadsheets, desktop tools, landing pages',
       'hero.ctaSecondary': 'View projects',
+      'about.title': 'About me',
+      'about.subtitle': 'The person behind Mora',
+      'about.text': "I'm Kirill — a solo developer helping small businesses with spreadsheets, desktop tools, and websites. No agency or middlemen: you message me directly, I build the tool, and we refine it until it fits your workflow.",
+      'about.cta': 'Write to me',
+      'about.photoAlt': 'Kirill',
       'services.title': 'Services',
       'services.subtitle': 'What we build for your business',
       'services.1.title': 'Excel & CSV processing',
@@ -88,6 +94,7 @@
       'meta.title': 'Mora — Автоматизация и сайты',
       'meta.description': 'Mora — автоматизация и сайты для малого бизнеса',
       'nav.services': 'Услуги',
+      'nav.about': 'Обо мне',
       'nav.projects': 'Проекты',
       'nav.process': 'Как работаю',
       'nav.contact': 'Контакты',
@@ -104,6 +111,11 @@
       'brand.name': 'Mora',
       'hero.subtitle': 'Автоматизация и сайты для малого бизнеса — таблицы, десктоп-инструменты, лендинги',
       'hero.ctaSecondary': 'Смотреть проекты',
+      'about.title': 'Обо мне',
+      'about.subtitle': 'Кто стоит за Mora',
+      'about.text': 'Я Кирилл — разработчик-одиночка, помогаю малому бизнесу с таблицами, десктоп-инструментами и сайтами. Без агентства и посредников: пишете мне лично, делаю инструмент и дорабатываю под ваш процесс.',
+      'about.cta': 'Написать мне',
+      'about.photoAlt': 'Кирилл',
       'services.title': 'Услуги',
       'services.subtitle': 'Что делаем для вашего бизнеса',
       'services.1.title': 'Обработка Excel и CSV',
@@ -160,6 +172,7 @@
       'meta.title': 'Mora — Automatisierung & Websites',
       'meta.description': 'Mora — Automatisierung und Websites für kleine Unternehmen',
       'nav.services': 'Leistungen',
+      'nav.about': 'Über mich',
       'nav.projects': 'Projekte',
       'nav.process': 'Ablauf',
       'nav.contact': 'Kontakt',
@@ -176,6 +189,11 @@
       'brand.name': 'Mora',
       'hero.subtitle': 'Automatisierung und Websites für kleine Unternehmen — Tabellen, Desktop-Tools, Landingpages',
       'hero.ctaSecondary': 'Projekte ansehen',
+      'about.title': 'Über mich',
+      'about.subtitle': 'Die Person hinter Mora',
+      'about.text': 'Ich bin Kirill — Einzelentwickler für Tabellen, Desktop-Tools und Websites im kleinen Unternehmen. Keine Agentur: Sie schreiben mir direkt, ich baue das Tool, und wir passen es an Ihren Ablauf an.',
+      'about.cta': 'Schreiben Sie mir',
+      'about.photoAlt': 'Kirill',
       'services.title': 'Leistungen',
       'services.subtitle': 'Was wir für Ihr Unternehmen bauen',
       'services.1.title': 'Excel- & CSV-Verarbeitung',
@@ -620,6 +638,23 @@
     });
   }
 
+  function initAboutPhoto() {
+    var photo = document.querySelector('.about__photo');
+    var img = document.querySelector('.about__photo-img');
+    if (!photo || !img) return;
+
+    function showFallback() {
+      photo.classList.add('about__photo--fallback');
+    }
+
+    if (img.complete && img.naturalWidth === 0) {
+      showFallback();
+    } else {
+      img.addEventListener('error', showFallback);
+    }
+  }
+
   initContactLinks();
   initLanguage();
+  initAboutPhoto();
 })();
