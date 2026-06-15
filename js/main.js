@@ -3,10 +3,7 @@
 
   var LANGS = ['en', 'ru', 'de'];
   var STORAGE_KEY = 'portfolio-lang';
-  var PAGE_STORAGE_KEY = 'portfolio-page';
   var DEFAULT_LANG = 'en';
-  var DEFAULT_PAGE = 'hero';
-  var PAGE_IDS = ['hero', 'about', 'services', 'projects', 'process', 'contact'];
 
   // Contacts: set WhatsApp as digits only — country code + number (e.g. 491701234567)
   var SITE_CONTACT = {
@@ -19,7 +16,6 @@
       'meta.title': 'Mora — Automation & websites',
       'meta.description': 'Mora — automation and websites for small business',
       'nav.services': 'Services',
-      'nav.about': 'About',
       'nav.projects': 'Projects',
       'nav.process': 'Process',
       'nav.contact': 'Contact',
@@ -36,11 +32,6 @@
       'brand.name': 'Mora',
       'hero.subtitle': 'Automation and websites for small business — spreadsheets, desktop tools, landing pages',
       'hero.ctaSecondary': 'View projects',
-      'about.title': 'About me',
-      'about.subtitle': 'The person behind Mora',
-      'about.text': "I'm Kirill — a solo developer helping small businesses with spreadsheets, desktop tools, and websites. No agency or middlemen: you message me directly, I build the tool, and we refine it until it fits your workflow.",
-      'about.cta': 'Write to me',
-      'about.photoAlt': 'Kirill',
       'services.title': 'Services',
       'services.subtitle': 'What we build for your business',
       'services.1.title': 'Excel & CSV processing',
@@ -68,13 +59,13 @@
       'projects.2.task': 'Studying warehouse logistics formulas (IHK)',
       'projects.2.solution': 'Desktop app Python + Flet — formula reference, exam, Socratic method, RU/DE/EN',
       'process.title': 'How I work',
-      'process.subtitle': 'From message to working tool — fast and transparent',
-      'process.1.title': 'You write first',
-      'process.1.text': 'Message me on Telegram or WhatsApp with your task — no call needed to start, I reply and ask follow-up questions in chat',
+      'process.subtitle': 'From idea to working tool — fast and transparent',
+      'process.1.title': 'Call',
+      'process.1.text': 'We discuss the task and context',
       'process.2.title': 'Scope',
-      'process.2.text': 'I confirm what the result should look like',
-      'process.3.title': 'First version in 3–5 days',
-      'process.3.text': 'A ready tool for your task — you check it on your actual spreadsheets and data',
+      'process.2.text': 'We write down what the outcome should be',
+      'process.3.title': 'MVP in days',
+      'process.3.text': 'A working prototype you can try',
       'process.4.title': 'Iterations',
       'process.4.text': 'Improvements based on your feedback',
       'contact.title': 'Get in touch',
@@ -97,7 +88,6 @@
       'meta.title': 'Mora — Автоматизация и сайты',
       'meta.description': 'Mora — автоматизация и сайты для малого бизнеса',
       'nav.services': 'Услуги',
-      'nav.about': 'Обо мне',
       'nav.projects': 'Проекты',
       'nav.process': 'Как работаю',
       'nav.contact': 'Контакты',
@@ -114,11 +104,6 @@
       'brand.name': 'Mora',
       'hero.subtitle': 'Автоматизация и сайты для малого бизнеса — таблицы, десктоп-инструменты, лендинги',
       'hero.ctaSecondary': 'Смотреть проекты',
-      'about.title': 'Обо мне',
-      'about.subtitle': 'Кто стоит за Mora',
-      'about.text': 'Я Кирилл — разработчик-одиночка, помогаю малому бизнесу с таблицами, десктоп-инструментами и сайтами. Без агентства и посредников: пишете мне лично, делаю инструмент и дорабатываю под ваш процесс.',
-      'about.cta': 'Написать мне',
-      'about.photoAlt': 'Кирилл',
       'services.title': 'Услуги',
       'services.subtitle': 'Что делаем для вашего бизнеса',
       'services.1.title': 'Обработка Excel и CSV',
@@ -146,15 +131,15 @@
       'projects.2.task': 'Учёба по формулам складской логистики IHK',
       'projects.2.solution': 'Десктоп-приложение Python + Flet — справочник формул, экзамен, метод Сократа, RU/DE/EN',
       'process.title': 'Как работаю',
-      'process.subtitle': 'От сообщения до рабочего инструмента — быстро и прозрачно',
-      'process.1.title': 'Вы пишете первым',
-      'process.1.text': 'Пишете мне в Telegram или WhatsApp с описанием задачи — без созвона на старте, отвечаю и уточняю детали в переписке',
+      'process.subtitle': 'От идеи до рабочего инструмента — быстро и прозрачно',
+      'process.1.title': 'Созвон',
+      'process.1.text': 'Обсуждаем задачу и контекст',
       'process.2.title': 'Фиксируем задачу',
-      'process.2.text': 'Согласуем, что должно получиться на выходе',
-      'process.3.title': 'Первая версия за 3–5 дней',
-      'process.3.text': 'Готовый инструмент под вашу задачу — проверяете на реальных таблицах и данных',
+      'process.2.text': 'Прописываем, что должно получиться',
+      'process.3.title': 'MVP за несколько дней',
+      'process.3.text': 'Рабочий прототип, который можно потрогать',
       'process.4.title': 'Доработки',
-      'process.4.text': 'Улучшаю по вашей обратной связи',
+      'process.4.text': 'Улучшаем по вашей обратной связи',
       'contact.title': 'Связаться',
       'contact.subtitle': 'Опишите задачу — ответим в Telegram или WhatsApp',
       'contact.heading': 'Есть задача?',
@@ -175,7 +160,6 @@
       'meta.title': 'Mora — Automatisierung & Websites',
       'meta.description': 'Mora — Automatisierung und Websites für kleine Unternehmen',
       'nav.services': 'Leistungen',
-      'nav.about': 'Über mich',
       'nav.projects': 'Projekte',
       'nav.process': 'Ablauf',
       'nav.contact': 'Kontakt',
@@ -192,11 +176,6 @@
       'brand.name': 'Mora',
       'hero.subtitle': 'Automatisierung und Websites für kleine Unternehmen — Tabellen, Desktop-Tools, Landingpages',
       'hero.ctaSecondary': 'Projekte ansehen',
-      'about.title': 'Über mich',
-      'about.subtitle': 'Die Person hinter Mora',
-      'about.text': 'Ich bin Kirill — Einzelentwickler für Tabellen, Desktop-Tools und Websites im kleinen Unternehmen. Keine Agentur: Sie schreiben mir direkt, ich baue das Tool, und wir passen es an Ihren Ablauf an.',
-      'about.cta': 'Schreiben Sie mir',
-      'about.photoAlt': 'Kirill',
       'services.title': 'Leistungen',
       'services.subtitle': 'Was wir für Ihr Unternehmen bauen',
       'services.1.title': 'Excel- & CSV-Verarbeitung',
@@ -224,13 +203,13 @@
       'projects.2.task': 'Lernen von Lagerlogistik-Formeln (IHK)',
       'projects.2.solution': 'Desktop-App Python + Flet — Formelsammlung, Prüfung, Sokrates-Methode, RU/DE/EN',
       'process.title': 'So arbeite ich',
-      'process.subtitle': 'Vom Nachricht bis zum Tool — schnell und transparent',
-      'process.1.title': 'Sie schreiben zuerst',
-      'process.1.text': 'Schreiben Sie mir per Telegram oder WhatsApp — kein Anruf nötig, ich antworte und stelle Rückfragen im Chat',
+      'process.subtitle': 'Von der Idee zum Tool — schnell und transparent',
+      'process.1.title': 'Gespräch',
+      'process.1.text': 'Wir besprechen Aufgabe und Kontext',
       'process.2.title': 'Aufgabe festhalten',
-      'process.2.text': 'Ich bestätige, was am Ende stehen soll',
-      'process.3.title': 'Erste Version in 3–5 Tagen',
-      'process.3.text': 'Ein fertiges Tool für Ihre Aufgabe — Sie prüfen es mit Ihren echten Tabellen und Daten',
+      'process.2.text': 'Wir halten fest, was am Ende stehen soll',
+      'process.3.title': 'MVP in wenigen Tagen',
+      'process.3.text': 'Ein funktionsfähiger Prototyp zum Ausprobieren',
       'process.4.title': 'Iterationen',
       'process.4.text': 'Verbesserungen nach Ihrem Feedback',
       'contact.title': 'Kontakt',
@@ -261,14 +240,12 @@
   var contactForm = document.getElementById('contact-form');
   var toast = document.getElementById('toast');
   var navLinks = document.querySelectorAll('.header__nav-link, .header__drawer-link');
-  var pageViews = document.querySelectorAll('.page-view');
-  var pageLinks = document.querySelectorAll('[data-page]');
+  var sections = document.querySelectorAll('section[id]');
   var backToTop = document.getElementById('back-to-top');
   var langButtons = document.querySelectorAll('.lang-switcher__btn');
   var langSwitchers = document.querySelectorAll('.lang-switcher');
 
   var toastTimer = null;
-  var currentPage = DEFAULT_PAGE;
 
   function initContactLinks() {
     var telegramUrl = SITE_CONTACT.telegram;
@@ -378,7 +355,8 @@
 
   if (backToTop) {
     backToTop.addEventListener('click', function () {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      var hero = document.getElementById('hero');
+      if (hero) smoothScrollTo(hero);
     });
   }
 
@@ -431,92 +409,69 @@
   });
 
   /* ------------------------------------------------------------------
-     Page views — switch content instead of scroll
+     In-page scroll without hash in URL
      ------------------------------------------------------------------ */
-  function isValidPage(pageId) {
-    return PAGE_IDS.indexOf(pageId) !== -1;
+  function smoothScrollTo(target) {
+    var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var top = target.getBoundingClientRect().top + window.scrollY - 72;
+
+    window.scrollTo({
+      top: top,
+      behavior: prefersReduced ? 'auto' : 'smooth'
+    });
   }
 
-  function updateActiveNav(pageId) {
+  function scrollToSectionId(id) {
+    var target = document.getElementById(id);
+    if (!target) return;
+    smoothScrollTo(target);
+  }
+
+  document.querySelectorAll('[data-scroll-to]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = link.getAttribute('data-scroll-to');
+      if (!id) return;
+
+      e.preventDefault();
+      scrollToSectionId(id);
+
+      if (drawer && drawer.classList.contains('is-open')) {
+        closeDrawer();
+      }
+    });
+  });
+
+  if (window.location.hash) {
+    var legacyId = window.location.hash.slice(1);
+    if (legacyId) {
+      scrollToSectionId(legacyId);
+    }
+    if (history.replaceState) {
+      history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
+  }
+
+  /* ------------------------------------------------------------------
+     Active nav link highlighting
+     ------------------------------------------------------------------ */
+  function updateActiveNav() {
+    var scrollPos = window.scrollY + 100;
+    var current = '';
+
+    sections.forEach(function (section) {
+      if (section.offsetTop <= scrollPos) {
+        current = section.getAttribute('id');
+      }
+    });
+
     navLinks.forEach(function (link) {
-      var targetId = link.getAttribute('data-page');
-      link.classList.toggle('is-active', targetId === pageId);
+      var targetId = link.getAttribute('data-scroll-to');
+      link.classList.toggle('is-active', targetId === current);
     });
   }
 
-  function updatePageUrl(pageId) {
-    if (!history.replaceState) return;
-    var path = window.location.pathname + window.location.search;
-    var nextUrl = pageId === DEFAULT_PAGE ? path : path + '#' + pageId;
-    history.replaceState({ page: pageId }, '', nextUrl);
-  }
-
-  function setActivePage(pageId, options) {
-    options = options || {};
-    if (!isValidPage(pageId)) pageId = DEFAULT_PAGE;
-
-    currentPage = pageId;
-
-    pageViews.forEach(function (page) {
-      var isActive = page.id === pageId;
-      page.classList.toggle('is-active', isActive);
-      page.setAttribute('aria-hidden', isActive ? 'false' : 'true');
-    });
-
-    updateActiveNav(pageId);
-
-    if (!options.skipScroll) {
-      window.scrollTo({ top: 0, behavior: 'auto' });
-    }
-
-    if (!options.skipUrl) {
-      updatePageUrl(pageId);
-    }
-
-    try {
-      localStorage.setItem(PAGE_STORAGE_KEY, pageId);
-    } catch (e) { /* ignore */ }
-  }
-
-  function initPageRouting() {
-    var initialPage = DEFAULT_PAGE;
-    var hashPage = window.location.hash ? window.location.hash.slice(1) : '';
-
-    if (hashPage && isValidPage(hashPage)) {
-      initialPage = hashPage;
-    } else {
-      try {
-        var storedPage = localStorage.getItem(PAGE_STORAGE_KEY);
-        if (storedPage && isValidPage(storedPage)) {
-          initialPage = storedPage;
-        }
-      } catch (e) { /* ignore */ }
-    }
-
-    setActivePage(initialPage, { skipUrl: Boolean(hashPage) });
-
-    pageLinks.forEach(function (link) {
-      link.addEventListener('click', function (e) {
-        var pageId = link.getAttribute('data-page');
-        if (!pageId || !isValidPage(pageId)) return;
-
-        e.preventDefault();
-        setActivePage(pageId);
-
-        if (drawer && drawer.classList.contains('is-open')) {
-          closeDrawer();
-        }
-      });
-    });
-
-    window.addEventListener('popstate', function () {
-      var pageFromHash = window.location.hash ? window.location.hash.slice(1) : DEFAULT_PAGE;
-      if (!isValidPage(pageFromHash)) pageFromHash = DEFAULT_PAGE;
-      setActivePage(pageFromHash, { skipUrl: true });
-    });
-  }
-
-  initPageRouting();
+  window.addEventListener('scroll', updateActiveNav, { passive: true });
+  updateActiveNav();
 
   /* ------------------------------------------------------------------
      Contact form → Telegram (via LEAD_CONFIG.webhookUrl)
@@ -665,23 +620,6 @@
     });
   }
 
-  function initAboutPhoto() {
-    var photo = document.querySelector('.about__photo');
-    var img = document.querySelector('.about__photo-img');
-    if (!photo || !img) return;
-
-    function showFallback() {
-      photo.classList.add('about__photo--fallback');
-    }
-
-    if (img.complete && img.naturalWidth === 0) {
-      showFallback();
-    } else {
-      img.addEventListener('error', showFallback);
-    }
-  }
-
   initContactLinks();
   initLanguage();
-  initAboutPhoto();
 })();
