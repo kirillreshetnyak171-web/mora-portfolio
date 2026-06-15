@@ -3,26 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Mora — automation and websites for small business">
-  <title>Mora — Automation &amp; websites</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23000'/%3E%3Ctext x='16' y='22' text-anchor='middle' fill='%23A855F7' font-family='system-ui,sans-serif' font-size='16' font-weight='700'%3EM%3C/text%3E%3C/svg%3E">
+  <meta name="description" content="Kirill helps small businesses with spreadsheets, desktop tools, and websites — message on Telegram">
+  <title>Kirill — Automation for small business</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23000'/%3E%3Ctext x='16' y='22' text-anchor='middle' fill='%23A855F7' font-family='system-ui,sans-serif' font-size='16' font-weight='700'%3EK%3C/text%3E%3C/svg%3E">
+  <script>
+  (function () {
+    var LANG_KEY = 'portfolio-lang';
+    var lang = localStorage.getItem(LANG_KEY);
+    if (!lang) {
+      var nav = (navigator.language || '').slice(0, 2).toLowerCase();
+      lang = (nav === 'de') ? 'de' : (nav === 'ru') ? 'ru' : 'ru';
+    }
+    document.documentElement.lang = lang;
+    document.documentElement.dataset.lang = lang;
+    var theme = localStorage.getItem('portfolio-theme');
+    if (!theme) {
+      theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    }
+    document.documentElement.dataset.theme = theme;
+    document.documentElement.classList.add('i18n-pending');
+  })();
+  </script>
+  <style>
+  html.i18n-pending body { visibility: hidden; }
+  </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=10">
+  <link rel="stylesheet" href="css/styles.css?v=14">
 </head>
 <body>
   <a class="skip-link" href="/" data-scroll-to="main" data-i18n="skipLink">Skip to content</a>
 
-  <aside class="sidebar" aria-label="Contact shortcuts">
+  <aside class="sidebar" data-i18n="sidebar.label" data-i18n-attr="aria-label" aria-label="Contact shortcuts">
     <span class="sidebar__label" data-i18n="sidebar.messageMe">message me</span>
     <div class="sidebar__links">
-      <a class="sidebar__link" data-contact-link="telegram" href="https://t.me/qwe171qw" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+      <a class="sidebar__link btn--messenger-icon" data-contact-link="telegram" href="https://t.me/qwe171qw" target="_blank" rel="noopener noreferrer" data-i18n="sidebar.telegramLabel" data-i18n-attr="aria-label" aria-label="Telegram">
         <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
         </svg>
       </a>
-      <a class="sidebar__link" data-contact-link="whatsapp" href="#" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" hidden>
+      <a class="sidebar__link btn--messenger-icon" data-contact-link="whatsapp" href="#" target="_blank" rel="noopener noreferrer" data-i18n="sidebar.whatsappLabel" data-i18n-attr="aria-label" aria-label="WhatsApp" hidden>
         <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
         </svg>
@@ -31,18 +52,40 @@
   </aside>
 
   <header class="header" id="header">
-    <div class="container header__inner">
-      <div class="lang-switcher" role="group" data-i18n="langSwitcher.label" data-i18n-attr="aria-label">
-        <button class="lang-switcher__btn lang-switcher__btn--active" type="button" data-lang="en" aria-pressed="true">EN</button>
-        <span class="lang-switcher__sep" aria-hidden="true">·</span>
-        <button class="lang-switcher__btn" type="button" data-lang="ru" aria-pressed="false">RU</button>
-        <span class="lang-switcher__sep" aria-hidden="true">·</span>
-        <button class="lang-switcher__btn" type="button" data-lang="de" aria-pressed="false">DE</button>
+    <div class="header__top">
+      <div class="container header__top-inner">
+        <div class="lang-switcher" role="group" data-i18n="langSwitcher.label" data-i18n-attr="aria-label" aria-label="Language">
+          <button class="lang-switcher__btn" type="button" data-lang="en" aria-pressed="false">EN</button>
+          <span class="lang-switcher__sep" aria-hidden="true">·</span>
+          <button class="lang-switcher__btn" type="button" data-lang="ru" aria-pressed="false">RU</button>
+          <span class="lang-switcher__sep" aria-hidden="true">·</span>
+          <button class="lang-switcher__btn" type="button" data-lang="de" aria-pressed="false">DE</button>
+        </div>
+        <button class="theme-toggle" type="button" data-i18n="themeToggle.label" data-i18n-attr="aria-label" aria-label="Theme" aria-pressed="false">
+          <svg class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+          </svg>
+          <svg class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+          </svg>
+        </button>
       </div>
+    </div>
 
-      <a class="header__logo" href="/" data-scroll-to="hero" data-i18n="brand.name">Mora</a>
+    <div class="container header__inner">
+      <a class="header__logo" href="/" data-scroll-to="hero" data-i18n="header.logo">Kirill</a>
 
-      <button class="header__burger" type="button" data-i18n="drawer.openMenu" data-i18n-attr="aria-label" aria-expanded="false" aria-controls="mobile-drawer">
+      <nav class="header__nav--horizontal" data-i18n="nav.label" data-i18n-attr="aria-label" aria-label="Main navigation">
+        <ul class="header__nav-list">
+          <li><a class="header__nav-link" href="/" data-scroll-to="services" data-i18n="nav.services">Services</a></li>
+          <li><a class="header__nav-link" href="/" data-scroll-to="projects" data-i18n="nav.projects">Projects</a></li>
+          <li><a class="header__nav-link" href="/" data-scroll-to="process" data-i18n="nav.process">Process</a></li>
+          <li><a class="header__nav-link" href="/" data-scroll-to="contact" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <button class="header__burger" type="button" data-i18n="drawer.openMenu" data-i18n-attr="aria-label" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
         <svg class="header__burger-icon header__burger-icon--open" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
           <line x1="3" y1="6" x2="21" y2="6"/>
           <line x1="3" y1="12" x2="21" y2="12"/>
@@ -55,7 +98,8 @@
       </button>
     </div>
 
-    <nav class="header__nav--vertical" data-i18n="nav.label" data-i18n-attr="aria-label">
+    <nav class="header__nav--vertical" data-i18n="nav.label" data-i18n-attr="aria-label" aria-label="Main navigation">
+      <span class="header__nav-label" data-i18n="nav.onPage">On this page</span>
       <ul class="header__nav-list">
         <li><a class="header__nav-link" href="/" data-scroll-to="services" data-i18n="nav.services">Services</a></li>
         <li><a class="header__nav-link" href="/" data-scroll-to="projects" data-i18n="nav.projects">Projects</a></li>
@@ -67,14 +111,23 @@
     <div class="header__drawer" id="mobile-drawer" aria-hidden="true">
       <div class="header__drawer-backdrop" data-drawer-close></div>
       <div class="header__drawer-panel">
-        <div class="lang-switcher lang-switcher--drawer" role="group" data-i18n="langSwitcher.label" data-i18n-attr="aria-label">
-          <button class="lang-switcher__btn lang-switcher__btn--active" type="button" data-lang="en" aria-pressed="true">EN</button>
+        <div class="lang-switcher lang-switcher--drawer" role="group" data-i18n="langSwitcher.label" data-i18n-attr="aria-label" aria-label="Language">
+          <button class="lang-switcher__btn" type="button" data-lang="en" aria-pressed="false">EN</button>
           <span class="lang-switcher__sep" aria-hidden="true">·</span>
           <button class="lang-switcher__btn" type="button" data-lang="ru" aria-pressed="false">RU</button>
           <span class="lang-switcher__sep" aria-hidden="true">·</span>
           <button class="lang-switcher__btn" type="button" data-lang="de" aria-pressed="false">DE</button>
         </div>
-        <nav data-i18n="nav.mobileLabel" data-i18n-attr="aria-label">
+        <button class="theme-toggle theme-toggle--drawer" type="button" data-i18n="themeToggle.label" data-i18n-attr="aria-label" aria-label="Theme" aria-pressed="false">
+          <svg class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+          </svg>
+          <svg class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+          </svg>
+        </button>
+        <nav data-i18n="nav.mobileLabel" data-i18n-attr="aria-label" aria-label="Mobile navigation">
           <ul class="header__drawer-list">
             <li><a class="header__drawer-link" href="/" data-scroll-to="services" data-i18n="nav.services">Services</a></li>
             <li><a class="header__drawer-link" href="/" data-scroll-to="projects" data-i18n="nav.projects">Projects</a></li>
@@ -83,13 +136,13 @@
           </ul>
         </nav>
         <div class="header__drawer-contact">
-          <a class="btn btn--telegram btn--block" data-contact-link="telegram" href="https://t.me/qwe171qw" target="_blank" rel="noopener noreferrer">
+          <a class="btn btn--messenger btn--block" data-contact-link="telegram" href="https://t.me/qwe171qw" target="_blank" rel="noopener noreferrer">
             <svg class="btn__icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
             </svg>
             <span data-i18n="cta.telegram">Message on Telegram</span>
           </a>
-          <a class="btn btn--whatsapp btn--block" data-contact-link="whatsapp" href="#" target="_blank" rel="noopener noreferrer" hidden>
+          <a class="btn btn--messenger btn--block" data-contact-link="whatsapp" href="#" target="_blank" rel="noopener noreferrer" hidden>
             <svg class="btn__icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
               <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
             </svg>
@@ -100,21 +153,48 @@
     </div>
   </header>
 
+  <div class="lang-hint" id="lang-hint" hidden>
+    <div class="container lang-hint__inner">
+      <p class="lang-hint__text" data-i18n="langHint.text">Site language doesn't match your browser — switch above</p>
+      <button class="lang-hint__dismiss" type="button" data-i18n="langHint.dismiss">Got it</button>
+    </div>
+  </div>
+
   <main id="main">
     <section class="section section--hero" id="hero" aria-labelledby="hero-title">
       <div class="container">
         <div class="hero__grid">
           <div class="hero__content">
-            <h1 class="hero__title" id="hero-title" data-i18n="brand.name">Mora</h1>
-            <p class="hero__subtitle" data-i18n="hero.subtitle">Automation and websites for small business — spreadsheets, desktop tools, landing pages</p>
+            <div class="hero__intro">
+              <img
+                class="hero__avatar"
+                src="images/avatar.jpg"
+                alt="Kirill"
+                width="56"
+                height="56"
+                decoding="async"
+                data-i18n="hero.name"
+                data-i18n-attr="alt"
+              >
+              <div class="hero__intro-text">
+                <h1 class="hero__name" id="hero-title" data-i18n="hero.name">Kirill</h1>
+                <p class="hero__role" data-i18n="hero.role">Automation for small business</p>
+                <p class="hero__brand-tagline" data-i18n="brand.tagline">Mora</p>
+                <p class="hero__brand-clarifier" data-i18n="brand.clarifier">One developer — you talk to me directly, not a sales team</p>
+              </div>
+            </div>
+            <p class="hero__subtitle" data-i18n="hero.subtitle">Spreadsheets, desktop tools, and websites — without agency overhead</p>
+            <p class="hero__trust-line" data-i18n="hero.trustLine">You write me directly — no handoff to a manager</p>
+            <p class="hero__response-time" data-i18n="hero.responseTime">Usually reply on Telegram within a few hours on weekdays</p>
+            <p class="hero__proof-line" data-i18n="hero.proofLine">Desktop tools for spreadsheets, requests, and small-business workflows</p>
             <div class="hero__actions">
-              <a class="btn btn--telegram" data-contact-link="telegram" href="https://t.me/qwe171qw" target="_blank" rel="noopener noreferrer">
+              <a class="btn btn--messenger" data-contact-link="telegram" href="https://t.me/qwe171qw" target="_blank" rel="noopener noreferrer">
                 <svg class="btn__icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
                 </svg>
                 <span data-i18n="cta.telegram">Message on Telegram</span>
               </a>
-              <a class="btn btn--whatsapp" data-contact-link="whatsapp" href="#" target="_blank" rel="noopener noreferrer" hidden>
+              <a class="btn btn--messenger" data-contact-link="whatsapp" href="#" target="_blank" rel="noopener noreferrer" hidden>
                 <svg class="btn__icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                 </svg>
@@ -130,45 +210,33 @@
           </div>
 
           <div class="hero__visual">
-            <svg class="hero__wireframe" aria-hidden="true" focusable="false" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+            <svg class="hero__wireframe hero__wireframe--grid" aria-hidden="true" focusable="false" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
               <defs>
-                <linearGradient id="wireGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="rgba(255,255,255,0.35)"/>
-                  <stop offset="50%" stop-color="rgba(168,85,247,0.5)"/>
-                  <stop offset="100%" stop-color="rgba(255,255,255,0.2)"/>
-                </linearGradient>
+                <pattern id="gridPattern" width="24" height="24" patternUnits="userSpaceOnUse">
+                  <path d="M 24 0 L 0 0 0 24" fill="none" stroke="var(--wireframe-stroke)" stroke-width="0.5" opacity="0.25"/>
+                </pattern>
               </defs>
-              <g fill="none" stroke="url(#wireGrad)" stroke-width="1">
-                <ellipse cx="200" cy="200" rx="160" ry="60" transform="rotate(0 200 200)"/>
-                <ellipse cx="200" cy="200" rx="160" ry="60" transform="rotate(30 200 200)"/>
-                <ellipse cx="200" cy="200" rx="160" ry="60" transform="rotate(60 200 200)"/>
-                <ellipse cx="200" cy="200" rx="160" ry="60" transform="rotate(90 200 200)"/>
-                <ellipse cx="200" cy="200" rx="160" ry="60" transform="rotate(120 200 200)"/>
-                <ellipse cx="200" cy="200" rx="160" ry="60" transform="rotate(150 200 200)"/>
-                <ellipse cx="200" cy="200" rx="120" ry="45" transform="rotate(15 200 200)"/>
-                <ellipse cx="200" cy="200" rx="120" ry="45" transform="rotate(45 200 200)"/>
-                <ellipse cx="200" cy="200" rx="120" ry="45" transform="rotate(75 200 200)"/>
-                <ellipse cx="200" cy="200" rx="120" ry="45" transform="rotate(105 200 200)"/>
-                <ellipse cx="200" cy="200" rx="120" ry="45" transform="rotate(135 200 200)"/>
-                <ellipse cx="200" cy="200" rx="80" ry="30" transform="rotate(0 200 200)"/>
-                <ellipse cx="200" cy="200" rx="80" ry="30" transform="rotate(60 200 200)"/>
-                <ellipse cx="200" cy="200" rx="80" ry="30" transform="rotate(120 200 200)"/>
-                <line x1="40" y1="200" x2="360" y2="200"/>
-                <line x1="200" y1="40" x2="200" y2="360"/>
-                <line x1="80" y1="80" x2="320" y2="320"/>
-                <line x1="320" y1="80" x2="80" y2="320"/>
-              </g>
+              <rect width="400" height="400" fill="url(#gridPattern)"/>
+              <rect x="48" y="72" width="96" height="72" fill="none" stroke="var(--wireframe-stroke)" stroke-width="1" opacity="0.4"/>
+              <rect x="168" y="72" width="184" height="48" fill="none" stroke="var(--wireframe-stroke)" stroke-width="1" opacity="0.35"/>
+              <rect x="48" y="168" width="304" height="24" fill="none" stroke="var(--wireframe-stroke)" stroke-width="1" opacity="0.3"/>
+              <rect x="48" y="216" width="304" height="24" fill="none" stroke="var(--wireframe-stroke)" stroke-width="1" opacity="0.3"/>
+              <rect x="48" y="264" width="304" height="24" fill="none" stroke="var(--wireframe-stroke)" stroke-width="1" opacity="0.3"/>
+              <rect x="264" y="312" width="88" height="56" fill="rgba(168,85,247,0.08)" stroke="rgba(168,85,247,0.35)" stroke-width="1"/>
+              <path d="M276 328h12v12h-12z" fill="none" stroke="rgba(168,85,247,0.5)" stroke-width="1"/>
             </svg>
           </div>
         </div>
       </div>
     </section>
 
+    <div class="wireframe-divider" aria-hidden="true"></div>
+
     <section class="section" id="services" aria-labelledby="services-title">
       <div class="container">
         <div class="section-header">
           <h2 class="section-header__title" id="services-title" data-i18n="services.title">Services</h2>
-          <p class="section-header__subtitle" data-i18n="services.subtitle">How I can help your business</p>
+          <p class="section-header__subtitle" data-i18n="services.subtitle">What I build for your business</p>
         </div>
 
         <div class="services-grid">
@@ -192,8 +260,8 @@
                 <path d="M5.45 5.11L2 12v6a2 2 0 002 2h16a2 2 0 002-2v-6l-3.45-6.89A2 2 0 0016.76 4H7.24a2 2 0 00-1.79 1.11z"/>
               </svg>
             </div>
-            <h3 class="service-card__title" data-i18n="services.2.title">Request &amp; complaint routing</h3>
-            <p class="service-card__text" data-i18n="services.2.text">AI suggests a draft, you review — requests go to the right department.</p>
+            <h3 class="service-card__title" data-i18n="services.2.title">AI spreadsheet assistant</h3>
+            <p class="service-card__text" data-i18n="services.2.text">Desktop app for Windows and macOS: open a spreadsheet, pick a template or describe the task — AI draft, you review and save.</p>
           </article>
 
           <article class="service-card">
@@ -205,34 +273,38 @@
               </svg>
             </div>
             <h3 class="service-card__title" data-i18n="services.3.title">Website development</h3>
-            <p class="service-card__text" data-i18n="services.3.text">Landing pages and business sites — fast, responsive, ready to host on GitHub Pages or your domain.</p>
+            <p class="service-card__text" data-i18n="services.3.text">Landing pages and business sites — fast, responsive, ready to host.</p>
           </article>
 
-          <article class="service-card">
-            <div class="service-card__icon">
-              <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="3" width="20" height="14" rx="2"/>
-                <line x1="8" y1="21" x2="16" y2="21"/>
-                <line x1="12" y1="17" x2="12" y2="21"/>
-              </svg>
-            </div>
-            <h3 class="service-card__title" data-i18n="services.4.title">Custom desktop apps</h3>
-            <p class="service-card__text" data-i18n="services.4.text">Windows/macOS tools tailored to your workflow, nothing extra.</p>
-          </article>
+          <div class="services-grid__row services-grid__row--centered">
+            <article class="service-card">
+              <div class="service-card__icon">
+                <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="3" width="20" height="14" rx="2"/>
+                  <line x1="8" y1="21" x2="16" y2="21"/>
+                  <line x1="12" y1="17" x2="12" y2="21"/>
+                </svg>
+              </div>
+              <h3 class="service-card__title" data-i18n="services.4.title">Custom desktop apps</h3>
+              <p class="service-card__text" data-i18n="services.4.text">Windows/macOS tools tailored to your workflow, nothing extra.</p>
+            </article>
 
-          <article class="service-card">
-            <div class="service-card__icon">
-              <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/>
-                <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/>
-              </svg>
-            </div>
-            <h3 class="service-card__title" data-i18n="services.5.title">Integrations &amp; bots</h3>
-            <p class="service-card__text" data-i18n="services.5.text">Telegram bots, webhooks, connections between your services.</p>
-          </article>
+            <article class="service-card">
+              <div class="service-card__icon">
+                <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/>
+                  <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/>
+                </svg>
+              </div>
+              <h3 class="service-card__title" data-i18n="services.5.title">Integrations &amp; bots</h3>
+              <p class="service-card__text" data-i18n="services.5.text">Telegram bots, webhooks, connections between your services.</p>
+            </article>
+          </div>
         </div>
       </div>
     </section>
+
+    <div class="wireframe-divider" aria-hidden="true"></div>
 
     <section class="section section--alt" id="projects" aria-labelledby="projects-title">
       <div class="container">
@@ -241,32 +313,28 @@
           <p class="section-header__subtitle" data-i18n="projects.subtitle">Examples of what I've built</p>
         </div>
 
-        <div class="cases-list">
+        <div class="projects__layout">
           <article class="case case--featured">
             <div class="case__grid">
               <div class="case__content">
-                <span class="case__badge" data-i18n="projects.1.badge">Pet project / Demo</span>
-                <h3 class="case__title" data-i18n="projects.1.title">Smart Assistant</h3>
+                <span class="case__badge" data-i18n="projects.1.badge">Demo project</span>
+                <h3 class="case__title" data-i18n="projects.1.title">SmartSorter</h3>
                 <div class="case__blocks">
                   <div class="case__block">
                     <span class="case__label" data-i18n="projects.label.task">Task</span>
-                    <p class="case__text" data-i18n="projects.1.task">Lots of customer complaints and requests. Someone reads each one and decides which department should handle it — hours of routine work.</p>
+                    <p class="case__text" data-i18n="projects.1.task">In an office, complaints and requests land in Excel — staff manually sort them into department folders.</p>
                   </div>
                   <div class="case__block">
                     <span class="case__label" data-i18n="projects.label.solution">Solution</span>
-                    <p class="case__text" data-i18n="projects.1.solution">A desktop app: upload a spreadsheet, AI suggests how to split items by department, you check and confirm.</p>
+                    <p class="case__text" data-i18n="projects.1.solution">Desktop app (Python + PyQt6): AI suggests a draft routing, a person reviews, files go to department folders.</p>
                   </div>
                   <div class="case__block">
                     <span class="case__label" data-i18n="projects.label.result">Result</span>
-                    <p class="case__text" data-i18n="projects.1.result">A ready draft in minutes instead of hours of manual sorting — the final decision stays with a person.</p>
+                    <p class="case__text" data-i18n="projects.1.result">Instead of long manual sorting — a quick draft with human check before files are filed.</p>
                   </div>
                 </div>
-                <div class="case__stack">
-                  <span class="case__tag">Python</span>
-                  <span class="case__tag">PyQt6</span>
-                  <span class="case__tag">Pandas</span>
-                  <span class="case__tag">Claude API</span>
-                </div>
+                <p class="case__stack" data-i18n="projects.1.stack">Python, PyQt6, Pandas, Claude API</p>
+                <a class="btn btn--ghost case__cta" data-contact-link="telegram-project" href="https://t.me/qwe171qw?text=SmartSorter" target="_blank" rel="noopener noreferrer" data-i18n="projects.cta.askAbout">Ask about this project</a>
               </div>
               <div class="case__mockup">
                 <div class="mockup-window">
@@ -274,13 +342,13 @@
                     <span class="mockup-window__dot"></span>
                     <span class="mockup-window__dot"></span>
                     <span class="mockup-window__dot"></span>
-                    <span class="mockup-window__title">Smart Assistant</span>
+                    <span class="mockup-window__title">SmartSorter</span>
                   </div>
                   <div class="mockup-window__body mockup-window__body--screenshot">
                     <img
                       class="mockup-window__screenshot"
                       src="images/projects/smart-assistant.png"
-                      alt="Smart Assistant — desktop app for Excel and CSV with AI draft workflow"
+                      alt="SmartSorter — desktop app for routing Excel complaints and requests to department folders"
                       width="1024"
                       height="665"
                       loading="lazy"
@@ -292,9 +360,31 @@
             </div>
           </article>
 
-          <article class="case case--reverse">
+          <p class="projects__secondary-label" data-i18n="projects.secondaryLabel">Also built</p>
+
+          <article class="case case--secondary">
             <div class="case__grid">
-              <div class="case__mockup">
+              <div class="case__content">
+                <span class="case__badge" data-i18n="projects.2.badge">Pet project v1.0</span>
+                <h3 class="case__title" data-i18n="projects.2.title">SokraLog</h3>
+                <div class="case__blocks">
+                  <div class="case__block">
+                    <span class="case__label" data-i18n="projects.label.task">Task</span>
+                    <p class="case__text" data-i18n="projects.2.task">Studying warehouse logistics formulas for a German vocational exam (IHK — industry training certificate, not required for most clients).</p>
+                  </div>
+                  <div class="case__block">
+                    <span class="case__label" data-i18n="projects.label.solution">Solution</span>
+                    <p class="case__text" data-i18n="projects.2.solution">Desktop app Python + Flet — formula reference, exam mode, Socratic method, RU/DE/EN</p>
+                  </div>
+                  <div class="case__block">
+                    <span class="case__label" data-i18n="projects.label.result">Result</span>
+                    <p class="case__text" data-i18n="projects.2.result">Faster exam prep — formulas and practice in one desktop app, three languages</p>
+                  </div>
+                </div>
+                <p class="case__stack" data-i18n="projects.2.stack">Python, Flet</p>
+                <a class="btn btn--ghost case__cta" href="/" data-scroll-to="sokrlog-mockup" data-i18n="projects.cta.screenshots">View screenshots</a>
+              </div>
+              <div class="case__mockup" id="sokrlog-mockup">
                 <div class="mockup-window">
                   <div class="mockup-window__titlebar">
                     <span class="mockup-window__dot"></span>
@@ -315,27 +405,15 @@
                   </div>
                 </div>
               </div>
-              <div class="case__content">
-                <span class="case__badge" data-i18n="projects.2.badge">Pet project v1.0</span>
-                <h3 class="case__title" data-i18n="projects.2.title">SokraLog</h3>
-                <div class="case__blocks">
-                  <div class="case__block">
-                    <span class="case__label" data-i18n="projects.label.task">Task</span>
-                    <p class="case__text" data-i18n="projects.2.task">Studying warehouse logistics formulas (IHK)</p>
-                  </div>
-                  <div class="case__block">
-                    <span class="case__label" data-i18n="projects.label.solution">Solution</span>
-                    <p class="case__text" data-i18n="projects.2.solution">Desktop app Python + Flet — formula reference, exam, Socratic method, RU/DE/EN</p>
-                  </div>
-                </div>
-                <div class="case__stack">
-                  <span class="case__tag">Python</span>
-                  <span class="case__tag">Flet</span>
-                  <span class="case__tag">Claude API</span>
-                </div>
-              </div>
             </div>
           </article>
+
+          <p class="projects__context-note" data-i18n="projects.contextNote">SokraLog is a learning app I built for exam prep — it shows I can ship complex desktop UIs. For your Excel or requests workflow, SmartSorter above is the closer example.</p>
+
+          <p class="projects__more-teaser">
+            <span data-i18n="projects.moreTeaser">Integrations, landing pages, custom reports — message me with your task</span>
+            <a class="projects__more-link" href="/" data-scroll-to="contact" data-i18n="nav.contact">Contact</a>
+          </p>
         </div>
       </div>
     </section>
@@ -344,25 +422,25 @@
       <div class="container">
         <div class="section-header">
           <h2 class="section-header__title" id="process-title" data-i18n="process.title">How I work</h2>
-          <p class="section-header__subtitle" data-i18n="process.subtitle">From idea to working tool — fast and transparent</p>
+          <p class="section-header__subtitle" data-i18n="process.subtitle">From message to working tool — fast and transparent</p>
         </div>
 
         <div class="process">
           <ol class="process__list">
             <li class="process__step">
               <span class="process__number">1</span>
-              <h3 class="process__title" data-i18n="process.1.title">Call</h3>
-              <p class="process__text" data-i18n="process.1.text">We discuss the task and context</p>
+              <h3 class="process__title" data-i18n="process.1.title">You write first</h3>
+              <p class="process__text" data-i18n="process.1.text">Message me on Telegram or WhatsApp with your task — no call needed to start, I reply and ask follow-up questions in chat</p>
             </li>
             <li class="process__step">
               <span class="process__number">2</span>
               <h3 class="process__title" data-i18n="process.2.title">Scope</h3>
-              <p class="process__text" data-i18n="process.2.text">We write down what the outcome should be</p>
+              <p class="process__text" data-i18n="process.2.text">I confirm what the result should look like</p>
             </li>
             <li class="process__step">
               <span class="process__number">3</span>
-              <h3 class="process__title" data-i18n="process.3.title">MVP in days</h3>
-              <p class="process__text" data-i18n="process.3.text">A working prototype you can try</p>
+              <h3 class="process__title" data-i18n="process.3.title">First version in 3–5 days</h3>
+              <p class="process__text" data-i18n="process.3.text">A ready tool for your task — you check it on your actual spreadsheets and data</p>
             </li>
             <li class="process__step">
               <span class="process__number">4</span>
@@ -378,21 +456,23 @@
       <div class="container">
         <div class="section-header">
           <h2 class="section-header__title" id="contact-title" data-i18n="contact.title">Get in touch</h2>
-          <p class="section-header__subtitle" data-i18n="contact.subtitle">Describe your task — I'll reply on Telegram</p>
+          <p class="section-header__subtitle" data-i18n="contact.subtitle">Describe your task — I'll reply on Telegram or WhatsApp</p>
         </div>
 
         <div class="contact__grid">
           <div class="contact__copy">
             <h3 class="contact__heading" data-i18n="contact.heading">Do you have a task?</h3>
-            <p class="contact__lead" data-i18n="contact.lead">Fill out the form — the request goes straight to Telegram.</p>
+            <p class="contact__lead" data-i18n="contact.lead">Fastest way: message me on Telegram. Online form is coming later.</p>
+            <a class="contact__telegram-link" href="https://t.me/qwe171qw" target="_blank" rel="noopener noreferrer" data-i18n="footer.telegram">@qwe171qw</a>
+            <p class="contact__pricing-note" data-i18n="contact.pricingNote">No fixed price list — I agree on scope after you describe the task. No agency markup.</p>
             <div class="contact__actions">
-              <a class="btn btn--telegram" data-contact-link="telegram" href="https://t.me/qwe171qw" target="_blank" rel="noopener noreferrer">
+              <a class="btn btn--messenger" data-contact-link="telegram" href="https://t.me/qwe171qw" target="_blank" rel="noopener noreferrer">
                 <svg class="btn__icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
                 </svg>
                 <span data-i18n="cta.telegram">Message on Telegram</span>
               </a>
-              <a class="btn btn--whatsapp" data-contact-link="whatsapp" href="#" target="_blank" rel="noopener noreferrer" hidden>
+              <a class="btn btn--messenger" data-contact-link="whatsapp" href="#" target="_blank" rel="noopener noreferrer" hidden>
                 <svg class="btn__icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                 </svg>
@@ -401,26 +481,10 @@
             </div>
           </div>
 
-          <form class="contact__form" id="contact-form" novalidate>
-            <div class="form-field form-field--hp" aria-hidden="true">
-              <label class="form-field__label" for="contact-website">Website</label>
-              <input class="form-field__input" type="text" id="contact-website" name="website" tabindex="-1" autocomplete="off">
-            </div>
-            <div class="form-field">
-              <label class="form-field__label" for="contact-name" data-i18n="form.name">Name</label>
-              <input class="form-field__input" type="text" id="contact-name" name="name" autocomplete="name" required>
-            </div>
-            <div class="form-field">
-              <label class="form-field__label" for="contact-contact" data-i18n="form.contact">Email / Telegram</label>
-              <input class="form-field__input" type="text" id="contact-contact" name="contact" autocomplete="email" required>
-            </div>
-            <div class="form-field">
-              <label class="form-field__label" for="contact-message" data-i18n="form.message">Message</label>
-              <textarea class="form-field__input" id="contact-message" name="message" rows="4" required></textarea>
-            </div>
-            <button class="btn btn--primary btn--block" type="submit" data-i18n="form.submit" disabled>Send request</button>
-            <p class="form-note" data-i18n="form.notice">Form temporarily off — message us on Telegram or WhatsApp.</p>
-          </form>
+          <aside class="contact__form-stub">
+            <span class="form__badge" data-i18n="form.comingSoonBadge">Coming soon</span>
+            <p class="form__collapsed-notice" data-i18n="form.collapsedNotice">Online form coming soon</p>
+          </aside>
         </div>
       </div>
     </section>
@@ -428,9 +492,17 @@
 
   <footer class="footer">
     <div class="container footer__inner">
-      <p class="footer__copy" data-i18n="footer.copy">© 2026 Mora</p>
+      <p class="footer__copy" data-i18n="footer.copy">© 2026 Kirill · Mora</p>
+      <a class="footer__link" href="https://t.me/qwe171qw" target="_blank" rel="noopener noreferrer" data-i18n="footer.telegram">@qwe171qw</a>
     </div>
   </footer>
+
+  <a class="sticky-cta btn btn--messenger" id="sticky-cta" href="https://t.me/qwe171qw" target="_blank" rel="noopener noreferrer" data-i18n="cta.telegram" data-i18n-attr="aria-label" aria-label="Message on Telegram">
+    <svg class="btn__icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+    </svg>
+    <span data-i18n="cta.writeShort">Write</span>
+  </a>
 
   <button class="back-to-top" id="back-to-top" type="button" data-i18n="backToTop" data-i18n-attr="aria-label" aria-label="Back to top">
     <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -438,14 +510,6 @@
     </svg>
   </button>
 
-  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true">
-    <svg class="toast__icon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="20 6 9 17 4 12"/>
-    </svg>
-    <p class="toast__message" data-i18n="toast.success">Thank you! I'll get back to you soon.</p>
-  </div>
-
-  <script src="js/lead-config.js?v=10"></script>
-  <script src="js/main.js?v=10"></script>
+  <script src="js/main.js?v=14"></script>
 </body>
 </html>
