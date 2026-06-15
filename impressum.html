@@ -9,77 +9,84 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=11">
+  <link rel="stylesheet" href="css/styles.css?v=12">
 </head>
-<body>
-  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+<body class="page-legal">
+  <a class="skip-link" href="#main" data-i18n="legal.skipLink">Zum Inhalt springen</a>
 
   <header class="header header--legal" id="header">
     <div class="container header__inner">
+      <div class="lang-switcher" role="group" data-i18n="langSwitcher.label" data-i18n-attr="aria-label">
+        <button class="lang-switcher__btn" type="button" data-lang="en" aria-pressed="false">EN</button>
+        <span class="lang-switcher__sep" aria-hidden="true">·</span>
+        <button class="lang-switcher__btn" type="button" data-lang="ru" aria-pressed="false">RU</button>
+        <span class="lang-switcher__sep" aria-hidden="true">·</span>
+        <button class="lang-switcher__btn lang-switcher__btn--active" type="button" data-lang="de" aria-pressed="true">DE</button>
+      </div>
       <a class="header__logo" href="/">Mora</a>
-      <a class="legal-back" href="/">← Zurück zur Startseite</a>
+      <a class="legal-back" href="/" data-i18n="legal.back">← Zurück zur Startseite</a>
     </div>
   </header>
 
   <main class="legal-page" id="main">
     <div class="container legal-page__inner">
-      <h1 class="legal-page__title">Impressum</h1>
-      <p class="legal-page__lead">Angaben gemäß § 5 Digitale-Dienste-Gesetz (DDG)</p>
+      <h1 class="legal-page__title" data-i18n="legal.title">Impressum</h1>
+      <p class="legal-page__lead" data-i18n="legal.lead">Angaben gemäß § 5 Digitale-Dienste-Gesetz (DDG)</p>
 
       <section class="legal-block" aria-labelledby="legal-provider-heading">
-        <h2 class="legal-block__title" id="legal-provider-heading">Diensteanbieter</h2>
+        <h2 class="legal-block__title" id="legal-provider-heading" data-i18n="legal.provider.title">Diensteanbieter</h2>
         <p class="legal-block__text">
           <span id="legal-provider-name">Kirill Reshetnyak</span><br>
           <span id="legal-brand">Mora</span><br>
           <span id="legal-location">Chemnitz, Deutschland</span>
         </p>
-        <p class="legal-block__note">Keine Wohnadresse aus Datenschutzgründen. Erreichbarkeit über die Kontaktdaten unten.</p>
+        <p class="legal-block__note" data-i18n="legal.provider.note">Keine Wohnadresse aus Datenschutzgründen. Erreichbarkeit über die Kontaktdaten unten.</p>
       </section>
 
       <section class="legal-block" aria-labelledby="legal-contact-heading">
-        <h2 class="legal-block__title" id="legal-contact-heading">Kontakt</h2>
+        <h2 class="legal-block__title" id="legal-contact-heading" data-i18n="legal.contact.title">Kontakt</h2>
         <ul class="legal-list">
-          <li>E-Mail: <a id="legal-email-link" href="mailto:kontakt@morastudio.de">kontakt@morastudio.de</a></li>
-          <li>Telefon: <span id="legal-phone">+49 160 3203111</span></li>
-          <li>Telegram: <a id="legal-telegram" href="https://t.me/qwe171qw" target="_blank" rel="noopener noreferrer">t.me/qwe171qw</a></li>
+          <li><span data-i18n="legal.contact.email">E-Mail:</span> <a id="legal-email-link" href="mailto:kontakt@morastudio.de">kontakt@morastudio.de</a></li>
+          <li><span data-i18n="legal.contact.phone">Telefon:</span> <span id="legal-phone">+49 160 3203111</span></li>
+          <li><span data-i18n="legal.contact.telegram">Telegram:</span> <a id="legal-telegram" href="https://t.me/qwe171qw" target="_blank" rel="noopener noreferrer">t.me/qwe171qw</a></li>
         </ul>
       </section>
 
       <section class="legal-block" aria-labelledby="legal-responsible-heading">
-        <h2 class="legal-block__title" id="legal-responsible-heading">Verantwortlich für den Inhalt</h2>
+        <h2 class="legal-block__title" id="legal-responsible-heading" data-i18n="legal.responsible.title">Verantwortlich für den Inhalt</h2>
         <p class="legal-block__text">
-          Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV:<br>
+          <span data-i18n="legal.responsible.text">Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV:</span><br>
           <span id="legal-responsible">Kirill Reshetnyak</span><br>
-          Kontakt siehe oben.
+          <span data-i18n="legal.responsible.contact">Kontakt siehe oben.</span>
         </p>
       </section>
 
       <section class="legal-block" aria-labelledby="legal-vat-heading">
-        <h2 class="legal-block__title" id="legal-vat-heading">Umsatzsteuer</h2>
-        <p class="legal-block__text" id="legal-vat-note">
+        <h2 class="legal-block__title" id="legal-vat-heading" data-i18n="legal.vat.title">Umsatzsteuer</h2>
+        <p class="legal-block__text" id="legal-vat-note" data-i18n="legal.vat.note">
           Umsatzsteuer wird nicht ausgewiesen, da der Anbieter Kleinunternehmer im Sinne des § 19 UStG ist.
         </p>
       </section>
 
       <section class="legal-block" aria-labelledby="legal-liability-heading">
-        <h2 class="legal-block__title" id="legal-liability-heading">Haftung für Inhalte</h2>
-        <p class="legal-block__text">
+        <h2 class="legal-block__title" id="legal-liability-heading" data-i18n="legal.liability.title">Haftung für Inhalte</h2>
+        <p class="legal-block__text" data-i18n="legal.liability.text">
           Als Diensteanbieter bin ich für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich.
           Ich bin jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
         </p>
       </section>
 
       <section class="legal-block" aria-labelledby="legal-links-heading">
-        <h2 class="legal-block__title" id="legal-links-heading">Haftung für Links</h2>
-        <p class="legal-block__text">
+        <h2 class="legal-block__title" id="legal-links-heading" data-i18n="legal.links.title">Haftung für Links</h2>
+        <p class="legal-block__text" data-i18n="legal.links.text">
           Diese Website enthält Links zu externen Websites Dritter. Auf deren Inhalte habe ich keinen Einfluss; deshalb kann ich für diese fremden Inhalte keine Gewähr übernehmen.
           Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter verantwortlich.
         </p>
       </section>
 
       <section class="legal-block" aria-labelledby="legal-copyright-heading">
-        <h2 class="legal-block__title" id="legal-copyright-heading">Urheberrecht</h2>
-        <p class="legal-block__text">
+        <h2 class="legal-block__title" id="legal-copyright-heading" data-i18n="legal.copyright.title">Urheberrecht</h2>
+        <p class="legal-block__text" data-i18n="legal.copyright.text">
           Die durch den Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht.
           Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung.
         </p>
@@ -89,14 +96,13 @@
 
   <footer class="footer">
     <div class="container footer__inner">
-      <p class="footer__copy">© 2026 Mora</p>
-      <nav class="footer__nav" aria-label="Legal">
-        <a class="footer__link footer__link--active" href="impressum.html">Impressum</a>
-      </nav>
+      <p class="footer__copy" data-i18n="footer.copy">© 2026 Mora</p>
+      <span class="footer__sep" aria-hidden="true">·</span>
+      <a class="footer__link footer__link--active" href="impressum.html" data-i18n="footer.impressum">Impressum</a>
     </div>
   </footer>
 
-  <script src="js/legal-config.js?v=1"></script>
-  <script src="js/impressum.js?v=1"></script>
+  <script src="js/legal-config.js?v=2"></script>
+  <script src="js/impressum.js?v=2"></script>
 </body>
 </html>

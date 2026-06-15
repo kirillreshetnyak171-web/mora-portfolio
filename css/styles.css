@@ -1233,9 +1233,9 @@ textarea.form-field__input {
 .footer__inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-wrap: wrap;
-  gap: var(--space-4);
+  gap: var(--space-3);
   padding-block: var(--space-10);
 }
 
@@ -1244,10 +1244,10 @@ textarea.form-field__input {
   color: var(--text-muted);
 }
 
-.footer__nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-4) var(--space-6);
+.footer__sep {
+  font-size: var(--text-body-sm);
+  color: var(--text-muted);
+  user-select: none;
 }
 
 .footer__link {
@@ -1267,12 +1267,58 @@ textarea.form-field__input {
   pointer-events: none;
 }
 
+.page-legal .footer__inner {
+  padding-inline-end: var(--space-4);
+}
+
 /* ==========================================================================
    Legal pages (Impressum)
    ========================================================================== */
 
 .header--legal .header__inner {
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.header--legal .lang-switcher {
+  justify-self: start;
+}
+
+.header--legal .header__logo {
+  justify-self: center;
+}
+
+.header--legal .legal-back {
+  justify-self: end;
+  text-align: right;
+  max-width: 11rem;
+}
+
+@media (max-width: 767px) {
+  .header--legal .header__inner {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      'lang lang'
+      'logo back';
+  }
+
+  .header--legal .lang-switcher {
+    grid-area: lang;
+    justify-self: start;
+  }
+
+  .header--legal .header__logo {
+    grid-area: logo;
+    justify-self: start;
+  }
+
+  .header--legal .legal-back {
+    grid-area: back;
+    justify-self: end;
+    max-width: none;
+  }
 }
 
 .legal-back {
@@ -1433,5 +1479,15 @@ textarea.form-field__input {
 @media (min-width: 1024px) {
   .back-to-top {
     right: calc(var(--nav-rail-width) + var(--space-8));
+  }
+}
+
+body:not(.page-legal) .footer__inner {
+  padding-inline-end: calc(44px + var(--space-8) + var(--space-4));
+}
+
+@media (min-width: 1024px) {
+  body:not(.page-legal) .footer__inner {
+    padding-inline-end: 0;
   }
 }
