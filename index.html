@@ -9,10 +9,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=16">
+  <link rel="stylesheet" href="css/styles.css?v=17">
 </head>
 <body>
-  <a class="skip-link" href="/" data-scroll-to="main" data-i18n="skipLink">Skip to content</a>
+  <a class="skip-link" href="/" data-page="hero" data-i18n="skipLink">Skip to content</a>
 
   <aside class="sidebar" aria-label="Contact shortcuts">
     <span class="sidebar__label" data-i18n="sidebar.messageMe">message me</span>
@@ -31,16 +31,26 @@
   </aside>
 
   <header class="header" id="header">
-    <div class="container header__inner">
-      <div class="lang-switcher" role="group" data-i18n="langSwitcher.label" data-i18n-attr="aria-label">
-        <button class="lang-switcher__btn lang-switcher__btn--active" type="button" data-lang="en" aria-pressed="true">EN</button>
-        <span class="lang-switcher__sep" aria-hidden="true">·</span>
-        <button class="lang-switcher__btn" type="button" data-lang="ru" aria-pressed="false">RU</button>
-        <span class="lang-switcher__sep" aria-hidden="true">·</span>
-        <button class="lang-switcher__btn" type="button" data-lang="de" aria-pressed="false">DE</button>
-      </div>
+    <div class="container header__top">
+      <div class="header__controls">
+        <div class="lang-switcher" role="group" data-i18n="langSwitcher.label" data-i18n-attr="aria-label">
+          <button class="lang-switcher__btn lang-switcher__btn--active" type="button" data-lang="en" aria-pressed="true">EN</button>
+          <span class="lang-switcher__sep" aria-hidden="true">·</span>
+          <button class="lang-switcher__btn" type="button" data-lang="ru" aria-pressed="false">RU</button>
+          <span class="lang-switcher__sep" aria-hidden="true">·</span>
+          <button class="lang-switcher__btn" type="button" data-lang="de" aria-pressed="false">DE</button>
+        </div>
 
-      <a class="header__logo" href="/" data-scroll-to="hero" data-i18n="brand.name">Mora</a>
+        <nav class="header__nav--horizontal" data-i18n="nav.label" data-i18n-attr="aria-label">
+          <ul class="header__nav-list">
+            <li><a class="header__nav-link" href="/" data-page="about" data-i18n="nav.about">About</a></li>
+            <li><a class="header__nav-link" href="/" data-page="services" data-i18n="nav.services">Services</a></li>
+            <li><a class="header__nav-link" href="/" data-page="projects" data-i18n="nav.projects">Projects</a></li>
+            <li><a class="header__nav-link" href="/" data-page="process" data-i18n="nav.process">Process</a></li>
+            <li><a class="header__nav-link" href="/" data-page="contact" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
 
       <button class="header__burger" type="button" data-i18n="drawer.openMenu" data-i18n-attr="aria-label" aria-expanded="false" aria-controls="mobile-drawer">
         <svg class="header__burger-icon header__burger-icon--open" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
@@ -55,15 +65,9 @@
       </button>
     </div>
 
-    <nav class="header__nav--vertical" data-i18n="nav.label" data-i18n-attr="aria-label">
-      <ul class="header__nav-list">
-        <li><a class="header__nav-link" href="/" data-scroll-to="about" data-i18n="nav.about">About</a></li>
-        <li><a class="header__nav-link" href="/" data-scroll-to="services" data-i18n="nav.services">Services</a></li>
-        <li><a class="header__nav-link" href="/" data-scroll-to="projects" data-i18n="nav.projects">Projects</a></li>
-        <li><a class="header__nav-link" href="/" data-scroll-to="process" data-i18n="nav.process">Process</a></li>
-        <li><a class="header__nav-link" href="/" data-scroll-to="contact" data-i18n="nav.contact">Contact</a></li>
-      </ul>
-    </nav>
+    <div class="container header__inner">
+      <a class="header__logo" href="/" data-page="hero" data-i18n="brand.name">Mora</a>
+    </div>
 
     <div class="header__drawer" id="mobile-drawer" aria-hidden="true">
       <div class="header__drawer-backdrop" data-drawer-close></div>
@@ -77,11 +81,11 @@
         </div>
         <nav data-i18n="nav.mobileLabel" data-i18n-attr="aria-label">
           <ul class="header__drawer-list">
-            <li><a class="header__drawer-link" href="/" data-scroll-to="about" data-i18n="nav.about">About</a></li>
-            <li><a class="header__drawer-link" href="/" data-scroll-to="services" data-i18n="nav.services">Services</a></li>
-            <li><a class="header__drawer-link" href="/" data-scroll-to="projects" data-i18n="nav.projects">Projects</a></li>
-            <li><a class="header__drawer-link" href="/" data-scroll-to="process" data-i18n="nav.process">Process</a></li>
-            <li><a class="header__drawer-link" href="/" data-scroll-to="contact" data-i18n="nav.contact">Contact</a></li>
+            <li><a class="header__drawer-link" href="/" data-page="about" data-i18n="nav.about">About</a></li>
+            <li><a class="header__drawer-link" href="/" data-page="services" data-i18n="nav.services">Services</a></li>
+            <li><a class="header__drawer-link" href="/" data-page="projects" data-i18n="nav.projects">Projects</a></li>
+            <li><a class="header__drawer-link" href="/" data-page="process" data-i18n="nav.process">Process</a></li>
+            <li><a class="header__drawer-link" href="/" data-page="contact" data-i18n="nav.contact">Contact</a></li>
           </ul>
         </nav>
         <div class="header__drawer-contact">
@@ -103,7 +107,7 @@
   </header>
 
   <main id="main">
-    <section class="section section--hero" id="hero" aria-labelledby="hero-title">
+    <section class="section section--hero page-view is-active" id="hero" aria-labelledby="hero-title">
       <div class="container">
         <div class="hero__grid">
           <div class="hero__content">
@@ -122,7 +126,7 @@
                 </svg>
                 <span data-i18n="cta.whatsapp">Message on WhatsApp</span>
               </a>
-              <a class="btn btn--ghost" href="/" data-scroll-to="projects">
+              <a class="btn btn--ghost" href="/" data-page="projects">
                 <span data-i18n="hero.ctaSecondary">View projects</span>
                 <svg class="btn__arrow" aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M5 12h14M13 6l6 6-6 6"/>
@@ -166,7 +170,7 @@
       </div>
     </section>
 
-    <section class="section section--alt" id="about" aria-labelledby="about-title">
+    <section class="section section--alt page-view" id="about" aria-labelledby="about-title" aria-hidden="true">
       <div class="container">
         <div class="about__grid">
           <div class="about__content">
@@ -175,7 +179,7 @@
               <p class="section-header__subtitle" data-i18n="about.subtitle">The person behind Mora</p>
             </div>
             <p class="about__text" data-i18n="about.text">I'm Kirill — a solo developer helping small businesses with spreadsheets, desktop tools, and websites. No agency or middlemen: you message me directly, I build the tool, and we refine it until it fits your workflow.</p>
-            <a class="btn btn--ghost about__cta" href="/" data-scroll-to="contact">
+            <a class="btn btn--ghost about__cta" href="/" data-page="contact">
               <span data-i18n="about.cta">Write to me</span>
               <svg class="btn__arrow" aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M5 12h14M13 6l6 6-6 6"/>
@@ -202,7 +206,7 @@
       </div>
     </section>
 
-    <section class="section" id="services" aria-labelledby="services-title">
+    <section class="section page-view" id="services" aria-labelledby="services-title" aria-hidden="true">
       <div class="container">
         <div class="section-header">
           <h2 class="section-header__title" id="services-title" data-i18n="services.title">Services</h2>
@@ -272,7 +276,7 @@
       </div>
     </section>
 
-    <section class="section section--alt" id="projects" aria-labelledby="projects-title">
+    <section class="section section--alt page-view" id="projects" aria-labelledby="projects-title" aria-hidden="true">
       <div class="container">
         <div class="section-header">
           <h2 class="section-header__title" id="projects-title" data-i18n="projects.title">Projects</h2>
@@ -378,7 +382,7 @@
       </div>
     </section>
 
-    <section class="section" id="process" aria-labelledby="process-title">
+    <section class="section page-view" id="process" aria-labelledby="process-title" aria-hidden="true">
       <div class="container">
         <div class="section-header">
           <h2 class="section-header__title" id="process-title" data-i18n="process.title">How I work</h2>
@@ -412,7 +416,7 @@
       </div>
     </section>
 
-    <section class="section section--alt" id="contact" aria-labelledby="contact-title">
+    <section class="section section--alt page-view" id="contact" aria-labelledby="contact-title" aria-hidden="true">
       <div class="container">
         <div class="section-header">
           <h2 class="section-header__title" id="contact-title" data-i18n="contact.title">Get in touch</h2>
@@ -483,7 +487,7 @@
     <p class="toast__message" data-i18n="toast.success">Thank you! I'll get back to you soon.</p>
   </div>
 
-  <script src="js/lead-config.js?v=16"></script>
-  <script src="js/main.js?v=16"></script>
+  <script src="js/lead-config.js?v=17"></script>
+  <script src="js/main.js?v=17"></script>
 </body>
 </html>

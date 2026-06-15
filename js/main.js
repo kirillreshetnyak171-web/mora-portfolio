@@ -3,7 +3,10 @@
 
   var LANGS = ['en', 'ru', 'de'];
   var STORAGE_KEY = 'portfolio-lang';
+  var PAGE_STORAGE_KEY = 'portfolio-page';
   var DEFAULT_LANG = 'en';
+  var DEFAULT_PAGE = 'hero';
+  var PAGE_IDS = ['hero', 'about', 'services', 'projects', 'process', 'contact'];
 
   // Contacts: set WhatsApp as digits only — country code + number (e.g. 491701234567)
   var SITE_CONTACT = {
@@ -258,12 +261,14 @@
   var contactForm = document.getElementById('contact-form');
   var toast = document.getElementById('toast');
   var navLinks = document.querySelectorAll('.header__nav-link, .header__drawer-link');
-  var sections = document.querySelectorAll('section[id]');
+  var pageViews = document.querySelectorAll('.page-view');
+  var pageLinks = document.querySelectorAll('[data-page]');
   var backToTop = document.getElementById('back-to-top');
   var langButtons = document.querySelectorAll('.lang-switcher__btn');
   var langSwitchers = document.querySelectorAll('.lang-switcher');
 
   var toastTimer = null;
+  var currentPage = DEFAULT_PAGE;
 
   function initContactLinks() {
     var telegramUrl = SITE_CONTACT.telegram;
@@ -373,8 +378,7 @@
 
   if (backToTop) {
     backToTop.addEventListener('click', function () {
-      var hero = document.getElementById('hero');
-      if (hero) smoothScrollTo(hero);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
 
@@ -427,69 +431,92 @@
   });
 
   /* ------------------------------------------------------------------
-     In-page scroll without hash in URL
+     Page views — switch content instead of scroll
      ------------------------------------------------------------------ */
-  function smoothScrollTo(target) {
-    var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var top = target.getBoundingClientRect().top + window.scrollY - 72;
-
-    window.scrollTo({
-      top: top,
-      behavior: prefersReduced ? 'auto' : 'smooth'
-    });
+  function isValidPage(pageId) {
+    return PAGE_IDS.indexOf(pageId) !== -1;
   }
 
-  function scrollToSectionId(id) {
-    var target = document.getElementById(id);
-    if (!target) return;
-    smoothScrollTo(target);
-  }
-
-  document.querySelectorAll('[data-scroll-to]').forEach(function (link) {
-    link.addEventListener('click', function (e) {
-      var id = link.getAttribute('data-scroll-to');
-      if (!id) return;
-
-      e.preventDefault();
-      scrollToSectionId(id);
-
-      if (drawer && drawer.classList.contains('is-open')) {
-        closeDrawer();
-      }
-    });
-  });
-
-  if (window.location.hash) {
-    var legacyId = window.location.hash.slice(1);
-    if (legacyId) {
-      scrollToSectionId(legacyId);
-    }
-    if (history.replaceState) {
-      history.replaceState(null, '', window.location.pathname + window.location.search);
-    }
-  }
-
-  /* ------------------------------------------------------------------
-     Active nav link highlighting
-     ------------------------------------------------------------------ */
-  function updateActiveNav() {
-    var scrollPos = window.scrollY + 100;
-    var current = '';
-
-    sections.forEach(function (section) {
-      if (section.offsetTop <= scrollPos) {
-        current = section.getAttribute('id');
-      }
-    });
-
+  function updateActiveNav(pageId) {
     navLinks.forEach(function (link) {
-      var targetId = link.getAttribute('data-scroll-to');
-      link.classList.toggle('is-active', targetId === current);
+      var targetId = link.getAttribute('data-page');
+      link.classList.toggle('is-active', targetId === pageId);
     });
   }
 
-  window.addEventListener('scroll', updateActiveNav, { passive: true });
-  updateActiveNav();
+  function updatePageUrl(pageId) {
+    if (!history.replaceState) return;
+    var path = window.location.pathname + window.location.search;
+    var nextUrl = pageId === DEFAULT_PAGE ? path : path + '#' + pageId;
+    history.replaceState({ page: pageId }, '', nextUrl);
+  }
+
+  function setActivePage(pageId, options) {
+    options = options || {};
+    if (!isValidPage(pageId)) pageId = DEFAULT_PAGE;
+
+    currentPage = pageId;
+
+    pageViews.forEach(function (page) {
+      var isActive = page.id === pageId;
+      page.classList.toggle('is-active', isActive);
+      page.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+    });
+
+    updateActiveNav(pageId);
+
+    if (!options.skipScroll) {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+
+    if (!options.skipUrl) {
+      updatePageUrl(pageId);
+    }
+
+    try {
+      localStorage.setItem(PAGE_STORAGE_KEY, pageId);
+    } catch (e) { /* ignore */ }
+  }
+
+  function initPageRouting() {
+    var initialPage = DEFAULT_PAGE;
+    var hashPage = window.location.hash ? window.location.hash.slice(1) : '';
+
+    if (hashPage && isValidPage(hashPage)) {
+      initialPage = hashPage;
+    } else {
+      try {
+        var storedPage = localStorage.getItem(PAGE_STORAGE_KEY);
+        if (storedPage && isValidPage(storedPage)) {
+          initialPage = storedPage;
+        }
+      } catch (e) { /* ignore */ }
+    }
+
+    setActivePage(initialPage, { skipUrl: Boolean(hashPage) });
+
+    pageLinks.forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        var pageId = link.getAttribute('data-page');
+        if (!pageId || !isValidPage(pageId)) return;
+
+        e.preventDefault();
+        setActivePage(pageId);
+
+        if (drawer && drawer.classList.contains('is-open')) {
+          closeDrawer();
+        }
+      });
+    });
+
+    window.addEventListener('popstate', function () {
+      var pageFromHash = window.location.hash ? window.location.hash.slice(1) : DEFAULT_PAGE;
+      if (!isValidPage(pageFromHash)) pageFromHash = DEFAULT_PAGE;
+      setActivePage(pageFromHash, { skipUrl: true });
+    });
+  }
+
+  initPageRouting();
 
   /* ------------------------------------------------------------------
      Contact form → Telegram (via LEAD_CONFIG.webhookUrl)

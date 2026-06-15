@@ -197,10 +197,17 @@ body.drawer-open {
   overflow: hidden;
 }
 
-@media (min-width: 1024px) {
-  main {
-    padding-right: var(--nav-rail-width);
-  }
+/* Page views: one section visible at a time */
+main > .page-view {
+  display: none;
+}
+
+main > .page-view.is-active {
+  display: block;
+}
+
+main > .section--hero.page-view.is-active {
+  display: flex;
 }
 
 img,
@@ -455,12 +462,27 @@ textarea {
   box-shadow: var(--shadow-header-scrolled);
 }
 
-.header__inner {
+.header__top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 64px;
+  min-height: 48px;
   gap: var(--space-4);
+  border-bottom: var(--border-width) solid var(--border-subtle);
+}
+
+.header__controls {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-4) var(--space-6);
+  min-width: 0;
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  min-height: 56px;
 }
 
 .header__logo {
@@ -477,7 +499,7 @@ textarea {
   color: var(--color-accent);
 }
 
-.header__nav--vertical {
+.header__nav--horizontal {
   display: none;
 }
 
@@ -584,25 +606,20 @@ textarea {
   margin-top: var(--space-8);
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .header__burger {
     display: none;
   }
 
-  .header__nav--vertical {
+  .header__nav--horizontal {
     display: block;
-    position: fixed;
-    right: var(--space-8);
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: var(--z-header);
   }
 
   .header__nav-list {
     display: flex;
-    flex-direction: column;
-    gap: var(--space-5);
-    align-items: flex-end;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2) var(--space-5);
   }
 
   .header__nav-link {
@@ -611,8 +628,12 @@ textarea {
     letter-spacing: var(--tracking-wide);
     text-transform: uppercase;
     color: var(--text-muted);
-    padding: var(--space-2) 0;
+    padding: var(--space-2) var(--space-1);
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
     transition: var(--transition-colors);
+    white-space: nowrap;
   }
 
   .header__nav-link:hover,
@@ -622,6 +643,15 @@ textarea {
 
   .header__nav-link.is-active {
     color: var(--color-accent);
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent);
+    text-underline-offset: 4px;
+  }
+}
+
+@media (max-width: 767px) {
+  .header__nav--horizontal {
+    display: none;
   }
 }
 
@@ -1396,6 +1426,6 @@ textarea.form-field__input {
 
 @media (min-width: 1024px) {
   .back-to-top {
-    right: calc(var(--nav-rail-width) + var(--space-8));
+    right: var(--space-8);
   }
 }
