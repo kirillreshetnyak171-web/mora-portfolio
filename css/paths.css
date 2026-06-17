@@ -6,9 +6,8 @@
 }
 
 .site-paths .header.header--scrolled {
-  background-color: rgba(0, 0, 0, 0.92);
+  background-color: rgba(0, 0, 0, 0.96);
   box-shadow: var(--shadow-header-scrolled);
-  backdrop-filter: blur(10px);
 }
 
 .section-paths__bg {
@@ -17,11 +16,13 @@
   pointer-events: none;
   z-index: 0;
   overflow: hidden;
+  contain: strict;
 }
 
 .paths-layer {
   position: absolute;
   inset: 0;
+  transform: translateZ(0);
 }
 
 .paths-layer svg {
@@ -51,6 +52,20 @@
   0%   { stroke-dashoffset: 0; opacity: 0.25; }
   50%  { opacity: 0.55; }
   100% { stroke-dashoffset: -1200; opacity: 0.25; }
+}
+
+/* Desktop: opacity only — stroke-dashoffset on 70+ paths tanks MacBook GPU */
+.paths--lite .paths-layer path {
+  animation-name: path-drift-lite;
+}
+
+@keyframes path-drift-lite {
+  0%, 100% { opacity: 0.28; }
+  50%      { opacity: 0.55; }
+}
+
+.paths--paused .paths-layer path {
+  animation-play-state: paused;
 }
 
 .site-paths .section--hero-paths {
