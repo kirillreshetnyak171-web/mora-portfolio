@@ -13,49 +13,21 @@ cp js/lead-config.example.js js/lead-config.local.js
 
 ## Прод (GitHub Pages + secret)
 
-1. GitHub → **moralabs171/mora-portfolio** → Settings → Secrets → Actions → `LEAD_WEBHOOK_URL`
-2. Settings → Pages → Source: **GitHub Actions**
-3. Добавь workflow `.github/workflows/deploy-pages.yml` (через веб-интерфейс GitHub или push с токеном `workflow` scope):
+1. **Google Apps Script** — `scripts/google-apps-script-lead-relay.gs`  
+   Script properties: `BOT_TOKEN`, `CHAT_ID` → Deploy Web app → скопируй URL
+2. GitHub → **kirillreshetnyak171-web/mora-portfolio** → Settings → Secrets → Actions → `LEAD_WEBHOOK_URL`
+3. Settings → Pages → Source: **GitHub Actions**
+4. Push в `main` — workflow `.github/workflows/deploy-pages.yml` подставит webhook в `js/lead-config.js`
 
-```yaml
-name: Deploy GitHub Pages
-on:
-  push:
-    branches: [main]
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - uses: actions/checkout@v4
-      - name: Inject lead webhook
-        if: ${{ secrets.LEAD_WEBHOOK_URL != '' }}
-        env:
-          LEAD_WEBHOOK_URL: ${{ secrets.LEAD_WEBHOOK_URL }}
-        run: |
-          python3 <<'PY'
-          import json, os, pathlib
-          pathlib.Path("js/lead-config.js").write_text(
-              "window.LEAD_CONFIG = " + json.dumps({
-                  "webhookUrl": os.environ["LEAD_WEBHOOK_URL"],
-                  "enabled": True,
-              }) + ";\n",
-              encoding="utf-8",
-          )
-          PY
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: .
-      - id: deployment
-        uses: actions/deploy-pages@v4
-```
+## Cookies & Analytics
+
+- Баннер: `js/cookie-consent.js` — Analytics только после «Alle akzeptieren»
+- GA ID: `js/analytics-config.js`
+- Datenschutz: `/datenschutz.html`
+
+## Impressum
+
+Правовые данные: `js/legal-config.js` — **Straße, PLZ, Ort, Nachname** перед публикацией ausfüllen.
 
 ## Старый GAS webhook
 

@@ -77,12 +77,17 @@
       'form.message': 'Message',
       'form.submit': 'Send request',
       'form.sending': 'Sending…',
-      'form.notice': 'Form temporarily off — message us on Telegram or WhatsApp.',
+      'form.notice': 'You can also message us directly on Telegram or WhatsApp.',
+      'form.privacyPrefix': 'I agree to the processing of my data according to the',
+      'form.consentRequired': 'Please confirm the privacy policy checkbox.',
       'form.disabled': 'Form is temporarily disabled.',
       'form.error': 'Could not send. Message us on Telegram or WhatsApp.',
       'form.notConfigured': 'Form is not connected yet — use Telegram or WhatsApp.',
       'toast.success': "Thank you! I'll get back to you soon.",
-      'footer.copy': '© 2026 Mora'
+      'footer.copy': '© 2026 Mora',
+      'footer.impressum': 'Legal notice',
+      'footer.privacy': 'Privacy Policy',
+      'footer.cookies': 'Cookies'
     },
     ru: {
       'meta.title': 'Mora — Автоматизация и сайты',
@@ -149,12 +154,17 @@
       'form.message': 'Сообщение',
       'form.submit': 'Отправить заявку',
       'form.sending': 'Отправка…',
-      'form.notice': 'Форма временно отключена — напишите в Telegram или WhatsApp.',
+      'form.notice': 'Или напишите напрямую в Telegram или WhatsApp.',
+      'form.privacyPrefix': 'Согласен(на) на обработку данных согласно',
+      'form.consentRequired': 'Отметьте согласие с политикой конфиденциальности.',
       'form.disabled': 'Форма временно отключена.',
       'form.error': 'Не удалось отправить. Напишите в Telegram или WhatsApp.',
       'form.notConfigured': 'Форма ещё не подключена — напишите в Telegram или WhatsApp.',
       'toast.success': 'Спасибо! Свяжусь с вами в ближайшее время.',
-      'footer.copy': '© 2026 Mora'
+      'footer.copy': '© 2026 Mora',
+      'footer.impressum': 'Правовая информация',
+      'footer.privacy': 'политике конфиденциальности',
+      'footer.cookies': 'Cookies'
     },
     de: {
       'meta.title': 'Mora — Automatisierung & Websites',
@@ -221,12 +231,17 @@
       'form.message': 'Nachricht',
       'form.submit': 'Anfrage senden',
       'form.sending': 'Wird gesendet…',
-      'form.notice': 'Formular vorübergehend aus — bitte Telegram oder WhatsApp.',
+      'form.notice': 'Oder schreiben Sie direkt auf Telegram oder WhatsApp.',
+      'form.privacyPrefix': 'Ich willige in die Verarbeitung meiner Daten gemäß der',
+      'form.consentRequired': 'Bitte bestätigen Sie die Datenschutzerklärung.',
       'form.disabled': 'Formular vorübergehend deaktiviert.',
       'form.error': 'Senden fehlgeschlagen. Schreiben Sie auf Telegram oder WhatsApp.',
       'form.notConfigured': 'Formular noch nicht verbunden — bitte Telegram oder WhatsApp.',
       'toast.success': 'Danke! Ich melde mich in Kürze.',
-      'footer.copy': '© 2026 Mora'
+      'footer.copy': '© 2026 Mora',
+      'footer.impressum': 'Impressum',
+      'footer.privacy': 'Datenschutzerklärung',
+      'footer.cookies': 'Cookies'
     }
   };
 
@@ -310,6 +325,8 @@
     try {
       localStorage.setItem(STORAGE_KEY, lang);
     } catch (e) { /* ignore */ }
+
+    window.dispatchEvent(new CustomEvent('portfolio-lang-changed', { detail: { lang: lang } }));
   }
 
   function initLanguage() {
@@ -586,6 +603,12 @@
         return;
       }
       clearFieldErrors(contactForm);
+
+      var privacy = contactForm.querySelector('#contact-privacy');
+      if (privacy && !privacy.checked) {
+        showToast('form.consentRequired', true);
+        return;
+      }
 
       var valid = contactForm.checkValidity();
       if (!valid) {

@@ -1,27 +1,34 @@
 (function () {
   'use strict';
 
-  var cfg = window.ANALYTICS_CONFIG || {};
-  if (cfg.enabled === false) return;
+  var loaded = false;
 
-  var measurementId = String(cfg.measurementId || '').trim();
-  if (!measurementId || !/^G-[A-Z0-9]+$/i.test(measurementId)) return;
+  window.initMoraAnalytics = function initMoraAnalytics() {
+    if (loaded) return;
 
-  window.dataLayer = window.dataLayer || [];
+    var cfg = window.ANALYTICS_CONFIG || {};
+    if (cfg.enabled === false) return;
 
-  function gtag() {
-    window.dataLayer.push(arguments);
-  }
+    var measurementId = String(cfg.measurementId || '').trim();
+    if (!measurementId || !/^G-[A-Z0-9]+$/i.test(measurementId)) return;
 
-  window.gtag = gtag;
-  gtag('js', new Date());
-  gtag('config', measurementId, {
-    anonymize_ip: true,
-    send_page_view: true
-  });
+    loaded = true;
+    window.dataLayer = window.dataLayer || [];
 
-  var script = document.createElement('script');
-  script.async = true;
-  script.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(measurementId);
-  document.head.appendChild(script);
+    function gtag() {
+      window.dataLayer.push(arguments);
+    }
+
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', measurementId, {
+      anonymize_ip: true,
+      send_page_view: true
+    });
+
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(measurementId);
+    document.head.appendChild(script);
+  };
 })();
