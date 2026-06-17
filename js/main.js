@@ -85,7 +85,6 @@
       'form.notConfigured': 'Form is not connected yet — use Telegram or WhatsApp.',
       'toast.success': "Thank you! I'll get back to you soon.",
       'footer.copy': '© 2026 Mora',
-      'footer.impressum': 'Legal notice',
       'footer.privacy': 'Privacy Policy',
       'footer.cookies': 'Cookies'
     },
@@ -162,7 +161,6 @@
       'form.notConfigured': 'Форма ещё не подключена — напишите в Telegram или WhatsApp.',
       'toast.success': 'Спасибо! Свяжусь с вами в ближайшее время.',
       'footer.copy': '© 2026 Mora',
-      'footer.impressum': 'Правовая информация',
       'footer.privacy': 'политике конфиденциальности',
       'footer.cookies': 'Cookies'
     },
@@ -239,7 +237,6 @@
       'form.notConfigured': 'Formular noch nicht verbunden — bitte Telegram oder WhatsApp.',
       'toast.success': 'Danke! Ich melde mich in Kürze.',
       'footer.copy': '© 2026 Mora',
-      'footer.impressum': 'Impressum',
       'footer.privacy': 'Datenschutzerklärung',
       'footer.cookies': 'Cookies'
     }
