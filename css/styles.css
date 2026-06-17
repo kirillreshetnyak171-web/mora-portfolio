@@ -1388,11 +1388,11 @@ textarea.form-field__input {
 
 @media (min-width: 1024px) {
   .back-to-top {
-    right: calc(var(--nav-rail-width) + var(--space-8));
+    right: var(--space-8);
   }
 
   .footer__inner {
-    padding-inline-end: 0;
+    padding-inline-end: calc(44px + var(--space-8) + var(--space-4));
   }
 }
 
