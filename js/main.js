@@ -5,230 +5,47 @@
   var STORAGE_KEY = 'portfolio-lang';
   var DEFAULT_LANG = 'en';
 
-  // Contacts: set WhatsApp as digits only — country code + number (e.g. 491701234567)
   var SITE_CONTACT = {
     telegram: 'https://t.me/qwe171qw',
     whatsapp: '491603203111'
   };
 
-  var translations = {
-    en: {
-      'meta.title': 'Mora — Automation & websites',
-      'meta.description': 'Mora — automation and websites for small business',
-      'nav.services': 'Services',
-      'nav.projects': 'Projects',
-      'nav.process': 'Process',
-      'nav.contact': 'Contact',
-      'cta.telegram': 'Message on Telegram',
-      'cta.whatsapp': 'Message on WhatsApp',
-      'skipLink': 'Skip to content',
-      'sidebar.messageMe': 'message me',
-      'backToTop': 'Back to top',
-      'langSwitcher.label': 'Language',
-      'drawer.openMenu': 'Open menu',
-      'drawer.closeMenu': 'Close menu',
-      'nav.label': 'Main navigation',
-      'nav.mobileLabel': 'Mobile navigation',
-      'brand.name': 'Mora',
-      'hero.subtitle': 'Automation and websites for small business — spreadsheets, desktop tools, landing pages',
-      'hero.ctaSecondary': 'View projects',
-      'services.title': 'Services',
-      'services.subtitle': 'What we build for your business',
-      'services.1.title': 'Excel & CSV processing',
-      'services.1.text': 'Import, clean, merge spreadsheets. Reports without manual hassle.',
-      'services.2.title': 'AI spreadsheet assistant',
-      'services.2.text': 'Desktop on Mac: open Excel/CSV, pick a template or describe the task — AI draft, you review and save.',
-      'services.3.title': 'Website development',
-      'services.3.text': 'Landing pages and business sites — fast, responsive, ready to host on GitHub Pages or your domain.',
-      'services.4.title': 'Custom desktop apps',
-      'services.4.text': 'Windows/macOS tools tailored to your workflow, nothing extra.',
-      'services.5.title': 'Integrations & bots',
-      'services.5.text': 'Telegram bots, webhooks, connections between your services.',
-      'projects.title': 'Projects',
-      'projects.subtitle': "Examples of what I've built",
-      'projects.label.task': 'Task',
-      'projects.label.solution': 'Solution',
-      'projects.label.result': 'Result',
-      'projects.1.badge': 'Pet project / Demo',
-      'projects.1.title': 'Smart Assistant',
-      'projects.1.task': 'Excel and CSV tasks eat up hours — sorting rows, cleaning data, preparing drafts by hand.',
-      'projects.1.solution': 'Desktop app: upload a spreadsheet, pick a template or describe the task — AI suggests a draft, you review and save.',
-      'projects.1.result': 'A working draft in minutes instead of repetitive manual work — the final decision stays with you.',
-      'projects.2.badge': 'Pet project v1.0',
-      'projects.2.title': 'SokraLog',
-      'projects.2.task': 'Studying warehouse logistics formulas (IHK)',
-      'projects.2.solution': 'Desktop app Python + Flet — formula reference, exam, Socratic method, RU/DE/EN',
-      'process.title': 'How I work',
-      'process.subtitle': 'From idea to working tool — fast and transparent',
-      'process.1.title': 'You message first',
-      'process.1.text': 'Describe your task in Telegram or WhatsApp — I read and ask follow-up questions',
-      'process.2.title': 'Scope',
-      'process.2.text': 'We write down what the outcome should be',
-      'process.3.title': 'First version in 3–5 days',
-      'process.3.text': 'A working first version — you open it and check it yourself',
-      'process.4.title': 'Iterations',
-      'process.4.text': 'Improvements based on your feedback',
-      'contact.title': 'Get in touch',
-      'contact.subtitle': "Describe your task — we'll reply on Telegram or WhatsApp",
-      'contact.heading': 'Do you have a task?',
-      'contact.lead': 'Fill out the form — the request goes straight to Telegram.',
-      'form.name': 'Name',
-      'form.contact': 'Email / Telegram',
-      'form.message': 'Message',
-      'form.submit': 'Send request',
-      'form.sending': 'Sending…',
-      'form.notice': 'Form temporarily off — message us on Telegram or WhatsApp.',
-      'form.disabled': 'Form is temporarily disabled.',
-      'form.error': 'Could not send. Message us on Telegram or WhatsApp.',
-      'form.notConfigured': 'Form is not connected yet — use Telegram or WhatsApp.',
-      'toast.success': "Thank you! I'll get back to you soon.",
-      'footer.copy': '© 2026 Mora'
-    },
-    ru: {
-      'meta.title': 'Mora — Автоматизация и сайты',
-      'meta.description': 'Mora — автоматизация и сайты для малого бизнеса',
-      'nav.services': 'Услуги',
-      'nav.projects': 'Проекты',
-      'nav.process': 'Как работаю',
-      'nav.contact': 'Контакты',
-      'cta.telegram': 'Написать в Telegram',
-      'cta.whatsapp': 'Написать в WhatsApp',
-      'skipLink': 'Перейти к содержимому',
-      'sidebar.messageMe': 'напишите мне',
-      'backToTop': 'Наверх',
-      'langSwitcher.label': 'Язык',
-      'drawer.openMenu': 'Открыть меню',
-      'drawer.closeMenu': 'Закрыть меню',
-      'nav.label': 'Основная навигация',
-      'nav.mobileLabel': 'Мобильная навигация',
-      'brand.name': 'Mora',
-      'hero.subtitle': 'Автоматизация и сайты для малого бизнеса — таблицы, десктоп-инструменты, лендинги',
-      'hero.ctaSecondary': 'Смотреть проекты',
-      'services.title': 'Услуги',
-      'services.subtitle': 'Что делаем для вашего бизнеса',
-      'services.1.title': 'Обработка Excel и CSV',
-      'services.1.text': 'Загрузка, очистка, объединение таблиц. Отчёты без ручной возни.',
-      'services.2.title': 'Умная обработка Excel/CSV',
-      'services.2.text': 'Десктоп на Mac: открыл таблицу, шаблон или своя задача — ИИ черновик, вы проверяете и сохраняете.',
-      'services.3.title': 'Разработка сайтов',
-      'services.3.text': 'Лендинги и сайты для бизнеса — быстро, адаптивно, можно на GitHub Pages или ваш домен.',
-      'services.4.title': 'Десктоп-приложения под задачу',
-      'services.4.text': 'Программы под Windows/macOS для вашего процесса, без лишнего.',
-      'services.5.title': 'Связка сервисов и ботов',
-      'services.5.text': "Telegram-боты, webhook'и, интеграции между сервисами.",
-      'projects.title': 'Проекты',
-      'projects.subtitle': 'Примеры того, что уже делал',
-      'projects.label.task': 'Задача',
-      'projects.label.solution': 'Решение',
-      'projects.label.result': 'Результат',
-      'projects.1.badge': 'Pet project / Demo',
-      'projects.1.title': 'Smart Assistant',
-      'projects.1.task': 'Задачи в Excel и CSV отнимают часы — сортировка, очистка данных, черновики вручную.',
-      'projects.1.solution': 'Программа на компьютер: загружаете таблицу, выбираете шаблон или описываете задачу — ИИ предлагает черновик, вы проверяете и сохраняете.',
-      'projects.1.result': 'Готовый черновик за минуты вместо рутины — финальное решение остаётся за вами.',
-      'projects.2.badge': 'Pet project v1.0',
-      'projects.2.title': 'SokraLog',
-      'projects.2.task': 'Учёба по формулам складской логистики IHK',
-      'projects.2.solution': 'Десктоп-приложение Python + Flet — справочник формул, экзамен, метод Сократа, RU/DE/EN',
-      'process.title': 'Как работаю',
-      'process.subtitle': 'От идеи до рабочего инструмента — быстро и прозрачно',
-      'process.1.title': 'Вы пишете первым',
-      'process.1.text': 'Описываете задачу в Telegram или WhatsApp — я читаю и задаю уточняющие вопросы',
-      'process.2.title': 'Фиксируем задачу',
-      'process.2.text': 'Прописываем, что должно получиться',
-      'process.3.title': 'Первая версия за 3–5 дней',
-      'process.3.text': 'Первая рабочая версия — открываете и проверяете сами',
-      'process.4.title': 'Доработки',
-      'process.4.text': 'Улучшаем по вашей обратной связи',
-      'contact.title': 'Связаться',
-      'contact.subtitle': 'Опишите задачу — ответим в Telegram или WhatsApp',
-      'contact.heading': 'Есть задача?',
-      'contact.lead': 'Заполните форму — заявка сразу придёт в Telegram.',
-      'form.name': 'Имя',
-      'form.contact': 'Email / Telegram',
-      'form.message': 'Сообщение',
-      'form.submit': 'Отправить заявку',
-      'form.sending': 'Отправка…',
-      'form.notice': 'Форма временно отключена — напишите в Telegram или WhatsApp.',
-      'form.disabled': 'Форма временно отключена.',
-      'form.error': 'Не удалось отправить. Напишите в Telegram или WhatsApp.',
-      'form.notConfigured': 'Форма ещё не подключена — напишите в Telegram или WhatsApp.',
-      'toast.success': 'Спасибо! Свяжусь с вами в ближайшее время.',
-      'footer.copy': '© 2026 Mora'
-    },
-    de: {
-      'meta.title': 'Mora — Automatisierung & Websites',
-      'meta.description': 'Mora — Automatisierung und Websites für kleine Unternehmen',
-      'nav.services': 'Leistungen',
-      'nav.projects': 'Projekte',
-      'nav.process': 'Ablauf',
-      'nav.contact': 'Kontakt',
-      'cta.telegram': 'Nachricht auf Telegram',
-      'cta.whatsapp': 'Nachricht auf WhatsApp',
-      'skipLink': 'Zum Inhalt springen',
-      'sidebar.messageMe': 'schreib mir',
-      'backToTop': 'Nach oben',
-      'langSwitcher.label': 'Sprache',
-      'drawer.openMenu': 'Menü öffnen',
-      'drawer.closeMenu': 'Menü schließen',
-      'nav.label': 'Hauptnavigation',
-      'nav.mobileLabel': 'Mobile Navigation',
-      'brand.name': 'Mora',
-      'hero.subtitle': 'Automatisierung und Websites für kleine Unternehmen — Tabellen, Desktop-Tools, Landingpages',
-      'hero.ctaSecondary': 'Projekte ansehen',
-      'services.title': 'Leistungen',
-      'services.subtitle': 'Was wir für Ihr Unternehmen bauen',
-      'services.1.title': 'Excel- & CSV-Verarbeitung',
-      'services.1.text': 'Import, Bereinigung, Zusammenführung von Tabellen. Berichte ohne manuellen Aufwand.',
-      'services.2.title': 'KI-Tabellenassistent',
-      'services.2.text': 'Desktop auf dem Mac: Excel/CSV öffnen, Vorlage oder eigene Aufgabe — KI-Entwurf, Sie prüfen und speichern.',
-      'services.3.title': 'Website-Entwicklung',
-      'services.3.text': 'Landingpages und Business-Websites — schnell, responsiv, bereit für GitHub Pages oder Ihre Domain.',
-      'services.4.title': 'Desktop-Apps nach Maß',
-      'services.4.text': 'Windows/macOS-Tools für Ihren Prozess, ohne Schnickschnack.',
-      'services.5.title': 'Integrationen & Bots',
-      'services.5.text': 'Telegram-Bots, Webhooks, Verbindungen zwischen Ihren Diensten.',
-      'projects.title': 'Projekte',
-      'projects.subtitle': 'Beispiele meiner Arbeit',
-      'projects.label.task': 'Aufgabe',
-      'projects.label.solution': 'Lösung',
-      'projects.label.result': 'Ergebnis',
-      'projects.1.badge': 'Pet project / Demo',
-      'projects.1.title': 'Smart Assistant',
-      'projects.1.task': 'Excel- und CSV-Aufgaben kosten Stunden — Sortieren, Daten bereinigen, Entwürfe von Hand.',
-      'projects.1.solution': 'Desktop-Programm: Tabelle hochladen, Vorlage wählen oder Aufgabe beschreiben — KI schlägt einen Entwurf vor, Sie prüfen und speichern.',
-      'projects.1.result': 'Ein nutzbarer Entwurf in Minuten statt Routinearbeit — die finale Entscheidung bleibt bei Ihnen.',
-      'projects.2.badge': 'Pet project v1.0',
-      'projects.2.title': 'SokraLog',
-      'projects.2.task': 'Lernen von Lagerlogistik-Formeln (IHK)',
-      'projects.2.solution': 'Desktop-App Python + Flet — Formelsammlung, Prüfung, Sokrates-Methode, RU/DE/EN',
-      'process.title': 'So arbeite ich',
-      'process.subtitle': 'Von der Idee zum Tool — schnell und transparent',
-      'process.1.title': 'Sie schreiben zuerst',
-      'process.1.text': 'Beschreiben Sie Ihre Aufgabe per Telegram oder WhatsApp — ich lese mit und stelle Rückfragen',
-      'process.2.title': 'Aufgabe festhalten',
-      'process.2.text': 'Wir halten fest, was am Ende stehen soll',
-      'process.3.title': 'Erste Version in 3–5 Tagen',
-      'process.3.text': 'Eine funktionierende erste Version — Sie öffnen und prüfen sie selbst',
-      'process.4.title': 'Iterationen',
-      'process.4.text': 'Verbesserungen nach Ihrem Feedback',
-      'contact.title': 'Kontakt',
-      'contact.subtitle': 'Beschreiben Sie Ihre Aufgabe — wir antworten auf Telegram oder WhatsApp',
-      'contact.heading': 'Haben Sie eine Aufgabe?',
-      'contact.lead': 'Formular ausfüllen — die Anfrage geht direkt an Telegram.',
-      'form.name': 'Name',
-      'form.contact': 'E-Mail / Telegram',
-      'form.message': 'Nachricht',
-      'form.submit': 'Anfrage senden',
-      'form.sending': 'Wird gesendet…',
-      'form.notice': 'Formular vorübergehend aus — bitte Telegram oder WhatsApp.',
-      'form.disabled': 'Formular vorübergehend deaktiviert.',
-      'form.error': 'Senden fehlgeschlagen. Schreiben Sie auf Telegram oder WhatsApp.',
-      'form.notConfigured': 'Formular noch nicht verbunden — bitte Telegram oder WhatsApp.',
-      'toast.success': 'Danke! Ich melde mich in Kürze.',
-      'footer.copy': '© 2026 Mora'
-    }
-  };
+  var translations = { en: {}, ru: {}, de: {} };
+
+  function stringsListToTranslations(data) {
+    var result = { en: {}, ru: {}, de: {} };
+    if (!data || !data.items) return result;
+    data.items.forEach(function (item) {
+      if (!item || !item.key) return;
+      if (item.en !== undefined) result.en[item.key] = item.en;
+      if (item.ru !== undefined) result.ru[item.key] = item.ru;
+      if (item.de !== undefined) result.de[item.key] = item.de;
+    });
+    return result;
+  }
+
+  function loadSiteContent() {
+    return fetch('/content/site-strings.json?v=1')
+      .then(function (res) {
+        if (!res.ok) throw new Error('content');
+        return res.json();
+      })
+      .then(function (data) {
+        translations = stringsListToTranslations(data);
+        return fetch('/content/contacts.json?v=1');
+      })
+      .then(function (res) {
+        if (!res.ok) return null;
+        return res.json();
+      })
+      .then(function (contacts) {
+        if (contacts) {
+          if (contacts.telegram) SITE_CONTACT.telegram = contacts.telegram;
+          if (contacts.whatsapp) SITE_CONTACT.whatsapp = contacts.whatsapp;
+        }
+      })
+      .catch(function () { /* keep defaults */ });
+  }
 
   var currentLang = DEFAULT_LANG;
 
@@ -310,6 +127,10 @@
     try {
       localStorage.setItem(STORAGE_KEY, lang);
     } catch (e) { /* ignore */ }
+
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'language_change', { language: lang });
+    }
   }
 
   function initLanguage() {
@@ -620,6 +441,8 @@
     });
   }
 
-  initContactLinks();
-  initLanguage();
+  loadSiteContent().then(function () {
+    initContactLinks();
+    initLanguage();
+  });
 })();

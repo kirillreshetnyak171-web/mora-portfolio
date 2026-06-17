@@ -1,0 +1,14 @@
+.DS_Store
+Thumbs.db
+
+# Локальные секреты (webhook формы) — никогда не коммитить
+js/lead-config.local.js
+*.local.js
+.env
+.env.*
+
+# Черновики и CMS — только локально
+admin/
+content/
+preview/
+images/uploads/
