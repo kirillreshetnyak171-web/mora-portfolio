@@ -22,6 +22,7 @@
 .paths-layer {
   position: absolute;
   inset: 0;
+  contain: strict;
 }
 
 .paths-layer svg {
@@ -42,9 +43,13 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .paths-layer path {
+  .section-paths__bg.is-paths-visible .paths-layer path {
     animation: path-drift linear infinite;
   }
+}
+
+.section-paths__bg--static .paths-layer path {
+  animation: none !important;
 }
 
 @keyframes path-drift {
@@ -218,8 +223,7 @@
 .site-paths .service-card,
 .site-paths .case,
 .site-paths .contact__form {
-  background-color: rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(4px);
+  background-color: rgba(0, 0, 0, 0.35);
 }
 
 .site-paths .section--alt .service-card,

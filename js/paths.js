@@ -1,6 +1,22 @@
 (function () {
   'use strict';
 
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var saveData = navigator.connection && navigator.connection.saveData;
+  var lowPower = (navigator.hardwareConcurrency || 8) <= 4;
+
+  function shouldAnimateSection(bg) {
+    if (prefersReduced || saveData || lowPower) return false;
+    return bg.getAttribute('data-paths-animate') === 'true';
+  }
+
+  function scaleCount(requested, animate) {
+    var count = parseInt(requested, 10) || 12;
+    if (lowPower) count = Math.min(count, 10);
+    if (!animate) count = Math.min(count, 14);
+    return count;
+  }
+
   function buildPaths(position, count) {
     var paths = [];
     var i;
@@ -21,7 +37,7 @@
     return paths;
   }
 
-  function renderLayer(container, position, pathCount, delayStep) {
+  function renderLayer(container, position, pathCount, delayStep, animate) {
     if (!container || container.querySelector('svg')) return;
 
     var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -37,9 +53,11 @@
       el.setAttribute('d', path.d);
       el.setAttribute('stroke-width', String(path.width));
       el.setAttribute('stroke-opacity', String(path.opacity));
-      el.setAttribute('stroke-dasharray', '400 800');
-      el.style.animationDuration = path.duration + 's';
-      el.style.animationDelay = (id * delayStep) + 's';
+      if (animate) {
+        el.setAttribute('stroke-dasharray', '400 800');
+        el.style.animationDuration = path.duration + 's';
+        el.style.animationDelay = (id * delayStep) + 's';
+      }
       svg.appendChild(el);
     });
 
@@ -47,21 +65,49 @@
   }
 
   function initPathBackground(bg) {
-    var count = parseInt(bg.getAttribute('data-paths-count'), 10) || 18;
-    var withAlt = bg.getAttribute('data-paths-alt') === 'true';
+    var animate = shouldAnimateSection(bg);
+    var count = scaleCount(bg.getAttribute('data-paths-count'), animate);
+    var withAlt = bg.getAttribute('data-paths-alt') === 'true' && animate;
     var delayStep = parseFloat(bg.getAttribute('data-paths-delay')) || 0.12;
+
+    bg.classList.toggle('section-paths__bg--static', !animate);
 
     var forward = document.createElement('div');
     forward.className = 'paths-layer';
     bg.appendChild(forward);
-    renderLayer(forward, 1, count, delayStep);
+    renderLayer(forward, 1, count, delayStep, animate);
 
     if (withAlt) {
       var reverse = document.createElement('div');
       reverse.className = 'paths-layer paths-layer--alt';
       bg.appendChild(reverse);
-      renderLayer(reverse, -1, count, delayStep);
+      renderLayer(reverse, -1, count, delayStep, animate);
     }
+
+    if (animate && !prefersReduced) {
+      if (bg.classList.contains('section-paths__bg--hero')) {
+        bg.classList.add('is-paths-visible');
+      }
+      observeVisibility(bg);
+    }
+  }
+
+  function observeVisibility(bg) {
+    if (!('IntersectionObserver' in window)) {
+      bg.classList.add('is-paths-visible');
+      return;
+    }
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          bg.classList.toggle('is-paths-visible', entry.isIntersecting);
+        });
+      },
+      { rootMargin: '80px 0px', threshold: 0.05 }
+    );
+
+    observer.observe(bg);
   }
 
   var splitting = false;
