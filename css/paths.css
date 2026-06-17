@@ -1,4 +1,4 @@
-/* Mora — Background Paths (21st.dev inspired) */
+/* Mora — Background Paths (hero only, reliable) */
 
 .site-paths .header {
   background-color: transparent;
@@ -22,17 +22,16 @@
 .paths-layer {
   position: absolute;
   inset: 0;
-  contain: strict;
 }
 
 .paths-layer svg {
   width: 100%;
   height: 100%;
-  color: rgba(168, 85, 247, 0.38);
+  color: rgba(168, 85, 247, 0.4);
 }
 
 .paths-layer--alt svg {
-  color: rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.2);
   transform: scaleX(-1);
 }
 
@@ -48,50 +47,15 @@
   }
 }
 
-.section-paths__bg--static .paths-layer path {
-  animation: none !important;
-}
-
 @keyframes path-drift {
-  0%   { stroke-dashoffset: 0; opacity: 0.18; }
-  50%  { opacity: 0.42; }
-  100% { stroke-dashoffset: -1200; opacity: 0.18; }
+  0%   { stroke-dashoffset: 0; opacity: 0.2; }
+  50%  { opacity: 0.45; }
+  100% { stroke-dashoffset: -1200; opacity: 0.2; }
 }
 
-.section-paths__bg--hero .paths-layer svg {
-  color: rgba(168, 85, 247, 0.45);
-}
-
-.section-paths__bg--hero .paths-layer--alt svg {
-  color: rgba(255, 255, 255, 0.22);
-}
-
-.section-paths__bg--subtle .paths-layer svg {
-  color: rgba(168, 85, 247, 0.22);
-}
-
-.section-paths__bg--subtle .paths-layer--alt svg {
-  color: rgba(255, 255, 255, 0.1);
-}
-
-.section-paths__bg--footer .paths-layer svg {
-  color: rgba(168, 85, 247, 0.14);
-}
-
-.site-paths .section--with-paths,
-.site-paths .footer--with-paths {
+.site-paths .section--hero-paths {
   position: relative;
   overflow: hidden;
-}
-
-.site-paths .section--with-paths > .container {
-  position: relative;
-  z-index: 1;
-}
-
-.site-paths .footer--with-paths .footer__inner {
-  position: relative;
-  z-index: 1;
 }
 
 .section--hero-paths {
@@ -136,26 +100,20 @@
 
 .hero__title--paths {
   font-size: clamp(3rem, 11vw, 5.5rem);
+  font-weight: 700;
   text-transform: none;
   letter-spacing: -0.03em;
-  line-height: 1;
-  background: none;
-  color: transparent;
-}
-
-.hero__title--split .hero__letter {
-  display: inline-block;
+  line-height: 1.05;
   background: linear-gradient(135deg, #ffffff 0%, #c084fc 50%, #a855f7 100%);
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;
-  opacity: 0;
-  transform: translateY(28px);
-  animation: hero-letter-in 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  color: #ffffff;
 }
 
-@keyframes hero-letter-in {
-  to { opacity: 1; transform: translateY(0); }
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .hero__title--paths {
+    color: transparent;
+  }
 }
 
 .hero__subtitle--paths {
@@ -164,77 +122,16 @@
   margin-right: auto;
   margin-top: var(--space-6);
   font-size: var(--text-body-lg);
-  opacity: 0;
-  animation: hero-fade-up 0.7s ease 0.35s forwards;
+  color: var(--text-secondary);
 }
 
 .hero-paths__content .hero__actions {
   justify-content: center;
   margin-top: var(--space-10);
-  opacity: 0;
-  animation: hero-fade-up 0.7s ease 0.5s forwards;
-}
-
-@keyframes hero-fade-up {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-#projects .section-paths__bg .paths-layer:first-child svg,
-#contact .section-paths__bg .paths-layer:first-child svg {
-  transform: scaleY(-1);
-}
-
-#process .section-paths__bg {
-  opacity: 0.85;
-}
-
-.site-paths .section--with-paths:not(.section--hero-paths)::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  transform: translateX(-50%);
-  width: min(90%, 640px);
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(168, 85, 247, 0.35) 20%,
-    rgba(192, 132, 252, 0.5) 50%,
-    rgba(168, 85, 247, 0.35) 80%,
-    transparent
-  );
-  z-index: 2;
-  pointer-events: none;
-}
-
-.site-paths #contact.section--with-paths::after {
-  display: none;
 }
 
 .site-paths .section-header__title {
-  background: linear-gradient(90deg, var(--text-primary) 0%, var(--color-purple-400) 120%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.site-paths .service-card,
-.site-paths .case,
-.site-paths .contact__form {
-  background-color: rgba(0, 0, 0, 0.35);
-}
-
-.site-paths .section--alt .service-card,
-.site-paths .section--alt .case {
-  background-color: rgba(10, 10, 10, 0.35);
-}
-
-.site-paths .service-card {
-  border: 1px solid transparent;
-  transition: border-color var(--duration-normal) var(--ease-default),
-              box-shadow var(--duration-normal) var(--ease-default);
+  color: var(--text-primary);
 }
 
 .site-paths .service-card:hover {
@@ -255,26 +152,9 @@
   color: var(--color-purple-400);
 }
 
-.site-paths .footer--with-paths {
-  border-top: 1px solid rgba(168, 85, 247, 0.12);
-}
-
 @media (prefers-reduced-motion: reduce) {
   .paths-layer path {
     animation: none !important;
     opacity: 0.25;
-  }
-
-  .hero__title--split .hero__letter {
-    animation: none !important;
-    opacity: 1;
-    transform: none;
-  }
-
-  .hero__subtitle--paths,
-  .hero-paths__content .hero__actions {
-    animation: none !important;
-    opacity: 1;
-    transform: none;
   }
 }
