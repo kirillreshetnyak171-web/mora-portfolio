@@ -7,90 +7,58 @@
 
   var cfg = window.LEGAL_CONFIG || {};
 
-  function fullName() {
-    var parts = [cfg.operatorName, cfg.operatorSurname].filter(Boolean);
-    return parts.length ? parts.join(' ') : (cfg.operatorName || 'Operator');
+  function controllerBlockRu() {
+    var name = cfg.businessName || 'Mora';
+    var site = cfg.website || 'https://morastudio.de';
+    var email = cfg.email || '';
+    var html = '<p><strong>' + name + '</strong><br>' +
+      'Сайт: <a href="' + site + '">' + site.replace(/^https?:\/\//, '') + '</a>';
+    if (email) {
+      html += '<br>Email: <a href="mailto:' + email + '">' + email + '</a>';
+    }
+    html += '<br>Связь также через форму и кнопки мессенджеров на главной странице.</p>';
+    return html;
   }
 
-  function addressBlock() {
-    return [
-      cfg.street,
-      [cfg.postalCode, cfg.city].filter(Boolean).join(' '),
-      cfg.country
-    ].filter(Boolean).join('<br>');
+  function controllerBlockEn() {
+    var name = cfg.businessName || 'Mora';
+    var site = cfg.website || 'https://morastudio.de';
+    var email = cfg.email || '';
+    var html = '<p><strong>' + name + '</strong><br>' +
+      'Website: <a href="' + site + '">' + site.replace(/^https?:\/\//, '') + '</a>';
+    if (email) {
+      html += '<br>Email: <a href="mailto:' + email + '">' + email + '</a>';
+    }
+    html += '<br>You can also reach us via the contact form and messenger buttons on the homepage.</p>';
+    return html;
+  }
+
+  function controllerBlockDe() {
+    var name = cfg.businessName || 'Mora';
+    var site = cfg.website || 'https://morastudio.de';
+    var email = cfg.email || '';
+    var html = '<p><strong>' + name + '</strong><br>' +
+      'Website: <a href="' + site + '">' + site.replace(/^https?:\/\//, '') + '</a>';
+    if (email) {
+      html += '<br>E-Mail: <a href="mailto:' + email + '">' + email + '</a>';
+    }
+    html += '<br>Kontakt auch über das Formular und Messenger-Buttons auf der Startseite.</p>';
+    return html;
   }
 
   var titles = {
-    impressum: { en: 'Legal notice', ru: 'Правовая информация', de: 'Impressum' },
     privacy: { en: 'Privacy policy', ru: 'Политика конфиденциальности', de: 'Datenschutzerklärung' },
     back: { en: '← Back to home', ru: '← На главную', de: '← Zur Startseite' }
   };
 
   var sections = {
-    impressum: {
-      de: function () {
-        return (
-          '<h1>Impressum</h1>' +
-          '<p>Angaben gemäß § 5 TMG</p>' +
-          '<h2>Verantwortlich</h2>' +
-          '<p>' + fullName() + (cfg.businessName ? '<br>' + cfg.businessName : '') + '</p>' +
-          '<p>' + addressBlock() + '</p>' +
-          '<h2>Kontakt</h2>' +
-          '<p>Telefon: <a href="tel:' + String(cfg.phone || '').replace(/\s/g, '') + '">' + (cfg.phone || '—') + '</a><br>' +
-          'E-Mail: <a href="mailto:' + (cfg.email || '') + '">' + (cfg.email || '—') + '</a><br>' +
-          'Telegram: <a href="' + (cfg.telegram || '#') + '" rel="noopener noreferrer" target="_blank">@qwe171qw</a></p>' +
-          (cfg.vatId
-            ? '<h2>Umsatzsteuer-ID</h2><p>' + cfg.vatId + '</p>'
-            : '<h2>Umsatzsteuer</h2><p>Kleinunternehmerregelung nach § 19 UStG, sofern anwendbar. USt-IdNr.: nicht angegeben.</p>') +
-          '<h2>Verantwortlich für den Inhalt</h2>' +
-          '<p>' + fullName() + '</p>' +
-          '<h2>Haftung für Inhalte</h2>' +
-          '<p>Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte verantwortlich. Für Links externer Seiten übernehmen wir keine Haftung.</p>' +
-          '<h2>Streitschlichtung</h2>' +
-          '<p>Die EU-Kommission stellt eine Plattform zur Online-Streitbeilegung bereit: ' +
-          '<a href="https://ec.europa.eu/consumers/odr/" rel="noopener noreferrer" target="_blank">https://ec.europa.eu/consumers/odr/</a>. ' +
-          'Wir sind nicht verpflichtet und nicht bereit, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>'
-        );
-      },
-      en: function () {
-        return (
-          '<h1>Legal notice (Impressum)</h1>' +
-          '<p>Information according to German law (§ 5 TMG).</p>' +
-          '<h2>Provider</h2>' +
-          '<p>' + fullName() + (cfg.businessName ? '<br>' + cfg.businessName : '') + '</p>' +
-          '<p>' + addressBlock() + '</p>' +
-          '<h2>Contact</h2>' +
-          '<p>Phone: <a href="tel:' + String(cfg.phone || '').replace(/\s/g, '') + '">' + (cfg.phone || '—') + '</a><br>' +
-          'Email: <a href="mailto:' + (cfg.email || '') + '">' + (cfg.email || '—') + '</a><br>' +
-          'Telegram: <a href="' + (cfg.telegram || '#') + '" rel="noopener noreferrer" target="_blank">@qwe171qw</a></p>' +
-          '<h2>Content responsibility</h2>' +
-          '<p>' + fullName() + '</p>'
-        );
-      },
-      ru: function () {
-        return (
-          '<h1>Правовая информация (Impressum)</h1>' +
-          '<p>Сведения в соответствии с немецким законодательством (§ 5 TMG).</p>' +
-          '<h2>Ответственный</h2>' +
-          '<p>' + fullName() + (cfg.businessName ? '<br>' + cfg.businessName : '') + '</p>' +
-          '<p>' + addressBlock() + '</p>' +
-          '<h2>Контакты</h2>' +
-          '<p>Телефон: <a href="tel:' + String(cfg.phone || '').replace(/\s/g, '') + '">' + (cfg.phone || '—') + '</a><br>' +
-          'Email: <a href="mailto:' + (cfg.email || '') + '">' + (cfg.email || '—') + '</a><br>' +
-          'Telegram: <a href="' + (cfg.telegram || '#') + '" rel="noopener noreferrer" target="_blank">@qwe171qw</a></p>' +
-          '<h2>Ответственный за контент</h2>' +
-          '<p>' + fullName() + '</p>'
-        );
-      }
-    },
     privacy: {
       de: function () {
         return (
           '<h1>Datenschutzerklärung</h1>' +
           '<p>Stand: Juni 2026</p>' +
           '<h2>1. Verantwortlicher</h2>' +
-          '<p>' + fullName() + ', ' + (cfg.businessName || 'Mora') + '<br>' + addressBlock() + '<br>' +
-          'E-Mail: <a href="mailto:' + (cfg.email || '') + '">' + (cfg.email || '—') + '</a></p>' +
+          controllerBlockDe() +
           '<h2>2. Hosting</h2>' +
           '<p>Die Website wird bei GitHub Pages (GitHub, Inc., USA) gehostet. Beim Aufruf werden technisch notwendige Daten (IP, Zeit, User-Agent) in Server-Logs verarbeitet. ' +
           'Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse am sicheren Betrieb).</p>' +
@@ -115,7 +83,7 @@
           '<h1>Privacy policy</h1>' +
           '<p>Last updated: June 2026</p>' +
           '<h2>1. Controller</h2>' +
-          '<p>' + fullName() + ', ' + (cfg.businessName || 'Mora') + '<br>' + addressBlock() + '</p>' +
+          controllerBlockEn() +
           '<h2>2. Hosting</h2>' +
           '<p>Hosted on GitHub Pages. Server logs may include IP address and browser data for security and operation (legitimate interest, GDPR Art. 6(1)(f)).</p>' +
           '<h2>3. Contact form</h2>' +
@@ -132,7 +100,7 @@
           '<h1>Политика конфиденциальности</h1>' +
           '<p>Обновлено: июнь 2026</p>' +
           '<h2>1. Оператор данных</h2>' +
-          '<p>' + fullName() + ', ' + (cfg.businessName || 'Mora') + '<br>' + addressBlock() + '</p>' +
+          controllerBlockRu() +
           '<h2>2. Хостинг</h2>' +
           '<p>Сайт размещён на GitHub Pages. При посещении обрабатываются технические данные (IP, браузер) в логах сервера.</p>' +
           '<h2>3. Форма заявки</h2>' +
@@ -168,8 +136,7 @@
     var fn = sections[page][lang] || sections[page].de;
     root.innerHTML = fn();
 
-    var titleKey = page === 'impressum' ? 'impressum' : 'privacy';
-    document.title = (titles[titleKey][lang] || titles[titleKey].de) + ' — Mora';
+    document.title = (titles.privacy[lang] || titles.privacy.de) + ' — Mora';
     var back = document.querySelector('[data-legal-back]');
     if (back) back.textContent = titles.back[lang] || titles.back.de;
   }
