@@ -1,8 +1,7 @@
 /**
- * Öffentliche Kontaktdaten für Datenschutz (ohne Name und Postadresse).
+ * Öffentliche Kontaktdaten für Datenschutz (ohne Name, Adresse und E-Mail).
  */
 window.LEGAL_CONFIG = {
   businessName: 'Mora',
-  website: 'https://morastudio.de',
-  email: 'contact@morastudio.de'
+  website: 'https://morastudio.de'
 };

@@ -10,40 +10,25 @@
   function controllerBlockRu() {
     var name = cfg.businessName || 'Mora';
     var site = cfg.website || 'https://morastudio.de';
-    var email = cfg.email || '';
-    var html = '<p><strong>' + name + '</strong><br>' +
-      'Сайт: <a href="' + site + '">' + site.replace(/^https?:\/\//, '') + '</a>';
-    if (email) {
-      html += '<br>Email: <a href="mailto:' + email + '">' + email + '</a>';
-    }
-    html += '<br>Связь также через форму и кнопки мессенджеров на главной странице.</p>';
-    return html;
+    return '<p><strong>' + name + '</strong><br>' +
+      'Сайт: <a href="' + site + '">' + site.replace(/^https?:\/\//, '') + '</a><br>' +
+      'Связь через форму и кнопки мессенджеров на главной странице.</p>';
   }
 
   function controllerBlockEn() {
     var name = cfg.businessName || 'Mora';
     var site = cfg.website || 'https://morastudio.de';
-    var email = cfg.email || '';
-    var html = '<p><strong>' + name + '</strong><br>' +
-      'Website: <a href="' + site + '">' + site.replace(/^https?:\/\//, '') + '</a>';
-    if (email) {
-      html += '<br>Email: <a href="mailto:' + email + '">' + email + '</a>';
-    }
-    html += '<br>You can also reach us via the contact form and messenger buttons on the homepage.</p>';
-    return html;
+    return '<p><strong>' + name + '</strong><br>' +
+      'Website: <a href="' + site + '">' + site.replace(/^https?:\/\//, '') + '</a><br>' +
+      'Contact via the form and messenger buttons on the homepage.</p>';
   }
 
   function controllerBlockDe() {
     var name = cfg.businessName || 'Mora';
     var site = cfg.website || 'https://morastudio.de';
-    var email = cfg.email || '';
-    var html = '<p><strong>' + name + '</strong><br>' +
-      'Website: <a href="' + site + '">' + site.replace(/^https?:\/\//, '') + '</a>';
-    if (email) {
-      html += '<br>E-Mail: <a href="mailto:' + email + '">' + email + '</a>';
-    }
-    html += '<br>Kontakt auch über das Formular und Messenger-Buttons auf der Startseite.</p>';
-    return html;
+    return '<p><strong>' + name + '</strong><br>' +
+      'Website: <a href="' + site + '">' + site.replace(/^https?:\/\//, '') + '</a><br>' +
+      'Kontakt über das Formular und Messenger-Buttons auf der Startseite.</p>';
   }
 
   var titles = {
@@ -68,13 +53,13 @@
           'Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Maßnahmen) bzw. lit. f (Anfragen allgemein). ' +
           'Speicherdauer: bis Abschluss der Kommunikation, längstens 12 Monate, sofern keine gesetzlichen Pflichten entgegenstehen.</p>' +
           '<h2>4. Messenger (Telegram / WhatsApp)</h2>' +
-          '<p>Bei Kontakt über Messenger gelten die Datenschutzbestimmungen der jeweiligen Anbieter. Sie können uns auch per E-Mail kontaktieren.</p>' +
+          '<p>Bei Kontakt über Messenger gelten die Datenschutzbestimmungen der jeweiligen Anbieter.</p>' +
           '<h2>5. Cookies &amp; Google Analytics</h2>' +
           '<p>Notwendige Cookies: Speicherung Ihrer Sprachwahl (localStorage). ' +
           'Optional mit Einwilligung: Google Analytics 4 (Measurement ID in <code>analytics-config.js</code>), IP-Anonymisierung aktiv. ' +
           'Rechtsgrundlage Analytics: Art. 6 Abs. 1 lit. a DSGVO. Sie können die Einwilligung jederzeit über „Cookie-Einstellungen“ im Footer widerrufen.</p>' +
           '<h2>6. Ihre Rechte</h2>' +
-          '<p>Auskunft, Berichtigung, Löschung, Einschränkung, Widerspruch, Datenübertragbarkeit — per E-Mail an ' + (cfg.email || '—') + '. ' +
+          '<p>Auskunft, Berichtigung, Löschung, Einschränkung, Widerspruch, Datenübertragbarkeit — über das Kontaktformular oder Messenger auf der Startseite. ' +
           'Beschwerderecht bei einer Aufsichtsbehörde.</p>'
         );
       },
@@ -92,7 +77,7 @@
           '<h2>4. Cookies &amp; Analytics</h2>' +
           '<p>Essential: language preference (localStorage). With consent: Google Analytics 4 with anonymised IP. You can change consent via Cookie settings in the footer.</p>' +
           '<h2>5. Your rights</h2>' +
-          '<p>Access, rectification, erasure, restriction, objection — contact ' + (cfg.email || '—') + '.</p>'
+          '<p>Access, rectification, erasure, restriction, objection — via the contact form or messenger on the homepage.</p>'
         );
       },
       ru: function () {
@@ -109,7 +94,7 @@
           '<h2>4. Cookies и аналитика</h2>' +
           '<p>Необходимые: язык сайта (localStorage). С согласия: Google Analytics 4 с анонимизацией IP. Настройки — в подвале сайта.</p>' +
           '<h2>5. Ваши права</h2>' +
-          '<p>Доступ, исправление, удаление — напишите на ' + (cfg.email || '—') + '.</p>'
+          '<p>Доступ, исправление, удаление — через форму или мессенджер на главной странице.</p>'
         );
       }
     }
