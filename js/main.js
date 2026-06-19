@@ -85,6 +85,7 @@
       'form.rateLimited': 'Please wait a minute before sending again.',
       'form.tooFast': 'Please read the page first, then send your message.',
       'form.notConfigured': 'Form is not connected yet — use Telegram or WhatsApp.',
+      'form.sentPending': "Request sent. If you don't hear back within 24 hours, message us on Telegram.",
       'toast.success': "Thank you! I'll get back to you soon.",
       'footer.copy': '© 2026 Mora',
       'footer.privacy': 'Privacy Policy',
@@ -163,6 +164,7 @@
       'form.rateLimited': 'Подождите минуту перед повторной отправкой.',
       'form.tooFast': 'Сначала прочитайте страницу, затем отправьте сообщение.',
       'form.notConfigured': 'Форма ещё не подключена — напишите в Telegram или WhatsApp.',
+      'form.sentPending': 'Заявка отправлена. Если нет ответа за 24 часа — напишите в Telegram.',
       'toast.success': 'Спасибо! Свяжусь с вами в ближайшее время.',
       'footer.copy': '© 2026 Mora',
       'footer.privacy': 'политике конфиденциальности',
@@ -241,6 +243,7 @@
       'form.rateLimited': 'Bitte eine Minute warten, bevor Sie erneut senden.',
       'form.tooFast': 'Bitte lesen Sie die Seite, bevor Sie senden.',
       'form.notConfigured': 'Formular noch nicht verbunden — bitte Telegram oder WhatsApp.',
+      'form.sentPending': 'Anfrage gesendet. Falls Sie innerhalb von 24 Stunden keine Antwort erhalten, schreiben Sie auf Telegram.',
       'toast.success': 'Danke! Ich melde mich in Kürze.',
       'footer.copy': '© 2026 Mora',
       'footer.privacy': 'Datenschutzerklärung',
@@ -585,7 +588,7 @@
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     }).then(function () {
-      return { ok: true };
+      return { ok: true, pending: true };
     }).catch(function () {
       return { ok: false, error: 'network' };
     });
@@ -623,8 +626,8 @@
             showToast('form.rateLimited', true);
           } else if (guard.reason === 'too_fast') {
             showToast('form.tooFast', true);
-          } else {
-            showToast('toast.success', false);
+          } else if (guard.reason === 'bot') {
+            return;
           }
           return;
         }
@@ -659,7 +662,11 @@
             window.MoraSecurity.recordLeadSubmit();
           }
           contactForm.reset();
-          showToast('toast.success', false);
+          if (result.pending) {
+            showToast('form.sentPending', false);
+          } else {
+            showToast('toast.success', false);
+          }
         } else if (result.error === 'not_configured') {
           showToast('form.notConfigured', true);
         } else {

@@ -1,10 +1,11 @@
 /**
  * Публичные настройки формы.
- * webhookUrl на проде: GitHub Secret LEAD_WEBHOOK_URL (предпочтительно)
- * или значение ниже после inject в CI.
+ * webhookUrl и formToken подставляются при деплое из GitHub Secrets
+ * (LEAD_WEBHOOK_URL, LEAD_FORM_TOKEN). Локально — js/lead-config.local.js
  */
 window.LEAD_CONFIG = {
-  webhookUrl: 'https://script.google.com/macros/s/AKfycbwVfFgJYu_6EnByquIbKrLO3JCf77YGhUdhc_3-TArCuy5KohtxmdfoGNig-mYuZoJP/exec',
+  webhookUrl: '',
+  formToken: '',
   enabled: true
 };
 

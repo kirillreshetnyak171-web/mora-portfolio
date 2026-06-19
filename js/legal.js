@@ -7,27 +7,38 @@
 
   var cfg = window.LEGAL_CONFIG || {};
 
+  function escapeHtml(value) {
+    return String(value || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
   function controllerBlockRu() {
-    var name = cfg.businessName || 'Mora';
-    var site = cfg.website || 'https://morastudio.de';
+    var name = escapeHtml(cfg.businessName || 'Mora');
+    var site = escapeHtml(cfg.website || 'https://morastudio.de');
+    var siteLabel = site.replace(/^https?:\/\//, '');
     return '<p><strong>' + name + '</strong><br>' +
-      'Сайт: <a href="' + site + '">' + site.replace(/^https?:\/\//, '') + '</a><br>' +
+      'Сайт: <a href="' + site + '">' + siteLabel + '</a><br>' +
       'Связь через форму и кнопки мессенджеров на главной странице.</p>';
   }
 
   function controllerBlockEn() {
-    var name = cfg.businessName || 'Mora';
-    var site = cfg.website || 'https://morastudio.de';
+    var name = escapeHtml(cfg.businessName || 'Mora');
+    var site = escapeHtml(cfg.website || 'https://morastudio.de');
+    var siteLabel = site.replace(/^https?:\/\//, '');
     return '<p><strong>' + name + '</strong><br>' +
-      'Website: <a href="' + site + '">' + site.replace(/^https?:\/\//, '') + '</a><br>' +
+      'Website: <a href="' + site + '">' + siteLabel + '</a><br>' +
       'Contact via the form and messenger buttons on the homepage.</p>';
   }
 
   function controllerBlockDe() {
-    var name = cfg.businessName || 'Mora';
-    var site = cfg.website || 'https://morastudio.de';
+    var name = escapeHtml(cfg.businessName || 'Mora');
+    var site = escapeHtml(cfg.website || 'https://morastudio.de');
+    var siteLabel = site.replace(/^https?:\/\//, '');
     return '<p><strong>' + name + '</strong><br>' +
-      'Website: <a href="' + site + '">' + site.replace(/^https?:\/\//, '') + '</a><br>' +
+      'Website: <a href="' + site + '">' + siteLabel + '</a><br>' +
       'Kontakt über das Formular und Messenger-Buttons auf der Startseite.</p>';
   }
 

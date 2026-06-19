@@ -6,7 +6,7 @@ Webhook **не хранить в git**. Варианты:
 
 ```bash
 cp js/lead-config.example.js js/lead-config.local.js
-# вставь URL → enabled: true
+# вставь URL и (опционально) formToken → enabled: true
 ```
 
 `lead-config.local.js` в `.gitignore`.
@@ -15,9 +15,16 @@ cp js/lead-config.example.js js/lead-config.local.js
 
 1. **Google Apps Script** — `scripts/google-apps-script-lead-relay.gs`  
    Script properties: `BOT_TOKEN`, `CHAT_ID` → Deploy Web app → скопируй URL
-2. GitHub → **kirillreshetnyak171-web/mora-portfolio** → Settings → Secrets → Actions → `LEAD_WEBHOOK_URL`
-3. Settings → Pages → Source: **GitHub Actions**
-4. Push в `main` — workflow `.github/workflows/deploy-pages.yml` подставит webhook в `js/lead-config.js`
+2. (Рекомендуется) Сгенерируй случайную строку → Script property `LEAD_SECRET`  
+   Тот же токен → GitHub Secret `LEAD_FORM_TOKEN`
+3. GitHub → **moralabs171/mora-portfolio** → Settings → Secrets and variables → Actions:
+   - `LEAD_WEBHOOK_URL` — URL из шага 1
+   - `LEAD_FORM_TOKEN` — тот же, что `LEAD_SECRET` в GAS (можно пустым, если secret не включён)
+4. Settings → Pages → Source: **GitHub Actions**
+5. Push в `main` — workflow `.github/workflows/deploy-pages.yml` подставит webhook в `js/lead-config.js`
+
+**Важно:** до первого деплоя через Actions добавь `LEAD_WEBHOOK_URL` в Secrets.  
+Иначе форма на проде не получит URL.
 
 ## Cookies & Analytics
 
