@@ -1,0 +1,58 @@
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Inject lead form secrets
+        env:
+          LEAD_WEBHOOK_URL: ${{ secrets.LEAD_WEBHOOK_URL }}
+          LEAD_FORM_TOKEN: ${{ secrets.LEAD_FORM_TOKEN }}
+        run: |
+          if [ -z "$LEAD_WEBHOOK_URL" ]; then
+            echo "Missing GitHub secret LEAD_WEBHOOK_URL" >&2
+            exit 1
+          fi
+          node <<'NODE'
+          const fs = require('fs');
+          const url = process.env.LEAD_WEBHOOK_URL || '';
+          const token = process.env.LEAD_FORM_TOKEN || '';
+          const path = 'js/lead-config.js';
+          let source = fs.readFileSync(path, 'utf8');
+          const esc = (value) => String(value).replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+          source = source.replace(/webhookUrl:\s*'[^']*'/, "webhookUrl: '" + esc(url) + "'");
+          source = source.replace(/formToken:\s*'[^']*'/, "formToken: '" + esc(token) + "'");
+          fs.writeFileSync(path, source);
+          NODE
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
