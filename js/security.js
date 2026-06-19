@@ -5,6 +5,9 @@
   var LEAD_COOLDOWN_MS = 60000;
   var MIN_ON_PAGE_MS = 3000;
   var LEAD_STORAGE_KEY = 'mora-lead-last-submit';
+  var ATTEMPT_STORAGE_KEY = 'mora-lead-attempts';
+  var MAX_ATTEMPTS_PER_HOUR = 8;
+  var ATTEMPT_WINDOW_MS = 3600000;
 
   function isLikelyBot() {
     if (typeof navigator === 'undefined') return true;
@@ -47,14 +50,48 @@
   function recordLeadSubmit() {
     try {
       localStorage.setItem(LEAD_STORAGE_KEY, String(Date.now()));
+      localStorage.removeItem(ATTEMPT_STORAGE_KEY);
     } catch (e) {
       /* ignore */
+    }
+  }
+
+  function recordFailedAttempt() {
+    try {
+      var raw = localStorage.getItem(ATTEMPT_STORAGE_KEY);
+      var data = raw ? JSON.parse(raw) : { count: 0, since: Date.now() };
+      if (!data.since || Date.now() - data.since > ATTEMPT_WINDOW_MS) {
+        data = { count: 0, since: Date.now() };
+      }
+      data.count += 1;
+      localStorage.setItem(ATTEMPT_STORAGE_KEY, JSON.stringify(data));
+    } catch (e) {
+      /* ignore */
+    }
+  }
+
+  function isAttemptLimited() {
+    try {
+      var raw = localStorage.getItem(ATTEMPT_STORAGE_KEY);
+      if (!raw) return false;
+      var data = JSON.parse(raw);
+      if (!data.since || Date.now() - data.since > ATTEMPT_WINDOW_MS) {
+        localStorage.removeItem(ATTEMPT_STORAGE_KEY);
+        return false;
+      }
+      return data.count >= MAX_ATTEMPTS_PER_HOUR;
+    } catch (e) {
+      return false;
     }
   }
 
   function canSubmitLeadForm() {
     if (isLikelyBot()) {
       return { ok: false, reason: 'bot' };
+    }
+
+    if (isAttemptLimited()) {
+      return { ok: false, reason: 'rate_limited' };
     }
 
     var elapsed = Date.now() - PAGE_LOADED_AT;
@@ -86,6 +123,7 @@
     shouldLoadAnalytics: shouldLoadAnalytics,
     canSubmitLeadForm: canSubmitLeadForm,
     recordLeadSubmit: recordLeadSubmit,
+    recordFailedAttempt: recordFailedAttempt,
     leadPayloadGuards: leadPayloadGuards,
     pageLoadedAt: PAGE_LOADED_AT
   };

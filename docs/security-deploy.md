@@ -36,10 +36,14 @@ cp js/lead-config.example.js js/lead-config.local.js
 
 ## Защита формы (2026-06)
 
-- `js/security.js` — лимит 1 заявка / мин, минимум 3 сек на странице, фильтр ботов
+- `js/security.js` — лимит 1 заявка / мин, минимум 3 сек на странице, фильтр ботов, 8 попыток / час
 - Honeypot поле `website` (скрытое)
 - Google Apps Script: rate limit, длина полей, опционально `LEAD_SECRET` + GitHub `LEAD_FORM_TOKEN`
 - После правки GAS: **Deploy → New deployment** в script.google.com
+
+## DDoS на весь домен
+
+См. **`docs/cloudflare-ddos.md`** — подключение morastudio.de к Cloudflare Free (основная защита от DDoS).
 
 ## Impressum
 

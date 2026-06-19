@@ -629,6 +629,9 @@
           } else if (guard.reason === 'bot') {
             return;
           }
+          if (window.MoraSecurity.recordFailedAttempt) {
+            window.MoraSecurity.recordFailedAttempt();
+          }
           return;
         }
       }
@@ -670,6 +673,9 @@
         } else if (result.error === 'not_configured') {
           showToast('form.notConfigured', true);
         } else {
+          if (window.MoraSecurity && window.MoraSecurity.recordFailedAttempt) {
+            window.MoraSecurity.recordFailedAttempt();
+          }
           showToast('form.error', true);
         }
       }).finally(function () {
