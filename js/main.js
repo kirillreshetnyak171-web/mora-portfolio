@@ -7,7 +7,7 @@
 
   // Contacts: set WhatsApp as digits only — country code + number (e.g. 491701234567)
   var SITE_CONTACT = {
-    telegram: 'https://t.me/qwe171qw',
+    telegram: 'https://t.me/qwe171qw','https://t.me/wipe4'
     whatsapp: '491603203111'
   };
 
