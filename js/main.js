@@ -82,6 +82,8 @@
       'form.consentRequired': 'Please confirm the privacy policy checkbox.',
       'form.disabled': 'Form is temporarily disabled.',
       'form.error': 'Could not send. Message us on Telegram or WhatsApp.',
+      'form.rateLimited': 'Please wait a minute before sending again.',
+      'form.tooFast': 'Please read the page first, then send your message.',
       'form.notConfigured': 'Form is not connected yet — use Telegram or WhatsApp.',
       'toast.success': "Thank you! I'll get back to you soon.",
       'footer.copy': '© 2026 Mora',
@@ -158,6 +160,8 @@
       'form.consentRequired': 'Отметьте согласие с политикой конфиденциальности.',
       'form.disabled': 'Форма временно отключена.',
       'form.error': 'Не удалось отправить. Напишите в Telegram или WhatsApp.',
+      'form.rateLimited': 'Подождите минуту перед повторной отправкой.',
+      'form.tooFast': 'Сначала прочитайте страницу, затем отправьте сообщение.',
       'form.notConfigured': 'Форма ещё не подключена — напишите в Telegram или WhatsApp.',
       'toast.success': 'Спасибо! Свяжусь с вами в ближайшее время.',
       'footer.copy': '© 2026 Mora',
@@ -234,6 +238,8 @@
       'form.consentRequired': 'Bitte bestätigen Sie die Datenschutzerklärung.',
       'form.disabled': 'Formular vorübergehend deaktiviert.',
       'form.error': 'Senden fehlgeschlagen. Schreiben Sie auf Telegram oder WhatsApp.',
+      'form.rateLimited': 'Bitte eine Minute warten, bevor Sie erneut senden.',
+      'form.tooFast': 'Bitte lesen Sie die Seite, bevor Sie senden.',
       'form.notConfigured': 'Formular noch nicht verbunden — bitte Telegram oder WhatsApp.',
       'toast.success': 'Danke! Ich melde mich in Kürze.',
       'footer.copy': '© 2026 Mora',
@@ -532,14 +538,24 @@
 
   function submitLead(form) {
     var webhookUrl = getLeadWebhookUrl();
+    var guards = window.MoraSecurity && window.MoraSecurity.leadPayloadGuards
+      ? window.MoraSecurity.leadPayloadGuards()
+      : { loadedAt: Date.now(), elapsedMs: 0 };
+
     var payload = {
-      name: form.name.value.trim(),
-      contact: form.contact.value.trim(),
-      message: form.message.value.trim(),
+      name: form.name.value.trim().slice(0, 120),
+      contact: form.contact.value.trim().slice(0, 200),
+      message: form.message.value.trim().slice(0, 2000),
       source: 'morastudio.de',
       lang: localStorage.getItem(STORAGE_KEY) || DEFAULT_LANG,
-      website: form.website ? form.website.value : ''
+      website: form.website ? form.website.value : '',
+      loadedAt: guards.loadedAt,
+      elapsedMs: guards.elapsedMs
     };
+
+    if (window.LEAD_CONFIG && window.LEAD_CONFIG.formToken) {
+      payload.token = String(window.LEAD_CONFIG.formToken);
+    }
 
     if (payload.website) {
       return Promise.resolve({ ok: true });
@@ -599,6 +615,21 @@
         showToast('form.disabled', true);
         return;
       }
+
+      if (window.MoraSecurity) {
+        var guard = window.MoraSecurity.canSubmitLeadForm();
+        if (!guard.ok) {
+          if (guard.reason === 'rate_limited') {
+            showToast('form.rateLimited', true);
+          } else if (guard.reason === 'too_fast') {
+            showToast('form.tooFast', true);
+          } else {
+            showToast('toast.success', false);
+          }
+          return;
+        }
+      }
+
       clearFieldErrors(contactForm);
 
       var privacy = contactForm.querySelector('#contact-privacy');
@@ -624,6 +655,9 @@
 
       submitLead(contactForm).then(function (result) {
         if (result.ok) {
+          if (window.MoraSecurity) {
+            window.MoraSecurity.recordLeadSubmit();
+          }
           contactForm.reset();
           showToast('toast.success', false);
         } else if (result.error === 'not_configured') {

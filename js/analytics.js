@@ -6,6 +6,10 @@
   window.initMoraAnalytics = function initMoraAnalytics() {
     if (loaded) return;
 
+    if (window.MoraSecurity && !window.MoraSecurity.shouldLoadAnalytics()) {
+      return;
+    }
+
     var cfg = window.ANALYTICS_CONFIG || {};
     if (cfg.enabled === false) return;
 
@@ -23,7 +27,9 @@
     gtag('js', new Date());
     gtag('config', measurementId, {
       anonymize_ip: true,
-      send_page_view: true
+      send_page_view: true,
+      allow_google_signals: false,
+      allow_ad_personalization_signals: false
     });
 
     var script = document.createElement('script');

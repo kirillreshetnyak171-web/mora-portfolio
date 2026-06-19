@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="description" content="Mora — automation and websites for small business">
   <title>Mora — Automation &amp; websites</title>
   <link rel="icon" href="/favicon.ico" sizes="48x48">
@@ -410,15 +411,15 @@
             </div>
             <div class="form-field">
               <label class="form-field__label" for="contact-name" data-i18n="form.name">Name</label>
-              <input class="form-field__input" type="text" id="contact-name" name="name" autocomplete="name" required>
+              <input class="form-field__input" type="text" id="contact-name" name="name" autocomplete="name" maxlength="120" required>
             </div>
             <div class="form-field">
               <label class="form-field__label" for="contact-contact" data-i18n="form.contact">Email / Telegram</label>
-              <input class="form-field__input" type="text" id="contact-contact" name="contact" autocomplete="email" required>
+              <input class="form-field__input" type="text" id="contact-contact" name="contact" autocomplete="email" maxlength="200" required>
             </div>
             <div class="form-field">
               <label class="form-field__label" for="contact-message" data-i18n="form.message">Message</label>
-              <textarea class="form-field__input" id="contact-message" name="message" rows="4" required></textarea>
+              <textarea class="form-field__input" id="contact-message" name="message" rows="4" maxlength="2000" required></textarea>
             </div>
             <div class="form-field form-field--consent">
               <label class="form-consent">
@@ -473,11 +474,12 @@
     <p class="toast__message" data-i18n="toast.success">Thank you! I'll get back to you soon.</p>
   </div>
 
+  <script src="js/security.js?v=1"></script>
   <script src="js/lead-config.local.js?v=1" onerror="void 0"></script>
-  <script src="js/lead-config.js?v=14"></script>
+  <script src="js/lead-config.js?v=15"></script>
   <script src="js/analytics-config.js?v=2"></script>
-  <script src="js/analytics.js?v=2"></script>
+  <script src="js/analytics.js?v=3"></script>
   <script src="js/cookie-consent.js?v=1"></script>
-  <script src="js/main.js?v=17"></script>
+  <script src="js/main.js?v=18"></script>
 </body>
 </html>

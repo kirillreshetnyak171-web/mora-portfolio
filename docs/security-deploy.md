@@ -23,7 +23,16 @@ cp js/lead-config.example.js js/lead-config.local.js
 
 - Баннер: `js/cookie-consent.js` — Analytics только после «Alle akzeptieren»
 - GA ID: `js/analytics-config.js`
+- Боты: `js/security.js` — не грузит GA для headless/известных ботов
+- В GA4 Admin отключи **Enhanced measurement** (scroll/clicks), если много лишних событий
 - Datenschutz: `/datenschutz.html`
+
+## Защита формы (2026-06)
+
+- `js/security.js` — лимит 1 заявка / мин, минимум 3 сек на странице, фильтр ботов
+- Honeypot поле `website` (скрытое)
+- Google Apps Script: rate limit, длина полей, опционально `LEAD_SECRET` + GitHub `LEAD_FORM_TOKEN`
+- После правки GAS: **Deploy → New deployment** в script.google.com
 
 ## Impressum
 
