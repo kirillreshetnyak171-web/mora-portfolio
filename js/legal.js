@@ -6,6 +6,7 @@
   var DEFAULT_LANG = 'en';
 
   var cfg = window.LEGAL_CONFIG || {};
+  var DEFAULT_WEBSITE = 'https://morastudio.de';
 
   function escapeHtml(value) {
     return String(value || '')
@@ -15,30 +16,48 @@
       .replace(/"/g, '&quot;');
   }
 
+  /** Только https:// — иначе дефолт (защита href от javascript: и т.п.) */
+  function safeHttpsUrl(raw) {
+    var value = String(raw || '').trim();
+    if (!value) return DEFAULT_WEBSITE;
+    try {
+      var parsed = new URL(value);
+      if (parsed.protocol !== 'https:') return DEFAULT_WEBSITE;
+      return parsed.href;
+    } catch (e) {
+      return DEFAULT_WEBSITE;
+    }
+  }
+
+  function websiteLinkParts() {
+    var url = safeHttpsUrl(cfg.website);
+    return {
+      href: escapeHtml(url),
+      label: escapeHtml(url.replace(/^https:\/\//, ''))
+    };
+  }
+
   function controllerBlockRu() {
     var name = escapeHtml(cfg.businessName || 'Mora');
-    var site = escapeHtml(cfg.website || 'https://morastudio.de');
-    var siteLabel = site.replace(/^https?:\/\//, '');
+    var site = websiteLinkParts();
     return '<p><strong>' + name + '</strong><br>' +
-      'Сайт: <a href="' + site + '">' + siteLabel + '</a><br>' +
+      'Сайт: <a href="' + site.href + '">' + site.label + '</a><br>' +
       'Связь через форму и кнопки мессенджеров на главной странице.</p>';
   }
 
   function controllerBlockEn() {
     var name = escapeHtml(cfg.businessName || 'Mora');
-    var site = escapeHtml(cfg.website || 'https://morastudio.de');
-    var siteLabel = site.replace(/^https?:\/\//, '');
+    var site = websiteLinkParts();
     return '<p><strong>' + name + '</strong><br>' +
-      'Website: <a href="' + site + '">' + siteLabel + '</a><br>' +
+      'Website: <a href="' + site.href + '">' + site.label + '</a><br>' +
       'Contact via the form and messenger buttons on the homepage.</p>';
   }
 
   function controllerBlockDe() {
     var name = escapeHtml(cfg.businessName || 'Mora');
-    var site = escapeHtml(cfg.website || 'https://morastudio.de');
-    var siteLabel = site.replace(/^https?:\/\//, '');
+    var site = websiteLinkParts();
     return '<p><strong>' + name + '</strong><br>' +
-      'Website: <a href="' + site + '">' + siteLabel + '</a><br>' +
+      'Website: <a href="' + site.href + '">' + site.label + '</a><br>' +
       'Kontakt über das Formular und Messenger-Buttons auf der Startseite.</p>';
   }
 
